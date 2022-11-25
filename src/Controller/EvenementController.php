@@ -31,14 +31,12 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    #[Route('/evenements/{genre}', name: 'app_evenement_genre'), ]
+    #[Route('/evenements/{genre}', name: 'app_evenement_genre', methods: ['POST']), ]
     public function showGenre(EvenementRepository $evenementRepository, string $genre): Response
     {
-        $
-
         return $this->render('evenement/evenements_genre.html.twig', [
             'controller_name' => 'Site - Evenement',
-            'evenements' => $evenementRepository->findBy(['genre'=>]),
+            'evenements' => $evenementRepository->findBy(['genre'=>1]),
         ]);
     }
 
@@ -47,7 +45,6 @@ class EvenementController extends AbstractController
     public function showCoeur(EvenementRepository $evenementRepository, string $tag): Response
     {
         $tag = str_replace('-', ' ', ucfirst($tag));
-
 
         if ($tag == 'Coups de coeur') {
             return $this->render('evenement/evenements_tag.html.twig', [
