@@ -5,17 +5,17 @@
         </div>
     </a>
     <div class="container_searchbar">
-        <form action="">
-            <select class="choix" name="choix" id="pet-select">
+        <form action="{{ path('app_evenements') }}">
+            <select class="choix" name="genre" id="pet-select">
                 <option value="">Dans toutes nos catégories</option>
                 <option value="Film">Film</option>
-                <option value="Spectacle">spectacle</option>
+                <option value="Spectacle">Spectacle</option>
                 <option value="Concert">Concert</option>
                 <option value="Théâtre">Théâtre</option>
                 <option value="Exposition">Exposition</option>
             </select>
             <input class="search_bar" type="text" name="recherche">
-            <button class="chercher" type="submit" name="chercher"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="chercher" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>
     <div class="container_navbar_right">
