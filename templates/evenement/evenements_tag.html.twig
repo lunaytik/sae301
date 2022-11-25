@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <h1>Evenements</h1>
+    <div class="suite">
+    {% for evenement in evenements %}
+        <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
+            <div class="event_card_image">
+                <img class="test" loading="lazy"  src="{{ evenement.affiche }}" alt="Image de {{ evenement.nom }}">
+            </div>
+            <div class="event_card_content">
+                <div class="event_card_content_top">
+                    <h4>{{ evenement.nom }}</h4>
+                    <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
+                    <img src="etoile.png" alt="">
+                </div>
+                <div class="event_card_content_bottom">
+                    <div>
+                        <img src="icon/location-dot-solid.svg" alt="">
+                        <p>{{ evenement.lieu.nom }}</p>
+                    </div>
+                    <p class="event_card_content_prix">{{ evenement.prix }} €</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}
