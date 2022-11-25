@@ -1,6 +1,7 @@
 :root {
     --main-bg-color:#E90065;
     --gris-bg:#676767;
+    --gris-clair-bg:#EFEFEF;
 }
 * {
     padding: 0;
@@ -407,7 +408,7 @@ select {
 }
 .event_card_image > img {
     width: 100%;
-    height: 100%;
+    height: 300px;
 }
 .event_card_content {
     padding: 0.5rem 1.25rem 1.25rem 1.25rem;
