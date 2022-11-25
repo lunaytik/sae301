@@ -15,7 +15,7 @@ class AccueilController extends AbstractController
 
         return $this->render('accueil/accueil.html.twig', [
             'controller_name' => 'Site - Accueil',
-            'coups' => $tagRepository->findBy(['nom' => 'Coup de coeur'])
+            'coups' => $tagRepository->findAll()
         ]);
     }
 }

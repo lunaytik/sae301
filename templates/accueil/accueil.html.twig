@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Accueil</h1>
 
-    {% for coup in coups.evenements %}
+    {% for coup in coups == '1' %}
         <h2>{{ coup.nom }}</h2>
     {% endfor %}
 
