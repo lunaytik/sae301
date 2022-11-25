@@ -3,13 +3,10 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
-    <div class="suite">
     <h1>Evenements</h1>
+    <div class="suite">
     {% for evenement in evenements %}
-
-
-
-        <a class="event_card" href="">
+        <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
             <div class="event_card_image">
                 <img class="test" loading="lazy"  src="{{ evenement.affiche }}" alt="Image de {{ evenement.nom }}">
             </div>
@@ -28,23 +25,6 @@
                 </div>
             </div>
         </a>
-
-
-
-        <div>
-            <img loading="lazy" src="{{ evenement.affiche }}" alt="Image de {{ evenement.nom }}">
-            <div>
-                <h2>{{ evenement.nom }}</h2>
-                <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
-            </div>
-            <div>
-                <p>{{ evenement.lieu.nom }}</p>
-                <p>{{ evenement.prix }} €</p>
-            </div>
-            <a href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
-                GO
-            </a>
-        </div>
     {% endfor %}
     </div>
 {% endblock %}

@@ -44,6 +44,7 @@ class Evenement
     private ?Genre $genre = null;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Tag $Tag = null;
 
     public function getId(): ?int
