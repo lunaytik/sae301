@@ -1,0 +1,29 @@
+<header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ path('app_accueil') }}">Accueil</a>
+            </li>
+            <li>
+                <a href="{{ path('app_evenements') }}">Evenements</a>
+            </li>
+
+            {% if app.user %}
+                <p>{{ app.user.email }}</p>
+                <li>
+                    <a href="{{ path('app_logout') }}">Logout</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}">Login</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}">Register</a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="{{ path('app_panier') }}">Panier</a>
+            </li>
+        </ul>
+    </nav>
+</header>

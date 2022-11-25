@@ -3,15 +3,19 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
-    {% for evenement in evenements %}
-        <div>
-            <h1>{{ evenement.nom }}</h1>
-            <i>
-                {{ evenement.cast != null ? evenement.cast : 'Vide' }}
-            </i>
-            <p>{{ evenement.description }}</p>
-            <i>{{ evenement.date|date('d/m/Y H:i:s') }} (Evenement n° {{ evenement.id }})</i><br/>
-            <a href="{{ path('app_evenement', { id:evenement.id }) }}">Aller</a>
-        </div>
-    {% endfor %}
+    <div>
+        <h1>{{ evenement.nom }}</h1>
+        <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
+
+        <h2>Presentation</h2>
+        <p>{{ evenement.description }}</p>
+        {% if evenement.cast %}
+            <h2>Cast</h2>
+            <p>
+                {{ evenement.cast }}
+            </p>
+        {% endif %}
+
+
+    </div>
 {% endblock %}

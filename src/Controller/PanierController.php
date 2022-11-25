@@ -11,8 +11,16 @@ class PanierController extends AbstractController
     #[Route('/panier', name: 'app_panier')]
     public function index(): Response
     {
-        return $this->render('panier/index.html.twig', [
-            'controller_name' => 'PanierController',
+        return $this->render('panier/panier.html.twig', [
+            'controller_name' => 'Site - Panier',
+        ]);
+    }
+
+    #[Route('/panier/commande', name: 'app_commande')]
+    public function commande(): Response
+    {
+        return $this->render('panier/commande.html.twig', [
+            'controller_name' => 'Site - commande',
         ]);
     }
 }

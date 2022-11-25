@@ -3,5 +3,8 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
-
+    <h1>Panier</h1>
+    <form action="{{ path('app_commande') }}">
+        <input type="submit" value="Valider la commande">
+    </form>
 {% endblock %}
