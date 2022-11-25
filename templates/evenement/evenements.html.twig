@@ -6,7 +6,7 @@
     <h1>Evenements</h1>
     {% for evenement in evenements %}
         <div>
-            <img src="{{ evenement.affiche }}" alt="Image de {{ evenement.nom }}">
+            <img loading="lazy" src="{{ evenement.affiche }}" alt="Image de {{ evenement.nom }}">
             <div>
                 <h2>{{ evenement.nom }}</h2>
                 <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>

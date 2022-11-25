@@ -26,8 +26,8 @@ class Evenement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cast = null;
 
-    #[ORM\Column]
-    private ?float $prix = null;
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    private ?string $prix = null;
 
     #[ORM\Column(length: 255)]
     private ?string $affiche = null;
@@ -96,12 +96,12 @@ class Evenement
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(string $prix): self
     {
         $this->prix = $prix;
 
