@@ -31,4 +31,40 @@ class EvenementController extends AbstractController
         ]);
     }
 
+    #[Route('/evenements/{genre}', name: 'app_evenement_genre'), ]
+    public function showGenre(EvenementRepository $evenementRepository, string $genre): Response
+    {
+        $
+
+        return $this->render('evenement/evenements_genre.html.twig', [
+            'controller_name' => 'Site - Evenement',
+            'evenements' => $evenementRepository->findBy(['genre'=>]),
+        ]);
+    }
+
+
+    #[Route('/evenements/{tag}', name: 'app_evenements_tag')]
+    public function showCoeur(EvenementRepository $evenementRepository, string $tag): Response
+    {
+        $tag = str_replace('-', ' ', ucfirst($tag));
+
+
+        if ($tag == 'Coups de coeur') {
+            return $this->render('evenement/evenements_tag.html.twig', [
+                'controller_name' => 'Site - Evenements Coups de Coeur',
+                'evenements' => $evenementRepository->findBy(['Tag'=>1]),
+                'tag' => $tag
+            ]);
+        } elseif ($tag == 'A la une')
+        {
+            return $this->render('evenement/evenements_tag.html.twig', [
+                'controller_name' => 'Site - Evenements à la Une',
+                'evenements' => $evenementRepository->findBy(['Tag'=>2]),
+                'tag' => $tag
+            ]);
+        }
+    }
+
+
+
 }

@@ -28,6 +28,10 @@ nav {
 
 /* barre de nav */
 
+.logo {
+    color: #fff;
+}
+
 .nav1 {
     width: 100%;
     height: 60px;
@@ -251,10 +255,6 @@ select {
     height: 24rem;
     width: 100%;
     position: relative;
-    background: url('40x60-The-Black-Legends-V13_sanslogos-copie-scaled-1339307945.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 200%;
 }
 .event_affichage_top::before {
     content: "";
@@ -380,6 +380,8 @@ select {
     line-height: 1;
     margin-top: 7px;
     margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .event_card_content_top img{
     height: 18px;
@@ -439,6 +441,11 @@ select {
     font-weight: 700;
 
 }
+
+.display_center {
+    margin: auto;
+}
+
 .display_cat_d {
     display: flex;
     justify-content: center;

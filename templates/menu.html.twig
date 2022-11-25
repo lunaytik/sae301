@@ -1,29 +1,53 @@
-<header>
-    <nav>
-        <ul>
-            <li>
-                <a href="{{ path('app_accueil') }}">Accueil</a>
-            </li>
-            <li>
-                <a href="{{ path('app_evenements') }}">Evenements</a>
-            </li>
-
-            {% if app.user %}
+<div class="nav1">
+    <a href="{{ path('app_accueil') }}">
+        <div class="logo">
+            <h1>MONLOGODEOUF</h1>
+        </div>
+    </a>
+    <div class="container_searchbar">
+        <form action="">
+            <select class="choix" name="choix" id="pet-select">
+                <option value="">Dans toutes nos catégories</option>
+                <option value="Film">Film</option>
+                <option value="Spectacle">spectacle</option>
+                <option value="Concert">Concert</option>
+                <option value="Théâtre">Théâtre</option>
+                <option value="Exposition">Exposition</option>
+            </select>
+            <input class="search_bar" type="text" name="recherche">
+            <button class="chercher" type="submit" name="chercher"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    <div class="container_navbar_right">
+        <a href="{{ path('app_panier') }}">
+            <div class="panier">
+                <div class="conteur_cart"><img src="{{ asset('icon/shopping-cart.png') }}" alt="">
+                    <div class="bulle_panier">
+                        <p class="pannier_nombre">0</p>
+                    </div>
+                </div>
+                <p>Panier</p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="container_compte">
+                {% if app.user %}
                 <p>{{ app.user.email }}</p>
-                <li>
-                    <a href="{{ path('app_logout') }}">Logout</a>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{{ path('app_login') }}">Login</a>
-                </li>
-                <li>
-                    <a href="{{ path('app_register') }}">Register</a>
-                </li>
-            {% endif %}
-            <li>
-                <a href="{{ path('app_panier') }}">Panier</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+                {% endif %}
+                <p>Compte et historique</p>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="nav2">
+    <a href="">Film</a>
+    <a href="">Théâtre</a>
+    <a href="">Concert</a>
+    <a href="">Exposition</a>
+    <a href="">Spectacle</a>
+</div>
+<div class="nav3">
+    <a href="#"><i class="fa-solid fa-house fa-xl"></i>Acceuil</a>
+    <a href="#"><i class="fa-solid fa-user fa-xl"></i>Compte</a>
+    <a href="#"><i class="fa-solid fa-cart-shopping fa-xl"></i>Pannier</a>
+</div>

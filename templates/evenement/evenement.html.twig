@@ -3,30 +3,26 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
-    <div>
-        <img src="" alt="Image de {{ evenement.nom }}">
-        <h1>{{ evenement.nom }}</h1>
-        <p>{{ evenement.realisateur }}</p>
-        <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
-
-        <h2>Presentation</h2>
-        <p>{{ evenement.description }}</p>
-        {% if evenement.cast %}
-            <h2>Cast</h2>
-            <p>
-                {{ evenement.cast }}
-            </p>
-        {% endif %}
-
-        {% if evenement.tag %}
-            <h2>Cast</h2>
-            <p>
-                {{ evenement.tag.nom }}
-            </p>
-        {% endif %}
-
-
-
-
+    <style>
+        .event_affichage_top {
+            background: url( {{asset("images/#{ evenement.affiche }")}} ) !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: 200% !important;
+        }
+    </style>
+    <div class="event_affichage_top">
+        <div class="event_grid_1">
+            <div class="event_affiche">
+                <img class="test" loading="lazy" src="{{ asset("images/#{ evenement.affiche }") }}"
+                     alt="Image de {{ evenement.nom }}">
+            </div>
+            <div class="event_title">
+                <h1>{{ evenement.nom }}</h1>
+                <div><img src="" alt="star">
+                    <h3>{{ evenement.realisateur }}</h3>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
