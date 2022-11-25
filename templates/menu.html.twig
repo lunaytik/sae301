@@ -34,18 +34,19 @@
                 {% if app.user %}
                 <p>{{ app.user.email }}</p>
                 {% endif %}
-                <p>Compte et historique</p>
+                <p>Compte</p>
             </div>
         </a>
     </div>
 </div>
 <div class="nav2">
-    <a href="{{ path('app_evenement_genre', {'genre': 'Film', 'genre_id': 5}) }}">Film</a>
-    <a href="">Théâtre</a>
-    <a href="">Concert</a>
-    <a href="">Exposition</a>
-    <a href="">Spectacle</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'film'}) }}">Film</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'theatre'}) }}">Théâtre</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'concert'}) }}">Concert</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'exposition'}) }}">Exposition</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'spectacle'}) }}">Spectacle</a>
 </div>
+<div class="nav3_gradient"></div>
 <div class="nav3">
     <a href="#"><i class="fa-solid fa-house fa-xl"></i>Acceuil</a>
     <a href="#"><i class="fa-solid fa-user fa-xl"></i>Compte</a>
