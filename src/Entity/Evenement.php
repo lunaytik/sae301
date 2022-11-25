@@ -43,6 +43,9 @@ class Evenement
     #[ORM\JoinColumn(nullable: false)]
     private ?Genre $genre = null;
 
+    #[ORM\ManyToOne(inversedBy: 'evenements')]
+    private ?Tag $Tag = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +155,18 @@ class Evenement
     public function setGenre(?Genre $genre): self
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getTag(): ?Tag
+    {
+        return $this->Tag;
+    }
+
+    public function setTag(?Tag $Tag): self
+    {
+        $this->Tag = $Tag;
 
         return $this;
     }

@@ -5,4 +5,8 @@
 {% block body %}
     <h1>Accueil</h1>
 
+    {% for coup in coups.evenements %}
+        <h2>{{ coup.nom }}</h2>
+    {% endfor %}
+
 {% endblock %}

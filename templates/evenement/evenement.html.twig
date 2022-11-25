@@ -4,7 +4,9 @@
 
 {% block body %}
     <div>
+        <img src="" alt="Image de {{ evenement.nom }}">
         <h1>{{ evenement.nom }}</h1>
+        <p>{{ evenement.realisateur }}</p>
         <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
 
         <h2>Presentation</h2>
@@ -15,6 +17,8 @@
                 {{ evenement.cast }}
             </p>
         {% endif %}
+
+
 
 
     </div>
