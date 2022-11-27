@@ -18,11 +18,38 @@
                      alt="Image de {{ evenement.nom }}">
             </div>
             <div class="event_title">
-                <h1>{{ evenement.nom }}</h1>
+                <h1 id="product_name">{{ evenement.nom }}</h1>
                 <div><img src="" alt="star">
                     <h3>{{ evenement.realisateur }}</h3>
                 </div>
             </div>
         </div>
     </div>
+
+    <div>
+        <div>
+            <h2>Présentation</h2>
+            <p>{{ evenement.description }}</p>
+            <h2>Casting</h2>
+            <p>{{ evenement.cast }}</p>
+            <h2>En savoir plus sur le lieu</h2>
+            <p>{{ evenement.lieu.nom }}</p>
+            <p>{{ evenement.lieu.adresse }}</p>
+            <p>{{ evenement.lieu.capacite }}</p>
+            <h2>Suggestions</h2>
+            <div>
+                CARDS A METTRE ICI
+            </div>
+        </div>
+        <div>
+            BOITE MISE AU PANIER
+            <span id="product_price">{{ evenement.prix }}</span> €
+
+            <input type="number" value="1" min="1" max="99" id="product_quantite">
+            <input type="hidden" id="product_id" value="{{ evenement.id }}">
+            <button id="btn_ajout">Ajouter au panier</button>
+        </div>
+    </div>
+
+    <script src="{{ asset('scripts/produit.js') }}"></script>
 {% endblock %}

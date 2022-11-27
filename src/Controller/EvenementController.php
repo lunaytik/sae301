@@ -24,7 +24,19 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    #[Route('/evenements/{tag}', name: 'app_evenements_tag')]
+    #[Route('/evenements/genre/{genre}', name: 'app_evenement_genre')]
+    public function showGenre(EvenementRepository $evenementRepository, GenreRepository $genreRepository, string $genre): Response
+    {
+        $resultat = $genreRepository->findOneBy(['nom' => $genre]);
+
+        return $this->render('evenement/evenements_genre.html.twig', [
+            'controller_name' => 'Site - Evenement',
+            'evenements' => $evenementRepository->findBy(['genre' => $resultat]),
+            'genre' => $genre
+        ]);
+    }
+
+    #[Route('/evenements/tag/{tag}', name: 'app_evenement_tag')]
     public function showTag(EvenementRepository $evenementRepository, TagRepository $tagRepository, string $tag)
     {
         $tag = str_replace('-', ' ', ucfirst($tag));
@@ -33,21 +45,8 @@ class EvenementController extends AbstractController
 
         return $this->render('evenement/evenements_tag.html.twig', [
             'controller_name' => "Site - Evenements $tag",
-            'evenements' => $evenementRepository->findBy(['Tag' => $result  ]),
+            'evenements' => $evenementRepository->findBy(['Tag' => $result]),
             'tag' => $tag
-        ]);
-    }
-
-    #[Route('/evenements/{genre}', name: 'app_evenement_genre')]
-    public function showGenre(EvenementRepository $evenementRepository, GenreRepository $genreRepository, string $genre): Response
-    {
-
-        $result = $genreRepository->findOneBy(['nom' => $genre]);
-
-        return $this->render('evenement/evenements_genre.html.twig', [
-            'controller_name' => 'Site - Evenement',
-            'evenements' => $evenementRepository->findBy(['genre' => $result]),
-            'genre' => $genre
         ]);
     }
 
@@ -60,12 +59,5 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    #[Route('/evenements', name: 'app_evenements')]
-    public function events(EvenementRepository $evenementRepository): Response
-    {
-        return $this->render('evenement/evenements.html.twig', [
-            'controller_name' => 'Site - Evenements',
-            'evenements' => $evenementRepository->findAll(),
-        ]);
-    }
+
 }

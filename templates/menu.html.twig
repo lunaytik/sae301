@@ -1,7 +1,7 @@
 <div class="nav1">
     <a href="{{ path('app_accueil') }}">
         <div class="logo">
-            <h1>MONLOGODEOUF</h1>
+            <h1>Lyon'Tour</h1>
         </div>
     </a>
     <div class="container_searchbar">
@@ -29,17 +29,25 @@
                 <p>Panier</p>
             </div>
         </a>
-        <a href="#">
+        <a href="{{ path('app_profil') }}">
             <div class="container_compte">
                 {% if app.user %}
-                <p>{{ app.user.email }}</p>
+                    <p>{{ app.user.email }}</p>
+                {% else %}
+                    <p>Non connecté</p>
                 {% endif %}
                 <p>Compte</p>
             </div>
         </a>
+        {% if app.user %}
+            <a href="{{ path('app_logout') }}">
+                Se déconnecter
+            </a>
+        {% endif %}
     </div>
 </div>
 <div class="nav2">
+    <a href="{{ path('app_evenements') }}">Evenements</a>
     <a href="{{ path('app_evenement_genre', {'genre': 'film'}) }}">Film</a>
     <a href="{{ path('app_evenement_genre', {'genre': 'theatre'}) }}">Théâtre</a>
     <a href="{{ path('app_evenement_genre', {'genre': 'concert'}) }}">Concert</a>
