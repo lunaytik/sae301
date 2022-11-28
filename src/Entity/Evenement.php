@@ -36,7 +36,7 @@ class Evenement
     private ?\DateTimeInterface $date = null;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Lieu $lieu = null;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
