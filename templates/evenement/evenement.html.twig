@@ -18,7 +18,7 @@
                      alt="Image de {{ evenement.nom }}">
             </div>
             <div class="event_title">
-                <h1 id="product_name">{{ evenement.nom }}</h1>
+                <h1 id="event_nom">{{ evenement.nom }}</h1>
                 <div><img src="" alt="star">
                     <h3>{{ evenement.realisateur }}</h3>
                 </div>
@@ -43,13 +43,18 @@
         </div>
         <div>
             BOITE MISE AU PANIER
-            <span id="product_price">{{ evenement.prix }}</span> €
+            <span id="event_prix">{{ evenement.prix }}</span> €
 
-            <input type="number" value="1" min="1" max="99" id="product_quantite">
-            <input type="hidden" id="product_id" value="{{ evenement.id }}">
+            <input type="number" value="1" min="1" max="99" id="event_quantite">
+            <input type="hidden" id="event_id" value="{{ evenement.id }}">
             <button id="btn_ajout">Ajouter au panier</button>
         </div>
     </div>
-    <script src="{{ asset('scripts/produits.js') }}"></script>
+
+    <div>
+        {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}
+    </div>
+
+    {# <script src="{{ asset('scripts/produits.js') }}"></script> #}
 {% endblock %}
 

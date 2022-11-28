@@ -3,34 +3,60 @@
 {% block title %}Lyon'Tour - S'identifier{% endblock %}
 
 {% block body %}
-    <h1>S'identifier</h1>
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{#    <h1>S'identifier</h1>#}
+{#    <form method="post">#}
+{#        {% if error %}#}
+{#            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#        {% endif %}#}
+{#        <label for="inputEmail">Email</label>#}
+{#        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"#}
+{#               autocomplete="email" required autofocus>#}
+{#        <label for="inputPassword">Mot de passe</label>#}
+{#        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"#}
+{#               required>#}
+{#        <input type="hidden" name="_csrf_token"#}
+{#               value="{{ csrf_token('authenticate') }}"#}
+{#        >#}
+{#        <div class="checkbox mb-3">#}
+{#            <label>#}
+{#                <input type="checkbox" name="_remember_me"> Remember me#}
+{#            </label>#}
+{#        </div>#}
+{#        <button class="btn btn-lg btn-primary" type="submit">#}
+{#            S'identifier#}
+{#        </button>#}
+{#    </form>#}
 
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <a href="{{ app.request.headers.get('referer') }}" class="return_link">
+        <i class="fa-solid fa-arrow-left"></i>Retour
+    </a>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        S'identifier
-    </button>
-</form>
+    <div id="log_container">
+        <h1 class="log_title">S'identifier</h1>
+        <form method="post" id="log_form">
+            <div class="log_item">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="{{ last_username }}"
+                class="form-control" autocomplete="email" required autofocus placeholder="john.doe@domain.com">
+            </div>
+            <div class="log_item">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" class="form-control"
+                autocomplete="current-password" required>
+                <i id="eye" class="fa-solid fa-eye"></i>
+            </div>
+            <div class="log_item row_dir">
+                <input type="checkbox" name="_remember_me" id="_remember_me">
+                <label for="_remember_me">Se souvenir de moi</label>
+            </div>
+            <div class="log_btn_container">
+                <input id="log_btn" type="submit" value="S'identifier">
+            </div>
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+        </form>
+        <a href="{{ path('app_register') }}" class="log_bot_link">Pas encore inscrit ?<span>S'inscrire</span></a>
+        <a href="#" class="log_bot_link">Impossible de s'identifier ?</a>
+    </div>
 {% endblock %}

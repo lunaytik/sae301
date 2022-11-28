@@ -1,13 +1,13 @@
-panier_content = document.cookie; //recupere le cookie  sous forme de chaine de caractere
-if (panier_content.length!=0)panier = JSON.parse(panier_content); // transforme la chaine  en tableau JSON
-else panier = Array(); // si il n'y a pas de tableau dans le cookie alors créer le tableau
-console.log(panier);
+panier_liste = document.cookie;
 
-const panierNb = document.getElementById('panier_nombre');
-console.log(panierNb)
+if (panier_liste.length!=0) { panier_tab = JSON.parse(panier_liste); }
+else { panier_tab = Array(); }
+console.log(panier_tab);
+
+const panier_display = document.getElementById('panier_nombre');
 
 var panier_val = 0;
-panier.forEach(element => {
+panier_tab.forEach(element => {
     panier_val += parseInt(element.quantite);
-    panierNb.innerText = panier_val;
+    panier_display.innerText = panier_val;
 });
