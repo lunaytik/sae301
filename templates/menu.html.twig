@@ -1,9 +1,8 @@
 <div class="nav1">
-    <a href="{{ path('app_accueil') }}">
-        <div class="logo">
-            <h1>Lyon'Tour</h1>
-        </div>
+    <a class="logo" href="{{ path('app_accueil') }}">
+            <img src="{{ asset('images/logo_blanc_lyontour.png') }}" alt="">
     </a>
+    <div class="burger"><i class="fa-solid fa-bars"></i></div>
     <div class="container_searchbar">
         <form action="{{ path('app_evenements') }}">
             <select class="choix" name="genre" id="pet-select">
@@ -14,7 +13,7 @@
                 <option value="Théâtre">Théâtre</option>
                 <option value="Exposition">Exposition</option>
             </select>
-            <input class="search_bar" type="text" name="recherche">
+            <input class="search_bar" type="text" placeholder="tapez votre recherche" name="recherche">
             <button class="chercher" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>
@@ -32,7 +31,14 @@
         <a href="{{ path('app_profil') }}">
             <div class="container_compte">
                 {% if app.user %}
-                    <p>{{ app.user.email }}</p>
+                {% if app.user.email | length > 20 %}
+                    <style>
+                        .container_compte {
+                            background: red;
+                        }
+                    </style>
+                {% endif %}
+                    <p>{{ app.user.email}}</p>
                 {% else %}
                     <p>Non connecté</p>
                 {% endif %}
@@ -56,7 +62,7 @@
 </div>
 <div class="nav3_gradient"></div>
 <div class="nav3">
-    <a href="#"><i class="fa-solid fa-house fa-xl"></i>Acceuil</a>
+    <a href="#" class="active"><i class="fa-solid fa-house fa-xl"></i>Acceuil</a>
     <a href="#"><i class="fa-solid fa-user fa-xl"></i>Compte</a>
     <a href="#"><i class="fa-solid fa-cart-shopping fa-xl"></i>Pannier</a>
 </div>

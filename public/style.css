@@ -42,12 +42,19 @@ nav {
     justify-content: space-between;
     padding-inline: 2rem;
 }
+.logo > img{
+    height: 40px;
+}
+.burger {
+    display: none;
+}
 .container_searchbar form {
     display: flex;
 }
 .search_bar {
     height: 45px;
     width: 20vw;
+    padding-left: 10px;
 }
 select {
     appearance: none;
@@ -82,7 +89,7 @@ select {
     color: white ;
 }
 .conteur_cart{
-    height: 35px;
+    height: 30px;
 }
 
 .conteur_cart img {
@@ -119,7 +126,7 @@ select {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
-    width: 20ch;
+    max-width: 20ch;
 }
 .container_compte p:nth-child(1)::before {
     content: "";
@@ -280,7 +287,6 @@ select {
         grid-column: 1/2 !important;
         grid-row: 1/2 !important;
     }
-
 }
 
 
