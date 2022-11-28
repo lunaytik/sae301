@@ -14,7 +14,7 @@
     {% for evenement in evenements %}
         <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
             <div class="event_card_image">
-                <img class="test" loading="lazy" src="{{ asset("images/#{ evenement.affiche }")}}" alt="Image de {{ evenement.nom }}">
+                <img class="test" loading="lazy" src="{{ asset("uploads/#{ evenement.affiche }")}}" alt="Image de {{ evenement.nom }}">
             </div>
             <div class="event_card_content">
                 <div class="event_card_content_top">

@@ -5,7 +5,7 @@
 {% block body %}
     <style>
         .event_affichage_top {
-            background: url( {{asset("images/#{ evenement.affiche }")}} ) !important;
+            background: url( {{asset("uploads/#{ evenement.affiche }")}} ) !important;
             background-repeat: no-repeat !important;
             background-position: center !important;
             background-size: 200% !important;
@@ -14,7 +14,7 @@
     <div class="event_affichage_top">
         <div class="event_grid_1">
             <div class="event_affiche">
-                <img class="test" loading="lazy" src="{{ asset("images/#{ evenement.affiche }") }}"
+                <img class="test" loading="lazy" src="{{ asset("uploads/#{ evenement.affiche }") }}"
                      alt="Image de {{ evenement.nom }}">
             </div>
             <div class="event_title">
