@@ -110,7 +110,7 @@ select {
     display: grid;
     place-content: center;
 }
-.pannier_nombre {
+#panier_nombre {
     font-weight:600 ;
     font-size: 1.2rem;
     color: white;
