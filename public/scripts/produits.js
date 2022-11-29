@@ -1,11 +1,26 @@
-const btn = document.getElementById('btn_ajout');
+const btn_ajout = document.getElementById('btn_ajout');
 
-btn.addEventListener('click', () => {
-    const quantite = document.getElementById('product_quantite');
-    const nom = document.getElementById('product_name').innerText;
-    const prix = document.getElementById('product_price').innerText;
-    const id = document.getElementById('product_id').value;
+btn_ajout.addEventListener('click', () => {
+    const event_quantite = document.getElementById('event_quantite');
+    const event_nom = document.getElementById('event_nom').innerText;
+    const event_prix = document.getElementById('event_prix').innerText;
+    const event_id = document.getElementById('event_id').value;
 
-    console.log({"id":id,"article":nom,"quantite":quantite.value,"prix":prix});
-
+    index = panier_tab.findIndex(element => element.id == event_id);
+    console.log(panier_tab)
+    if(index > -1) {
+        console.log("Déjà dans le panier")
+        panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + parseInt(event_quantite.value);
+        panier_val += parseInt(event_quantite.value)
+        panier_display.innerText = panier_val;
+        document.cookie = JSON.stringify(panier_tab);
+        document.cookie += ';path=/'
+    } else {
+        console.log("Ajout dans le panier")
+        panier_tab.push({"id":event_id,"nom":event_nom,"quantite":event_quantite.value,"prix":event_prix});
+        panier_val += parseInt(event_quantite.value);
+        panier_display.innerText = panier_val;
+        document.cookie = JSON.stringify(panier_tab);
+        document.cookie += ';path=/'
+    }
 })
