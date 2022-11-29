@@ -55,7 +55,7 @@
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                             class="plus">+</button>
                 </div>
-                <button class="ajout_panier ajout_panier-reverse" id="ajout">Acheter maintenant <i class="fa-solid fa-ticket"></i></button>
+                <a class="ajout_panier ajout_panier-reverse" id="ajout" href="{{ path('app_panier') }}">Acheter maintenant <i class="fa-solid fa-ticket"></i></a>
                 <button class="ajout_panier" id="btn_ajout">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
             </div>
         </div>
@@ -66,7 +66,7 @@
         </div>
     <div class="suite">
 
-        {% for evenement in suggestions                 %}
+        {% for evenement in suggestions %}
             <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
                 <div class="event_card_image">
                     <img class="test" loading="lazy" src="{{ asset("uploads/#{ evenement.affiche }") }}"

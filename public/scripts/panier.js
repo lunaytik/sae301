@@ -1,32 +1,38 @@
 document.getElementById('liste').value = JSON.stringify(panier_tab);
 
+
+if (panier_val == 0) {
+    loadPanierVide();
+}
+
 var totalgeneral = 0
 panier_tab.forEach(evenement => {
+    date = evenement.date.split(' ')
     html = `
         <div class="panier_box">
             <div class="panier_gauche"><img class="test" src="${evenement.img}" alt="Image de ${evenement.nom}"></div>
             <div class="panier_droite">
                 <h1>${evenement.nom}</h1>
                 <div class="panier_date">
-                    <p>${evenement.date}</p>
-                    <p>????</p>
+                    <p>${date[0]}</p>
+                    <p>${date[1]}</p>
                 </div>
-                <div class="panier_lieu">
+<!--                <div class="panier_lieu">
                     <div>
                         <i class="fa-solid fa-location-dot"></i>
                         <p>Centre des lumières</p>
                     </div>
                     <p>11 Rue Aimé Collomb, 69003 Lyon, France</p>
-                </div>
+                </div>-->
                 <div class="panier_nb_prix">
-                    <div class="selecteur_nb">
+                    <div class="selecteur_nb select_panier">
                         <button class="moins">-</button>
-                        <p id="event_quantite">${evenement.quantite}</p>
+                        <p class="panier_quantite" id="event_quantite">${evenement.quantite}</p>
                         <input type="hidden" id="event_id" value="${ evenement.id }">
                         <button class="plus">+</button>
                     </div>
                     <div class="panier_prix">
-                        <p class="event_prix">${evenement.prix}€</p>
+                        <p class="event_prix hide_prix"><span>${evenement.prix}</span>€</p>
                         <p class="event_prix_total"><span>${parseFloat(evenement.prix * evenement.quantite).toFixed(2)}</span>€</p>
                     </div>
                 </div>
@@ -50,7 +56,7 @@ function clickplus(tag) {
         panier_display.innerText = panier_val;
         this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix').innerHTML;
+        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
         total = parseFloat(prix) * val_quantite;
         this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
@@ -75,7 +81,7 @@ function clickmoins(tag) {
         panier_display.innerText = panier_val;
         this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix').innerHTML;
+        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
         total = parseFloat(prix) * val_quantite;
         this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
@@ -86,11 +92,11 @@ function clickmoins(tag) {
 
         id = this.parentNode.querySelector('#event_id').value;
         if (val_quantite == 0) {
-            console.log('debut suppr')
+            //console.log('debut suppr')
             index = panier_tab.findIndex(element => element.id == id);
-            console.log(index)
+            //console.log(index)
             if(index > -1) {
-                console.log("supression");
+                //console.log("supression");
                 panier_tab.splice(index, 1);
                 document.cookie = JSON.stringify(panier_tab);
                 document.cookie += ';path=/'
@@ -98,6 +104,10 @@ function clickmoins(tag) {
 
 
                 this.parentNode.parentNode.parentNode.parentNode.remove();
+
+                if (panier_val == 0) {
+                    loadPanierVide();
+                }
             }
         } else {
             index = panier_tab.findIndex(element => element.id == id);
@@ -108,3 +118,12 @@ function clickmoins(tag) {
         }
     })
 };
+
+function loadPanierVide() {
+    console.log('Panier vide !')
+    panier_vide = document.createElement('div');
+    panier_vide.classList.add('panier_vide');
+    panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
+    panier_vide.innerHTML += '<a class="panier_link" href="/sae301/public/evenements">Parcourir les évenements</a>';
+    document.getElementById('panier_zone').append(panier_vide);
+}
