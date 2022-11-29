@@ -59,7 +59,7 @@ class EvenementController extends AbstractController
         return $this->render('evenement/evenement.html.twig', [
             'controller_name' => 'Site - Evenement',
             'evenement' => $evenement,
-            'suggestions' => $evenementRepository->findBy(['lieu'=>$lieu_id])
+            'suggestions' => $evenementRepository->findBy(['lieu'=>$lieu_id],null,4)
         ]);
     }
 

@@ -37,10 +37,6 @@
             <p>{{ evenement.lieu.capacite }}</p>
             <iframe class="iframe_map" src="{{ evenement.lieu.iframe }}"></iframe>
 
-            <h2>Suggestions</h2>
-            <div>
-                CARDS A METTRE ICI
-            </div>
         </div>
         <div class="event_info_right">
             <div>
@@ -63,6 +59,36 @@
                 <button class="ajout_panier" id="btn_ajout">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
             </div>
         </div>
+    </div>
+        <div class="display_cat">
+            <div class="display_cat_g">
+                <p>à la une</p><div class="barre"></div></div>
+        </div>
+    <div class="suite">
+
+        {% for evenement in suggestions                 %}
+            <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
+                <div class="event_card_image">
+                    <img class="test" loading="lazy" src="{{ asset("uploads/#{ evenement.affiche }") }}"
+                         alt="Image de {{ evenement.nom }}">
+                </div>
+                <div class="event_card_content">
+                    <div class="event_card_content_top">
+                        <h4>{{ evenement.nom }}</h4>
+                        <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
+                        <img src="etoile.png" alt="">
+                    </div>
+                    <div class="event_card_content_bottom">
+                        <div>
+                            <img src="{{ asset('icon/location-dot-solid.svg') }}" alt="">
+                            <p>{{ evenement.lieu.nom }}</p>
+                        </div>
+                        <p class="event_card_content_prix">{{ evenement.prix }} €</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
     </div>
 {#    <div>#}
 {#        <div>#}
