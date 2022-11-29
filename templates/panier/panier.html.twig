@@ -3,12 +3,9 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
-    <div class="panier_content">
-
-
-
-
-        <div class="panier_box">
+<table>
+    <div class="panier_content" id="panier_zone">
+        {#        <div class="panier_box">
             <div class="panier_gauche"><img class="test" src="{{ asset('uploads/40x60-The-Black-Legends-V13_sanslogos-copie-scaled-1339307945.jpg') }}" alt=""></div>
             <div class="panier_droite">
                 <h1>The Batman</h1>
@@ -33,17 +30,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-
-
-
-
+        </div> #}
     </div>
-    <form action="{{ path('app_commande') }}">
+    <div>Total de <span id="total"></span>€</div>
+    <form action="{{ path('app_commande') }}" method="post">
+        <input type="hidden" name="liste" id="liste">
         <input type="submit" value="Valider la commande">
     </form>
+
+
     <script defer src="{{ asset('scripts/panier.js') }}"></script>
-{% endblock %}
+    {% endblock %}
