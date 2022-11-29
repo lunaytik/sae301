@@ -180,7 +180,7 @@ select {
 .nav2 > a:hover {
     background: #d7005d;
 }
-@media only screen and (max-width: 930px)
+@media screen and (max-width: 930px)
 {
     .nav1 {
         flex-wrap: wrap;
@@ -193,7 +193,7 @@ select {
 }
 
 
-@media only screen and (max-width: 550px)
+@media screen and (max-width: 550px)
 {
     .logo {
         display: none;
@@ -712,7 +712,7 @@ select {
     margin: 1rem;
 }
 
-@media only screen and (max-width: 360px) {
+@media screen and (max-width: 360px) {
     #log_form {
         padding: 1.9rem 0.5rem;
     }
@@ -726,7 +726,7 @@ select {
 
 
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
     .display_cat {
         text-transform: uppercase;
