@@ -11,6 +11,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 body {
@@ -21,6 +22,8 @@ nav {
     width: 100%;
     background: rgb(232, 232, 232);
 }
+
+
 
 
 
@@ -128,7 +131,9 @@ select {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
+    color: #fff;
 }
+
 .dropdown_link:hover {
     background: #444444;
 }
@@ -470,6 +475,7 @@ select {
     height: 13rem;
 }
 .event_card_content_top h4 {
+    color: #000;
     font-weight: 700;
     font-size: 1.7rem;
     line-height: 1;
@@ -683,6 +689,10 @@ select {
 
 .row_dir {
     flex-direction: row;
+}
+
+.row_dir_reverse {
+    flex-direction: row-reverse;
 }
 
 #remember {
