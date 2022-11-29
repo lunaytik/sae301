@@ -181,6 +181,8 @@ select {
 }
 .conteur_cart{
     position: relative;
+    display: grid;
+    place-content: center;
 }
 .bulle_panier {
     position: absolute;

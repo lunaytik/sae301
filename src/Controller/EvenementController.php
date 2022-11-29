@@ -19,7 +19,7 @@ class EvenementController extends AbstractController
     public function index(EvenementRepository $evenementRepository): Response
     {
         return $this->render('evenement/evenements.html.twig', [
-            'controller_name' => 'Site - Evenements',
+            'controller_name' => 'Lyon\'Tour - Evenements',
             'evenements' => $evenementRepository->findAll(),
         ]);
     }
@@ -29,8 +29,10 @@ class EvenementController extends AbstractController
     {
         $resultat = $genreRepository->findOneBy(['nom' => $genre]);
 
+        $s = strtoupper($genre);
+
         return $this->render('evenement/evenements_genre.html.twig', [
-            'controller_name' => 'Site - Evenement',
+            'controller_name' => "Lyon'Tour - $s",
             'evenements' => $evenementRepository->findBy(['genre' => $resultat]),
             'genre' => $genre
         ]);
@@ -43,8 +45,10 @@ class EvenementController extends AbstractController
 
         $result = $tagRepository->findOneBy(['nom' => $tag]);
 
+        $t = strtoupper($tag);
+
         return $this->render('evenement/evenements_tag.html.twig', [
-            'controller_name' => "Site - Evenements $tag",
+            'controller_name' => "Lyon'Tour - $t",
             'evenements' => $evenementRepository->findBy(['Tag' => $result]),
             'tag' => $tag
         ]);
@@ -53,7 +57,6 @@ class EvenementController extends AbstractController
     #[Route('/evenements/{genre}/{id}', name: 'app_evenement')]
     public function show(Evenement $evenement, EvenementRepository $evenementRepository): Response
     {
-
         $lieu_id = $evenement->getLieu();
 
         $event_id = $evenement->getId();
@@ -73,7 +76,7 @@ class EvenementController extends AbstractController
         array_splice($result, 4); // Coupe le tableau pour garder 4 résultats pour l'affichage
 
         return $this->render('evenement/evenement.html.twig', [
-            'controller_name' => 'Site - Evenement',
+            'controller_name' => 'Lyon\'Tour - Evenement',
             'evenement' => $evenement,
             'suggestions' => $result
         ]);
