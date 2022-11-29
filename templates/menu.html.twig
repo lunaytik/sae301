@@ -39,23 +39,23 @@
                         }
                     </style>
                 {% endif %}
-                    <p>{{ app.user.email}}</p>
+                    <p class="noselect">{{ app.user.email}}</p>
                 {% else %}
-                    <p>Non connecté</p>
+                    <p class="noselect">Non connecté</p>
                 {% endif %}
-                <p>Compte <i class="fa-solid fa-caret-down"></i></p>
+                <p class="noselect">Compte <i class="fa-solid fa-caret-down"></i></p>
             </div>
             <div id="dropdown">
-                <a href="#" class="dropdown_link"><i class="fa-solid fa-user userpicto"></i> Compte</a>
-                <a href="#" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commande</a>
-                <a href="#" class="dropdown_link"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+                {% if app.user %}
+                    <a href="{{ path('app_profil') }}" class="dropdown_link"><i class="fa-solid fa-user userpicto"></i> Compte</a>
+                    <a href="{{ path('app_profil') }}" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commande</a>
+                    <a href="{{ path('app_logout') }}" class="dropdown_link"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="dropdown_link"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a>
+                    <a href="{{ path('app_register') }}" class="dropdown_link"><i class="fa-solid fa-pen-to-square"></i> Inscription</a>
+                {% endif %}
             </div>
         </div>
-        {% if app.user %}
-            <a href="{{ path('app_logout') }}">
-                Se déconnecter
-            </a>
-        {% endif %}
     </div>
 </div>
 <div class="nav2">
