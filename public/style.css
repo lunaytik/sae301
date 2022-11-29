@@ -75,13 +75,19 @@ select {
 .container_navbar_right {
     display: flex;
     align-items: flex-end;
-    gap: 40px;
+    height: 100%;
 }
-.container_navbar_right>a {
+
+.container_navbar_right > a {
     height: 100%;
     display: grid;
     gap: 10px;
     place-content: center;
+    padding-inline: 1rem ;
+}
+.container_navbar_right > a:hover
+{
+    background: #222222;
 }
 .userpicto {
     grid-column: 1/2;
