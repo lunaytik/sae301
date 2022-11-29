@@ -27,6 +27,9 @@ class Lieu
     #[ORM\OneToMany(mappedBy: 'lieu', targetEntity: Evenement::class)]
     private Collection $evenements;
 
+    #[ORM\Column(length: 1000, nullable: true)]
+    private ?string $iframe = null;
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
@@ -104,6 +107,18 @@ class Lieu
                 $evenement->setLieu(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIframe(): ?string
+    {
+        return $this->iframe;
+    }
+
+    public function setIframe(?string $iframe): self
+    {
+        $this->iframe = $iframe;
 
         return $this;
     }
