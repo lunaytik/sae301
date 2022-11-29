@@ -19,7 +19,7 @@
         </form>
     </div>
     <div class="container_navbar_right">
-        <a href="{{ path('app_panier') }}">
+        <a class="container_navbar_right_a" href="{{ path('app_panier') }}">
             <div class="panier">
                 <div class="conteur_cart"><i class="fa-solid fa-cart-shopping fa-xl"></i>
                     <div class="bulle_panier">
@@ -29,8 +29,7 @@
                 <p>Panier</p>
             </div>
         </a>
-        <a href="{{ path('app_profil') }}">
-            <i class="fa-solid fa-user userpicto fa-xl"></i>
+        <div class="container_navbar_right_a" href="{{ path('app_profil') }}">
             <div class="container_compte">
                 {% if app.user %}
                 {% if app.user.email | length > 20 %}
@@ -46,7 +45,12 @@
                 {% endif %}
                 <p>Compte <i class="fa-solid fa-caret-down"></i></p>
             </div>
-        </a>
+            <div class="dropdown">
+                <a href="#" class="dropdown_link"><i class="fa-solid fa-user userpicto"></i> Compte</a>
+                <a href="#" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commande</a>
+                <a href="#" class="dropdown_link"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+            </div>
+        </div>
         {% if app.user %}
             <a href="{{ path('app_logout') }}">
                 Se déconnecter
