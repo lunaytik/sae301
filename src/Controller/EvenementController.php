@@ -51,11 +51,15 @@ class EvenementController extends AbstractController
     }
 
     #[Route('/evenements/{genre}/{id}', name: 'app_evenement')]
-    public function show(Evenement $evenement): Response
+    public function show(Evenement $evenement, EvenementRepository $evenementRepository): Response
     {
+
+        $lieu_id = $evenement->getLieu();
+
         return $this->render('evenement/evenement.html.twig', [
             'controller_name' => 'Site - Evenement',
             'evenement' => $evenement,
+            'suggestions' => $evenementRepository->findBy(['lieu'=>$lieu_id])
         ]);
     }
 
