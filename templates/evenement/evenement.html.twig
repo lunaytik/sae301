@@ -29,8 +29,10 @@
         <div class="event_info_left">
             <h4>Présentation</h4>
             <p>{{ evenement.description }}</p>
-            <h4>Casting</h4>
-            <p>{{ evenement.cast }}</p>
+            {% if evenement.cast %}
+                <h4>Casting</h4>
+                {{ evenement.cast }}
+            {% endif %}
             <h4>En savoir plus sur le lieu</h4>
             <p>{{ evenement.lieu.nom }}</p>
             <p>Adresse: {{ evenement.lieu.adresse }}</p>
