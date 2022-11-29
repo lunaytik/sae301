@@ -3,14 +3,18 @@
 {% block title %}SITE - Register{% endblock %}
 
 {% block body %}
-    <h1>S'inscrire</h1>
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword) }}
-    {{ form_row(registrationForm.agreeTerms, {
-        label: 'J\'acceptes les conditions d\'utilisation'
-    }) }}
+    <div id="log_container">
+        <h1 class="log_title">S'inscrire</h1>
+        {{ form_start(registrationForm, {'attr': {'id': 'log_form'}}) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.agreeTerms, {
+            label: 'J\'acceptes les conditions d\'utilisation'
+        }) }}
 
-    <button type="submit" class="btn">S'inscrire</button>
-    {{ form_end(registrationForm) }}
+        <div class="log_btn_container">
+            <input id="log_btn" type="submit" value="S'inscrire">
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
