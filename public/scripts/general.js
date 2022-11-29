@@ -1,5 +1,6 @@
 panier_liste = document.cookie;
 
+
 if (panier_liste.length!=0) {
     var panier_liste = document.cookie.split(";");
 

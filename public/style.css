@@ -29,7 +29,14 @@ a {color:#000;}
 
 
 
-
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
 
 
 
@@ -104,6 +111,11 @@ select {
 {
     background: linear-gradient(270deg, #222222 15.84%, rgba(20, 12, 16, 0.001) 105.94%);
 }
+#account_btn {
+    cursor: pointer;
+    color: #fff;
+}
+
 #dropdown > a > i {
     display: grid;
     place-content: center;
