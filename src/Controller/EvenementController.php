@@ -56,10 +56,26 @@ class EvenementController extends AbstractController
 
         $lieu_id = $evenement->getLieu();
 
+        $event_id = $evenement->getId();
+
+        $result = $evenementRepository // Créer une query pour ignorer l'evenement sur lequel on est
+            ->createQueryBuilder('s')
+            ->where('s.lieu = :lieu')
+            ->andWhere('s.id <> :id')
+            ->setParameters([
+                'lieu' => $lieu_id,
+                'id' => $event_id,
+            ])
+            ->getQuery()
+            ->getResult();
+
+        shuffle($result); // Randomise le résultat
+        array_splice($result, 4); // Coupe le tableau pour garder 4 résultats pour l'affichage
+
         return $this->render('evenement/evenement.html.twig', [
             'controller_name' => 'Site - Evenement',
             'evenement' => $evenement,
-            'suggestions' => $evenementRepository->findBy(['lieu'=>$lieu_id],null,4)
+            'suggestions' => $result
         ]);
     }
 

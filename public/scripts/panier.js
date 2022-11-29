@@ -86,9 +86,8 @@ function clickmoins(tag) {
         this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
         totalgeneral -= 1 * parseFloat(prix);
+        totalgeneral < 0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
         document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-
-        totalgeneral = -0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
 
         id = this.parentNode.querySelector('#event_id').value;
         if (val_quantite == 0) {

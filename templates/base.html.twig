@@ -13,7 +13,7 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script defer src="{{ asset('scripts/general.js') }}"></script>
+            <script async src="{{ asset('scripts/general.js') }}"></script>
             <script defer src="{{ asset('scripts/app.js') }}"></script>
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

@@ -33,8 +33,8 @@
             <p>{{ evenement.cast }}</p>
             <h4>En savoir plus sur le lieu</h4>
             <p>{{ evenement.lieu.nom }}</p>
-            <p>{{ evenement.lieu.adresse }}</p>
-            <p>{{ evenement.lieu.capacite }}</p>
+            <p>Adresse: {{ evenement.lieu.adresse }}</p>
+            <p>Capacité du lieu: {{ evenement.lieu.capacite }} places</p>
             <iframe class="iframe_map" src="{{ evenement.lieu.iframe }}"></iframe>
 
         </div>
@@ -62,7 +62,7 @@
     </div>
         <div class="display_cat">
             <div class="display_cat_g">
-                <p>à la une</p><div class="barre"></div></div>
+                <p>à découvrir dans ce lieu</p></div>
         </div>
     <div class="suite">
 
