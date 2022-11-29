@@ -104,7 +104,7 @@ select {
 {
     background: linear-gradient(270deg, #222222 15.84%, rgba(20, 12, 16, 0.001) 105.94%);
 }
-.dropdown > a > i {
+#dropdown > a > i {
     display: grid;
     place-content: center;
 }
@@ -117,9 +117,11 @@ select {
 
     position: relative;
 }
-.dropdown {
+
+#dropdown {
+    display: none;
     position: absolute;
-    bottom: 0%;
+    bottom: 0;
     transform: translateY(100%);
     height: fit-content;
     width: fit-content;
@@ -127,9 +129,9 @@ select {
     background: rgb(20, 12, 16);
     z-index: 1000;
 }
+
 .dropdown_link {
     padding: 10px 10px;
-    display: inherit;
     display: flex;
     justify-content: flex-start;
     gap: 10px;
@@ -139,6 +141,11 @@ select {
 .dropdown_link:hover {
     background: #444444;
 }
+
+.active_menu {
+    display: block !important;
+}
+
 .panier {
     display: flex;
     align-items: center;

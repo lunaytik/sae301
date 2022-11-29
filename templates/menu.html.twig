@@ -29,7 +29,7 @@
                 <p>Panier</p>
             </div>
         </a>
-        <div class="container_navbar_right_a" href="{{ path('app_profil') }}">
+        <div id="account_btn" class="container_navbar_right_a">
             <div class="container_compte">
                 {% if app.user %}
                 {% if app.user.email | length > 20 %}
@@ -45,7 +45,7 @@
                 {% endif %}
                 <p>Compte <i class="fa-solid fa-caret-down"></i></p>
             </div>
-            <div class="dropdown">
+            <div id="dropdown">
                 <a href="#" class="dropdown_link"><i class="fa-solid fa-user userpicto"></i> Compte</a>
                 <a href="#" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commande</a>
                 <a href="#" class="dropdown_link"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
