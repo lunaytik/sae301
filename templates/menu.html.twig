@@ -21,7 +21,7 @@
     <div class="container_navbar_right">
         <a href="{{ path('app_panier') }}">
             <div class="panier">
-                <div class="conteur_cart"><img src="{{ asset('icon/shopping-cart.png') }}" alt="">
+                <div class="conteur_cart"><i class="fa-solid fa-cart-shopping fa-xl"></i>
                     <div class="bulle_panier">
                         <p class="pannier_nombre">0</p>
                     </div>
@@ -30,6 +30,7 @@
             </div>
         </a>
         <a href="{{ path('app_profil') }}">
+            <i class="fa-solid fa-user userpicto fa-xl"></i>
             <div class="container_compte">
                 {% if app.user %}
                 {% if app.user.email | length > 20 %}
@@ -43,7 +44,7 @@
                 {% else %}
                     <p>Non connecté</p>
                 {% endif %}
-                <p>Compte</p>
+                <p>Compte <i class="fa-solid fa-caret-down"></i></p>
             </div>
         </a>
         {% if app.user %}

@@ -77,12 +77,21 @@ select {
     align-items: flex-end;
     gap: 40px;
 }
-.container_navbar_right > a {
+.container_navbar_right>a {
     height: 100%;
     display: grid;
+    gap: 10px;
     place-content: center;
 }
-
+.userpicto {
+    grid-column: 1/2;
+    color: white;
+    display: grid !important;
+    place-content: center;
+}
+.container_compte {
+    grid-column: 2/3;
+}
 .panier {
     display: flex;
     align-items: center;
