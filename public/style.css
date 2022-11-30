@@ -1132,6 +1132,38 @@ input[type=number]::-webkit-outer-spin-button {
     .event_affiche > img {
         height: 340px;
     }
+    .event_card {
+        display: flex;
+    }
+    .event_card_content {
+        height: 100%;
+    }
+    .suite {
+        justify-content: center;
+        grid-template-columns: 100%;
+    }
+    .event_card {
+        width: 100% !important;
+    }
+    .event_card_image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .event_card_image > img {
+        width: 100%;
+        height: auto;
+        max-width: 160px;
+    }
+    .event_card_content_top h4 {
+        font-size: clamp(1.2rem ,5vw, 1.5rem);
+    }
+    .event_card_content_prix {
+        font-size: clamp(1.6rem ,7vw, 2.2rem);
+    }
+    .event_card_content_bottom > div > p {
+        font-size: clamp(1rem ,3.5vw, 1.2rem);
+    }
 }
 
 
