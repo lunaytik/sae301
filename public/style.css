@@ -75,7 +75,8 @@ input
     padding-inline: 2rem;
 }
 .logo > img{
-    height: 40px;
+    height: 39px;
+    margin-top: 8px;
 }
 .burger {
     display: none;
@@ -187,6 +188,7 @@ select {
     align-items: center;
     gap: 10px;
     color: white ;
+    padding-top: 6px;
 }
 .conteur_cart{
     height: 30px;
@@ -671,7 +673,7 @@ select {
     border: 1px solid var(--main-bg-color);
     background: var(--main-bg-color);
     color: #fff;
-    padding: 0.5rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 0.5rem;
     font-weight: 500;
     cursor: pointer;
@@ -799,7 +801,7 @@ select {
 .event_info_right {
     flex-basis: 300px;
     flex-shrink: 2;
-    border: 1px solid var(--gris-clair-bg);
+    border: 1px solid rgb(223, 223, 223);
     border-radius: 5px;
     display: grid;
     gap: 20px;
@@ -1078,11 +1080,9 @@ input[type=number]::-webkit-outer-spin-button {
     width: 70px;
     min-width: 70px !important;
 }
-
 #ntel {
     width: 154px;
 }
-
 #commande_container {
     display: flex;
     flex-direction: column;
@@ -1090,6 +1090,65 @@ input[type=number]::-webkit-outer-spin-button {
     margin: auto;
     padding: 60px 0;
     gap: 2rem;
+}
+/*box remboursement ticket*/
+.panier_remboursement_box {
+    display: flex;
+    width: min(700px, calc(100% - 2rem));
+    gap: 2vw;
+    margin: auto;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    padding: 1rem clamp(1rem, 5vw, 3rem);
+}
+
+.panier_remboursement_box>div:nth-child(1) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.panier_remboursement_box_box {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+.panier_remboursement_box_box > div > h3{
+    font-size: 1.4rem;
+    color: var(--main-bg-color);
+    font-weight: 600;
+}
+.panier_remboursement_enplus {
+    font-size: 1.2rem;
+    color: var(--main-bg-color);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.panier_remboursement_left > p{
+    max-width: 35vh;
+}
+.panier_remboursement_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: fit-content;
+}
+.panier_remboursement_right p:nth-child(2) {
+    font-weight: 600;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+.panier_total {
+    width: min(700px, calc(100% - 2rem));
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+.total {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 @media screen and (max-width:375px) {
@@ -1115,7 +1174,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media only screen and (max-width: 600px)
 {
-
     #info_form_content_left, #info_form_content_right {
         width: 90vw;
     }
@@ -1228,7 +1286,12 @@ input[type=number]::-webkit-outer-spin-button {
     .event_affiche > img {
         position: initial !important;
     }
-
+    .event_title > h1 {
+        font-size: 2rem;
+    }
+    .event_title > h3 {
+        font-size: 1rem;
+    }
     .event_card_image > img {
         width: 100%;
         height: 380px;
@@ -1265,6 +1328,16 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .event_card_content_top h4 {
         font-size: clamp(1.2rem ,5vw, 1.5rem);
+        max-width: 16ch;
+        line-height: initial;
+        position: relative;
+    }
+    .event_card_content_top h4::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
     }
     .event_card_content_prix {
         font-size: clamp(1.6rem ,7vw, 2.2rem);

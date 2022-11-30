@@ -7,39 +7,29 @@
     <div id="panier_container">
         <h1>Panier</h1>
         <div class="panier_content" id="panier_zone">
-
-            {#        <div class="panier_box">
-                <div class="panier_gauche"><img class="test" src="{{ asset('uploads/40x60-The-Black-Legends-V13_sanslogos-copie-scaled-1339307945.jpg') }}" alt=""></div>
-                <div class="panier_droite">
-                    <h1>The Batman</h1>
-                    <div class="panier_date">
-                        <p>15 décembre 2022</p>
-                        <p>15h35</p>
-                    </div>
-                    <div class="panier_lieu">
-                        <div>
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p>Centre des lumières</p>
-                        </div>
-                        <p>11 Rue Aimé Collomb, 69003 Lyon, France</p>
-                    </div>
-                    <div class="panier_nb_prix">
-                        <div class="">
-                            <input type="number" value="1" min="1" max="99" id="qte">
-                            <input type="hidden" id="id" value="103">
-                        </div>
-                        <div class="panier_prix">
-                            <p>9.99€</p>
-                        </div>
+        </div>
+        <div class="panier_remboursement_box">
+            <div>
+                <div class="panier_remboursement_box_box">
+                    <input type="checkbox">
+                    <div class="panier_remboursement_left">
+                        <h3>Garantie remboursement</h3>
+                        <p>Jusqu’à un remboursement de 100% si justifié, dans le cas contraire remboursement de 75%</p>
                     </div>
                 </div>
-            </div> #}
+                <div class="panier_remboursement_right">
+                    <p  class="panier_remboursement_enplus">+4€/place</p>
+                    <p  class="panier_remboursement_enplus_total">Total : 4€</p>
+                </div>
+            </div>
         </div>
-        <div>Total de <span id="total"></span>€</div>
+        <div class="panier_total">
+        <div class="total">Total de <span id="total"></span>€</div>
         <form class="panier_form" action="{{ path('app_commande') }}" method="post">
             <input type="hidden" name="liste" id="liste">
             <input id="log_btn" type="submit" value="Valider la commande">
         </form>
+        </div>
     </div>
 
 
