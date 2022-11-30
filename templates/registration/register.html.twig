@@ -3,10 +3,10 @@
 {% block title %}SITE - Register{% endblock %}
 
 {% block body %}
+
     <a href="{{ app.request.headers.get('referer') }}" class="return_link">
         <i class="fa-solid fa-arrow-left"></i>Retour
     </a>
-
     <div id="log_container">
         <h1 class="log_title">S'inscrire</h1>
         {{ form_start(registrationForm, {'attr': {'id': 'log_form'}}) }}

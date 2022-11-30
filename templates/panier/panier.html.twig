@@ -3,6 +3,7 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
+    {% include ('panier/progressbar.html.twig') %}
     <div id="panier_container">
         <h1>Panier</h1>
         <div class="panier_content" id="panier_zone">

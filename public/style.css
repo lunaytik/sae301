@@ -34,7 +34,20 @@ button, input[type="submit"], input[type="reset"] {
     cursor: pointer;
     outline: inherit;
 }
-
+select {
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+input
+{
+    color: inherit;
+    border: none;
+    font: inherit;
+    outline: inherit;
+}
 
 
 .noselect {
@@ -911,6 +924,90 @@ input[type=number]::-webkit-outer-spin-button {
 .nav3 {
     display: none;
 }
+
+/*progress bar panier */
+#progress {
+    position: relative;
+    margin: 3rem 0px;
+    width: 400px;
+    margin-inline: auto;
+}
+#progress-bar {
+    position: absolute;
+    background: var(--main-bg-color);
+    height: 5px;
+    width: 0%;
+    top: 50%;
+    left: 0;
+}
+#progress-num {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+#progress-num::before {
+    content: "";
+    background-color: lightgray;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    z-index: -1;
+}
+#progress-num .step {
+    border: 3px solid lightgray;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    line-height: 25px;
+    text-align: center;
+    background-color: #fff;
+    font-family: sans-serif;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#progress-num .step.active {
+    border-color: var(--main-bg-color);
+    background-color: var(--main-bg-color);
+    color: #fff;
+}
+.step:nth-child(1)::before {
+    content: "Pannier";
+    position: absolute;
+    transform: translateY(30px);
+    color: var(--gris-bg);
+}
+.step:nth-child(2)::before {
+    content: "Connexion";
+    position: absolute;
+    transform: translateY(30px);
+    color: var(--gris-bg);
+}
+.step:nth-child(3)::before {
+    content: "Reglement";
+    position: absolute;
+    transform: translateY(30px);
+    color: var(--gris-bg);
+}
+.step:nth-child(4)::before {
+    content: "Facture";
+    position: absolute;
+    transform: translateY(30px);
+    color: var(--gris-bg);
+}
+.step.active::before  {
+    color: black;
+}
+
+
+
 
 
 @media only screen and (max-width: 600px)
