@@ -18,7 +18,7 @@
                     <div class="event_card_content_top">
                         <h4>{{ evenement.nom }}</h4>
                         <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
-                        <img src="etoile.png" alt="">
+{#                        <img src="etoile.png" alt="">#}
                     </div>
                     <div class="event_card_content_bottom">
                         <div>
@@ -53,7 +53,7 @@
                             <img src="{{ asset('icon/location-dot-solid.svg') }}" alt="">
                             <p>{{ evenement.lieu.nom }}</p>
                         </div>
-                        <p class="event_card_content_prix">{{ evenement.prix }} €</p>
+                        <p clas s="event_card_content_prix">{{ evenement.prix }} €</p>
                     </div>
                 </div>
             </a>

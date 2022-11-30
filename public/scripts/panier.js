@@ -1,67 +1,128 @@
-liste = document.cookie //recupere le cookie  sous forme de chaine de caractere
-if (liste != "") montab = JSON.parse(liste) // transforme la chaine  en tableau JSON
-else montab = Array() // si il n'y a pas de tableau dans le cookie alors créer le tableau
-console.log(montab)
+document.getElementById('liste').value = JSON.stringify(panier_tab);
 
-document.getElementById('liste').value = JSON.stringify(montab);
+
+if (panier_val == 0) {
+    loadPanierVide();
+}
 
 var totalgeneral = 0
-montab.forEach(elem => {
+panier_tab.forEach(evenement => {
+    date = evenement.date.split(' ')
+    html = `
+        <div class="panier_box">
+            <div class="panier_gauche"><img class="test" src="${evenement.img}" alt="Image de ${evenement.nom}"></div>
+            <div class="panier_droite">
+                <h1>${evenement.nom}</h1>
+                <div class="panier_date">
+                    <p>${date[0]}</p>
+                    <p>${date[1]}</p>
+                </div>
+<!--                <div class="panier_lieu">
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Centre des lumières</p>
+                    </div>
+                    <p>11 Rue Aimé Collomb, 69003 Lyon, France</p>
+                </div>-->
+                <div class="panier_nb_prix">
+                    <div class="selecteur_nb select_panier">
+                        <button class="moins">-</button>
+                        <p class="panier_quantite" id="event_quantite">${evenement.quantite}</p>
+                        <input type="hidden" id="event_id" value="${ evenement.id }">
+                        <button class="plus">+</button>
+                    </div>
+                    <div class="panier_prix">
+                        <p class="event_prix hide_prix"><span>${evenement.prix}</span>€</p>
+                        <p class="event_prix_total"><span>${parseFloat(evenement.prix * evenement.quantite).toFixed(2)}</span>€</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 
-    html = `<tr id="${elem.id}">
-    <td>${elem.article}</td>
-    <td><button class="moins">-</button><span>${elem.quantite}</span><button class="plus">+</button></td>
-    <td ><span class="unitaire">${elem.prix}</span>€</td>
-    <td><span class="prix">${elem.quantite * elem.prix}</span>€</td>
-    </tr>`;
-
-    document.getElementById('zone').innerHTML += html
-    totalgeneral += elem.prix * elem.quantite
+    document.getElementById('panier_zone').innerHTML += html;
+    totalgeneral += evenement.prix * evenement.quantite;
 })
-document.getElementById('total').innerHTML = totalgeneral;
+
+document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
+
 
 document.querySelectorAll('.plus').forEach(clickplus)
 function clickplus(tag) {
     tag.addEventListener('click', function () {
-        qte = this.parentNode.querySelector('span').innerHTML;
-        qte++;
-        this.parentNode.querySelector('span').innerHTML = qte;
+        val_quantite = parseInt(this.parentNode.querySelector('#event_quantite').innerHTML);
+        val_quantite++;
+        panier_val++;
+        panier_display.innerText = panier_val;
+        this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-        prix = this.parentNode.parentNode.querySelector('.unitaire').innerHTML;
-        total = prix * qte;
-        this.parentNode.parentNode.querySelector('.prix').innerHTML = total;
+        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
+        total = parseFloat(prix) * val_quantite;
+        this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
-        id = this.parentNode.parentNode.id; // recupere l'id de l'article cliqué
-        index = montab.findIndex(element => element.id == id); //trouver l'article dans la liste du panier
-        montab[index].quantite = parseInt(montab[index].quantite) + 1; //incrementer la quantité
-        document.cookie = JSON.stringify(montab);  // sauvegarde des infos dans le cookie "liste"
-        document.getElementById('liste').value = JSON.stringify(montab); // sauver montab pour le formulaire
+        id = this.parentNode.querySelector('#event_id').value;
+        index = panier_tab.findIndex(element => element.id == id);
+        panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + 1;
+        document.cookie = JSON.stringify(panier_tab);
+        document.cookie += ';path=/'
+        document.getElementById('liste').value = JSON.stringify(panier_tab);
 
-
-        totalgeneral += 1 * prix
-        document.querySelector('#total').innerHTML = totalgeneral
+        totalgeneral += 1 * parseFloat(prix);
+        document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
     })
 };
 
 document.querySelectorAll('.moins').forEach(clickmoins)
 function clickmoins(tag) {
     tag.addEventListener('click', function () {
-        qte = this.parentNode.querySelector('span').innerHTML;
-        qte--;
-        this.parentNode.querySelector('span').innerHTML = qte;
+        val_quantite = parseInt(this.parentNode.querySelector('#event_quantite').innerHTML);
+        val_quantite--;
+        panier_val--;
+        panier_display.innerText = panier_val;
+        this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-        prix = this.parentNode.parentNode.querySelector('.unitaire').innerHTML;
-        total = prix * qte;
-        this.parentNode.parentNode.querySelector('.prix').innerHTML = total;
+        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
+        total = parseFloat(prix) * val_quantite;
+        this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
-        id = this.parentNode.parentNode.id; // recupere l'id de l'article cliqué
-        index = montab.findIndex(element => element.id == id); //trouver l'article dans la liste du panier
-        montab[index].quantite = parseInt(montab[index].quantite) - 1; //incrementer la quantité
-        document.cookie = JSON.stringify(montab);  // sauvegarde des infos dans le cookie "liste"
-        document.getElementById('liste').value = JSON.stringify(montab); // sauver montab pour le formulaire
+        totalgeneral -= 1 * parseFloat(prix);
+        totalgeneral < 0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
+        document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
+
+        id = this.parentNode.querySelector('#event_id').value;
+        if (val_quantite == 0) {
+            //console.log('debut suppr')
+            index = panier_tab.findIndex(element => element.id == id);
+            //console.log(index)
+            if(index > -1) {
+                //console.log("supression");
+                panier_tab.splice(index, 1);
+                document.cookie = JSON.stringify(panier_tab);
+                document.cookie += ';path=/'
+                document.getElementById('liste').value = JSON.stringify(panier_tab);
 
 
-        totalgeneral -= 1*prix
-        document.querySelector('#total').innerHTML=totalgeneral
+                this.parentNode.parentNode.parentNode.parentNode.remove();
+
+                if (panier_val == 0) {
+                    loadPanierVide();
+                }
+            }
+        } else {
+            index = panier_tab.findIndex(element => element.id == id);
+            panier_tab[index].quantite = parseInt(panier_tab[index].quantite) - 1;
+            document.cookie = JSON.stringify(panier_tab);
+            document.cookie += ';path=/'
+            document.getElementById('liste').value = JSON.stringify(panier_tab);
+        }
     })
 };
+
+function loadPanierVide() {
+    console.log('Panier vide !')
+    panier_vide = document.createElement('div');
+    panier_vide.classList.add('panier_vide');
+    panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
+    panier_vide.innerHTML += '<a class="panier_link" href="/sae301/public/evenements">Parcourir les évenements</a>';
+    document.getElementById('panier_zone').append(panier_vide);
+}

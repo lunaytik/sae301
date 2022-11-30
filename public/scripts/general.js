@@ -4,9 +4,9 @@ panier_liste = document.cookie;
 if (panier_liste.length!=0) {
     var panier_liste = document.cookie.split(";");
 
-    if (panier_liste.length == 2) {
-        panier_liste.shift();
-        panier_liste.join()
+    if (panier_liste.length > 1) {
+        panier_liste = panier_liste.splice(-1, 1);
+        panier_liste.join();
     }
     panier_tab = JSON.parse(panier_liste);
 }
