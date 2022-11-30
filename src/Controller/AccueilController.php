@@ -16,7 +16,8 @@ class AccueilController extends AbstractController
         return $this->render('accueil/accueil.html.twig', [
             'controller_name' => 'Lyon\'Tour - Accueil',
             'coups' => $evenementRepository->findBy(['Tag' => 1], null, 4),
-            'une' => $evenementRepository->findBy(['Tag' => 2], null, 4)
+            'une' => $evenementRepository->findBy(['Tag' => 2], null, 4),
+            'meta_description' => 'Billeterie en ligne de la ville de Lyon, regroupant les plus grands évenements à découvrir !'
         ]);
     }
 }

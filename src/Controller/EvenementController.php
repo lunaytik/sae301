@@ -79,6 +79,7 @@ class EvenementController extends AbstractController
         return $this->render('evenement/evenement.html.twig', [
             'controller_name' => "Lyon'Tour - $event_name",
             'evenement' => $evenement,
+            'meta_description' => $evenement->getDescription(),
             'suggestions' => $result
         ]);
     }
