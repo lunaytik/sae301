@@ -12,7 +12,7 @@ class PanierController extends AbstractController
     public function index(): Response
     {
         return $this->render('panier/panier.html.twig', [
-            'controller_name' => 'Site - Panier',
+            'controller_name' => 'Lyon\'Tour - Panier',
         ]);
     }
 
@@ -20,7 +20,7 @@ class PanierController extends AbstractController
     public function commande(): Response
     {
         return $this->render('panier/commande.html.twig', [
-            'controller_name' => 'Site - commande',
+            'controller_name' => 'Lyon\'Tour - Commande',
         ]);
     }
 }
