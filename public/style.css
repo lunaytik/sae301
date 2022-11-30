@@ -214,14 +214,15 @@ select {
     overflow: hidden;
     max-width: 20ch;
 }
-.container_compte p:nth-child(1)::before {
-    content: "";
-    width: 40%;
-    height: 0.9rem;
-    background: linear-gradient(270deg, rgb(20, 12, 16) 15.84%, rgba(20, 12, 16, 0.001) 105.94%);
-    position: absolute;
-    right: 0;
+
+#account_btn:hover #account::before {
+    background: linear-gradient(270deg, #222222 15.84%, rgba(20, 12, 16, 0.001) 105.94%) !important;
 }
+
+#account {
+    position: relative;
+}
+
 .container_compte p:nth-child(2) {
     font-weight:600 ;
     color: white;

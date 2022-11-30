@@ -32,14 +32,21 @@
         <div id="account_btn" class="container_navbar_right_a">
             <div class="container_compte">
                 {% if app.user %}
-                {% if app.user.email | length > 20 %}
+                {% if app.user.email|length > 20 %}
                     <style>
-                        .container_compte {
-                            background: red;
+                        #account::before {
+                            content: "";
+                            width: 40%;
+                            height: 0.9rem;
+                            background: linear-gradient(270deg, rgb(20, 12, 16) 15.84%, rgba(20, 12, 16, 0.001) 105.94%);
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
                         }
                     </style>
                 {% endif %}
-                    <p class="noselect">{{ app.user.email}}</p>
+                    <p id="account" class="noselect">{{ app.user.email }}</p>
                 {% else %}
                     <p class="noselect">Non connecté</p>
                 {% endif %}
