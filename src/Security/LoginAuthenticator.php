@@ -21,7 +21,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
-
+protected $origin;
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
     }
@@ -29,6 +29,8 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
+        $this->origin = $request->request->get('origin');
+
 
         $request->getSession()->set(Security::LAST_USERNAME, $email);
 
@@ -43,6 +45,8 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
