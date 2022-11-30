@@ -14,7 +14,7 @@ class AccueilController extends AbstractController
     public function index(EvenementRepository $evenementRepository): Response
     {
         return $this->render('accueil/accueil.html.twig', [
-            'controller_name' => 'Site - Accueil',
+            'controller_name' => 'Lyon\'Tour - Accueil',
             'coups' => $evenementRepository->findBy(['Tag' => 1], null, 4),
             'une' => $evenementRepository->findBy(['Tag' => 2], null, 4)
         ]);

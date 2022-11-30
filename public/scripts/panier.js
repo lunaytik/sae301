@@ -123,6 +123,6 @@ function loadPanierVide() {
     panier_vide = document.createElement('div');
     panier_vide.classList.add('panier_vide');
     panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
-    panier_vide.innerHTML += '<a class="panier_link" href="/sae301/public/evenements">Parcourir les évenements</a>';
+    panier_vide.innerHTML += '<a class="panier_link" href="/sae301/evenements">Parcourir les évenements</a>';
     document.getElementById('panier_zone').append(panier_vide);
 }
