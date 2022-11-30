@@ -294,7 +294,16 @@
             </form>
         </div>
     {% endif %}
+
     </div>
+
+    <h2>Récapitulatif</h2>
+    {% for event in liste %}
+        {{ event.nom }}
+        x{{ event.quantite }}
+        {{ event.prix * event.quantite }}€
+    {% endfor %}
+
     <script>
         active = 3;
         updateProgress();
