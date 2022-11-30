@@ -31,6 +31,14 @@
         <i class="fa-solid fa-arrow-left"></i>Retour
     </a>
 
+    {% if app.request.headers.get('referer') == 'http://localhost/sae301/panier' %}
+        {% include('panier/progressbar.html.twig') %}
+        <script>
+            active = 2;
+            updateProgress();
+        </script>
+    {% endif %}
+
     <div id="log_container">
         <h1 class="log_title">S'identifier</h1>
         <form method="post" id="log_form">

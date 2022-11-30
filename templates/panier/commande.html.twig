@@ -2,8 +2,11 @@
 
 {% block title %}{{ controller_name }}{% endblock %}
 
+
+
 {% block body %}
     <div id="commande_container">
+        {% include('panier/progressbar.html.twig') %}
     <h1>Commande</h1>
 
     {% if app.user.adresse %}
@@ -292,5 +295,8 @@
         </div>
     {% endif %}
     </div>
-
+    <script>
+        active = 3;
+        updateProgress();
+    </script>
 {% endblock %}
