@@ -59,6 +59,24 @@ input
     user-select: none;
 }
 
+.display_error {
+    margin: auto;
+    color: #d00000;
+    background: var(--gris-clair-bg);
+    width: max-content;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+
+#error_hide {
+    color: #000;
+    cursor: pointer;
+    padding: 0 0.25rem;
+}
+
 /* barre de nav */
 
 .logo {
@@ -223,7 +241,7 @@ select {
     height: 45px;
 }
 .container_compte p:nth-child(1) {
-    color: var(--gris-bg);
+    color: #757575;
     font-size: 0.9rem;
     height: 0.9rem;
     line-height: 0.9rem;
@@ -335,7 +353,7 @@ select {
 .event_title > div > img {
     height: 20px;
 }
-.event_title > div > h3 {
+.event_title > div > h2 {
     color: rgba(255, 255, 255, 0.832);
     font-size: 1.5rem;
     text-decoration: underline;
@@ -762,6 +780,10 @@ select {
         grid-template-columns: repeat(auto-fit, 18rem);
 
     }
+
+    .suite .event_card {
+        justify-self: center !important;
+    }
 }
 
 
@@ -898,7 +920,7 @@ input[type=number]::-webkit-outer-spin-button {
     background: transparent;
     border: 2px solid var(--main-bg-color);
 }
-.event_title > h4 {
+.event_title > h2 {
     position: absolute;
     bottom: -110px;
     color: var(--gris-bg);
@@ -1312,8 +1334,8 @@ input[type=number]::-webkit-outer-spin-button {
         color:  #444444;
     }
     .nav3 > a.active {
-        color: var(--main-bg-color);
-        border-top:solid 3px var(--main-bg-color);
+        color: #D7005D;
+        border-top:solid 3px #D7005D;
     }
     .nav3_gradient {
         width: 100%;
@@ -1340,7 +1362,7 @@ input[type=number]::-webkit-outer-spin-button {
     .event_title > h1 {
         font-size: 2rem;
     }
-    .event_title > h3 {
+    .event_title > h2 {
         font-size: 1rem;
     }
     .event_card_image > img {

@@ -10,10 +10,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierController extends AbstractController
 {
     #[Route('/panier', name: 'app_panier')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
+
+         $request->query->get('error') ? $error = 'Panier vide ou erreur lors de la commande ! Veuillez réessayer !' : $error = null;
+
+
         return $this->render('panier/panier.html.twig', [
             'controller_name' => 'Lyon\'Tour - Panier',
+            'error' => $error
         ]);
     }
 
@@ -23,11 +28,19 @@ class PanierController extends AbstractController
 
         $liste = $request->request->get('liste');
 
-        $array = json_decode($liste);
+        if(empty($liste) && isset($liste) || !isset($liste)) {
+            return $this->redirectToRoute('app_panier', ['error' => '1']);
+        } else {
+            $array = json_decode($liste);
+            return $this->render('panier/commande.html.twig', [
+                'controller_name' => 'Lyon\'Tour - Commande',
+                'liste' => $array
+            ]);
+        }
 
-        return $this->render('panier/commande.html.twig', [
-            'controller_name' => 'Lyon\'Tour - Commande',
-            'liste' => $array
-        ]);
+
+
+
+
     }
 }

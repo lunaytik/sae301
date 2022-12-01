@@ -1,11 +1,11 @@
 <div class="nav1">
     <a class="logo" href="{{ path('app_accueil') }}">
-            <img aria-label="retour à l'acceuil" src="{{ asset('images/logo_blanc_lyontour.png') }}" alt="logo Lyontour">
+            <img aria-label="Retour à l'accueil" src="{{ asset('images/logo_blanc_lyontour.png') }}" alt="logo Lyontour">
     </a>
     <div class="burger"><i class="fa-solid fa-bars"></i></div>
     <div class="container_searchbar">
         <form action="{{ path('app_evenements') }}">
-            <select class="choix" name="genre" id="pet-select">
+            <select class="choix" name="genre" id="genre" aria-label="Selectionner la catégorie à chercher">
                 <option value="">Dans toutes nos catégories</option>
                 <option value="Film">Film</option>
                 <option value="Spectacle">Spectacle</option>
@@ -14,7 +14,7 @@
                 <option value="Exposition">Exposition</option>
 
             </select>
-            <input class="search_bar" type="text" placeholder="tapez votre recherche" name="recherche">
+            <input class="search_bar" type="text" placeholder="Tapez votre recherche" name="recherche" aria-label="Champ de recherche des évenements">
             <button class="chercher" type="submit">chercher<i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>
