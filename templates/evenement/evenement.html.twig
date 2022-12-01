@@ -91,35 +91,22 @@
         {% endfor %}
 
     </div>
-{#    <div>#}
-{#        <div>#}
-{#            <h2>Présentation</h2>#}
-{#            <p>{{ evenement.description }}</p>#}
-{#            <h2>Casting</h2>#}
-{#            <p>{{ evenement.cast }}</p>#}
-{#            <h2>En savoir plus sur le lieu</h2>#}
-{#            <p>{{ evenement.lieu.nom }}</p>#}
-{#            <p>{{ evenement.lieu.adresse }}</p>#}
-{#            <p>{{ evenement.lieu.capacite }}</p>#}
-{#            <h2>Suggestions</h2>#}
-{#            <div>#}
-{#                CARDS A METTRE ICI#}
-{#            </div>#}
-{#        </div>#}
-{#        <div>#}
-{#            BOITE MISE AU PANIER#}
-{#            <span id="event_prix">{{ evenement.prix }}</span> €#}
 
-{#            <input type="number" value="1" min="1" max="99" id="event_quantite">#}
-{#            <input type="hidden" id="event_id" value="{{ evenement.id }}">#}
-{#            <button id="btn_ajout" class="ajouter_au_panier">Ajouter au panier</button>#}
-{#        </div>#}
-{#    </div>#}
-
-    <div>
-        {{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}
+    <div class="popup">
+        <div class="popup_img">
+            <img src="{{ asset("uploads/#{ evenement.affiche }") }}" alt="">
+        </div>
+        <div>
+            <p>{{ evenement.nom }}</p>
+        </div>
+        <div>
+            <p id="popup_nb">x1</p>
+        </div>
+        <div>
+            <p id="popup_prix">56€</p>
+        </div>
     </div>
-
+    <script defer src="{{ asset('scripts/popup.js') }}"></script>
     <script defer src="{{ asset('scripts/produits.js') }}"></script>
 {% endblock %}
 

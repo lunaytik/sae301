@@ -7,6 +7,8 @@ btn_ajout.addEventListener('click', () => {
     const event_img = document.getElementById('event_img').src;
     const event_date = document.getElementById('event_date').innerText;
     const event_id = document.getElementById('event_id').value;
+    popup_affichage()
+
 
 
     index = panier_tab.findIndex(element => element.id == event_id);
@@ -40,6 +42,7 @@ ajout.addEventListener('click', () => {
     const event_date = document.getElementById('event_date').innerText;
     const event_id = document.getElementById('event_id').value;
 
+
     index = panier_tab.findIndex(element => element.id == event_id);
     if(index > -1) {
         panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + parseInt(event_quantite.value);
@@ -55,3 +58,5 @@ ajout.addEventListener('click', () => {
         document.cookie += ';path=/'
     }
 })
+
+
