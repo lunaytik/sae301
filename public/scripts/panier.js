@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     if (panier_val == 0) {
         loadPanierVide();
     } else {
@@ -129,5 +128,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('log_btn').remove();
     }
-})
 
