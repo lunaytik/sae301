@@ -308,7 +308,8 @@ select {
     position: absolute;
     bottom: -8rem;
     box-shadow: 0px 8px 52px rgba(0, 0, 0, 0.25);
-    height: 430px;
+    max-height: 430px;
+    max-width: 300px;
 }
 .event_affiche {
     grid-column: 1 / 2;
@@ -449,7 +450,7 @@ select {
     justify-content: space-between;
     align-items: center;
     height: 40px;
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 .barre {
     height: 3px;
@@ -677,7 +678,8 @@ select {
     border-radius: 0.5rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all .4s;
+    transition: all .2s;
+
 }
 
 #log_btn:hover {
@@ -1241,7 +1243,7 @@ input[type=number]::-webkit-outer-spin-button {
         padding-inline: 1rem ;
     }
     .container_searchbar {
-        width: 78%;
+        width: 100%;
     }
     .choix {
         display: none;
@@ -1264,6 +1266,7 @@ input[type=number]::-webkit-outer-spin-button {
         place-content: center;
         color: white;
         cursor: pointer;
+        flex-shrink: 0;
     }
     .nav2 {
         height: 0px;
@@ -1397,6 +1400,49 @@ input[type=number]::-webkit-outer-spin-button {
         bottom: 150px;
         width: 90%;
     }
+    #progress {
+        width: 295px;
+    }
+    .panier_content {
+        width: 100%;
+        gap: 40px;
+    }
+    .panier_gauche > img {
+        width: 7rem;
+    }
+    .panier_box {
+        width: 100%;
+    }
+    .panier_prix {
+        font-size: 1.5rem;
+    }
+    .panier_remboursement_box > div:nth-child(1) {
+        flex-direction: column;
+        gap: 50px;
+    }
+    .panier_remboursement_box {
+        width: initial;
+    }
+    .panier_remboursement_right {
+        width: 100%;
+        flex-direction: initial;
+    }
+    .panier_total {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+    .panier_form {
+        width: 100%;
+    }
+    #log_btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+    }
+    #panier_container {
+        padding: 60px 0 0 0;
+    }
 }
 
 
@@ -1488,6 +1534,101 @@ ul{
     .footer-col{
         width: 100%;
     }
+}
+
+
+
+
+
+.carousel{
+    width: min(1000px , calc(100% - 2rem));
+    aspect-ratio: 21/9;
+    margin-bottom: 40px;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+.carousel-inner{
+    height: 100%;
+    /* min-width: 400%; */
+    display: flex;
+    transition: all ease .5s;
+}
+
+.carousel-item{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(Affiche-black-friday-2021-couverture-facebook-03.png);
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.carousel-item h1{
+    opacity: .5;
+}
+
+.carousel-controls .prev{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.carousel-controls .next{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.prev:hover, .next:hover{
+    opacity: 1;
+}
+
+.carousel-indicators{
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.carousel-indicators span{
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    opacity: .5;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.carousel-indicators span.active{
+    opacity: 1;
 }
 
 

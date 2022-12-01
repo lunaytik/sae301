@@ -4,6 +4,19 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
+    <div class="carousel">
+        <div class="carousel-inner">
+            <a href="{{ path('app_evenement', {'genre': 'theatre', 'id': '60'}) }}" style="background: url({{ asset('uploads/carousel1.jpg') }});background-size: cover;background-repeat: no-repeat;"  class="carousel-item"></a>
+            <a href="{{ path('app_evenement', {'genre': 'film', 'id': '1'}) }}" style="background: url({{ asset('uploads/carousel2.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
+            <a href="{{ path('app_evenement', {'genre': 'concert', 'id': '30'}) }}" style="background: url({{ asset('uploads/carousel3.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
+            <a href="{{ path('app_evenements') }}" style="background: url({{ asset('uploads/carousel4.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
+        </div>
+        <div class="carousel-controls">
+            <span class="prev"></span>
+            <span class="next"></span>
+        </div>
+        <div class="carousel-indicators"></div>
+    </div>
     <div class="display_cat">
         <div class="display_cat_g">
             <p>à la une</p><div class="barre"></div></div>
@@ -59,6 +72,15 @@
                 </div>
             </a>
         {% endfor %}
+        <style>
+            .carousel-controls .prev{
+                background-image: url('{{ asset('uploads/prev.svg') }}');
+            }
+            .carousel-controls .next{
+                background-image: url('{{ asset('uploads/next.svg') }}');
+            }
+        </style>
     </div>
+    <script src="{{ asset('scripts/carousel.js') }}"></script>
 
 {% endblock %}
