@@ -380,7 +380,9 @@
     {% endfor %}
 
     <script>
-        active = 3;
-        updateProgress();
+        document.addEventListener('DOMContentLoaded', () => {
+            active = 3;
+            updateProgress();
+        })
     </script>
 {% endblock %}
