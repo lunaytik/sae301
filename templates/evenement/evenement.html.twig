@@ -20,21 +20,21 @@
             </div>
             <div class="event_title">
                 <h1 id="event_nom">{{ evenement.nom }}</h1>
-                <div><img src="" alt="star">
-                    <h3>{{ evenement.realisateur }}</h3>
+                <div>
+                    <h2>{{ evenement.realisateur }}</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="event_info">
         <div class="event_info_left">
-            <h4>Présentation</h4>
+            <h3>Présentation</h3>
             <p>{{ evenement.description }}</p>
             {% if evenement.cast %}
-                <h4>Casting</h4>
+                <h3>Casting</h3>
                 <p>{{ evenement.cast }}</p>
             {% endif %}
-            <h4>En savoir plus sur le lieu</h4>
+            <h3>En savoir plus sur le lieu</h3>
             <p>{{ evenement.lieu.nom }}</p>
             <p>Adresse: {{ evenement.lieu.adresse }}</p>
             <p>Capacité du lieu: {{ evenement.lieu.capacite }} places</p>
@@ -43,7 +43,7 @@
         </div>
         <div class="event_info_right">
             <div>
-                <h5 class="event_info_right_prix"><span id="event_prix">{{ evenement.prix }}</span>€</h5>
+                <h4 class="event_info_right_prix"><span id="event_prix">{{ evenement.prix }}</span>€</h4>
                 <p class="event_info_right_livraison">livraison instantanée par mail</p>
             </div>
             <div>
@@ -89,7 +89,6 @@
                 </div>
             </a>
         {% endfor %}
-
     </div>
 
     <div class="popup">

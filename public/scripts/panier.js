@@ -1,8 +1,10 @@
-document.getElementById('liste').value = JSON.stringify(panier_tab);
+
 
 
 if (panier_val == 0) {
     loadPanierVide();
+} else {
+    document.getElementById('liste').value = JSON.stringify(panier_tab);
 }
 
 var totalgeneral = 0
@@ -125,4 +127,7 @@ function loadPanierVide() {
     panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
     panier_vide.innerHTML += '<a class="panier_link" href="/sae301/evenements">Parcourir les évenements</a>';
     document.getElementById('panier_zone').append(panier_vide);
+    document.getElementById('liste').value = null;
+
+    document.getElementById('log_btn').remove();
 }
