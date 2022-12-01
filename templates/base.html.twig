@@ -22,13 +22,10 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            <nav>
-                {% include('menu.html.twig') %}
-            </nav>
-        </header>
+        {% include('menu.html.twig') %}
         <main>
             {% block body %}{% endblock %}
         </main>
+        {% include('footer.html.twig') %}
     </body>
 </html>
