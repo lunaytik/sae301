@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
 // js de la progressbar
 const progressBar = document.getElementById("progress-bar");
 // const progressNext = document.getElementById("progress-next");
@@ -44,4 +43,4 @@ const updateProgress = () => {
     //     progressPrev.disabled = false;
     //     progressNext.disabled = false;
     // }
-};})
+};
