@@ -1,5 +1,15 @@
 panier_liste = document.cookie;
 
+// js de la nav3
+const navMenu = document.querySelector(".nav2");
+navToggle = document.querySelector(".burger");
+if(navToggle)
+{
+    navToggle.addEventListener("click", () =>
+    {
+        navMenu.classList.toggle("active");
+    })
+}
 
 if (panier_liste.length!=0) {
     var panier_liste = document.cookie.split(";");

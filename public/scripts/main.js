@@ -1,16 +1,3 @@
-// js de la nav3
-const navMenu = document.querySelector(".nav2");
-navToggle = document.querySelector(".burger");
-if(navToggle)
-{
-    navToggle.addEventListener("click", () =>
-    {
-        navMenu.classList.toggle("active");
-    })
-}
-
-
-
 // js de la progressbar
 const progressBar = document.getElementById("progress-bar");
 // const progressNext = document.getElementById("progress-next");
@@ -48,12 +35,12 @@ const updateProgress = () => {
     progressBar.style.width =
         ((active - 1) / (steps.length - 1)) * 100 + "%";
     // enable disable prev and next buttons
-    if (active === 1) {
-        progressPrev.disabled = true;
-    } else if (active === steps.length) {
-        progressNext.disabled = true;
-    } else {
-        progressPrev.disabled = false;
-        progressNext.disabled = false;
-    }
+    // if (active === 1) {
+    //     progressPrev.disabled = true;
+    // } else if (active === steps.length) {
+    //     progressNext.disabled = true;
+    // } else {
+    //     progressPrev.disabled = false;
+    //     progressNext.disabled = false;
+    // }
 };
