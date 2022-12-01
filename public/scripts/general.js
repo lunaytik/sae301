@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 panier_liste = document.cookie;
 
 // js de la nav3
@@ -29,4 +30,4 @@ var panier_val = 0;
 panier_tab.forEach(element => {
     panier_val += parseInt(element.quantite);
     panier_display.innerText = panier_val;
-});
+});})

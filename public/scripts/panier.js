@@ -1,16 +1,14 @@
+document.addEventListener('DOMContentLoaded', () => {
+    if (panier_val == 0) {
+        loadPanierVide();
+    } else {
+        document.getElementById('liste').value = JSON.stringify(panier_tab);
+    }
 
-
-
-if (panier_val == 0) {
-    loadPanierVide();
-} else {
-    document.getElementById('liste').value = JSON.stringify(panier_tab);
-}
-
-var totalgeneral = 0
-panier_tab.forEach(evenement => {
-    date = evenement.date.split(' ')
-    html = `
+    var totalgeneral = 0
+    panier_tab.forEach(evenement => {
+        date = evenement.date.split(' ')
+        html = `
         <div class="panier_box">
             <div class="panier_gauche"><img class="test" src="${evenement.img}" alt="Image de ${evenement.nom}"></div>
             <div class="panier_droite">
@@ -42,92 +40,94 @@ panier_tab.forEach(evenement => {
         </div>
     `;
 
-    document.getElementById('panier_zone').innerHTML += html;
-    totalgeneral += evenement.prix * evenement.quantite;
-})
-
-document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-
-
-document.querySelectorAll('.plus').forEach(clickplus)
-function clickplus(tag) {
-    tag.addEventListener('click', function () {
-        val_quantite = parseInt(this.parentNode.querySelector('#event_quantite').innerHTML);
-        val_quantite++;
-        panier_val++;
-        panier_display.innerText = panier_val;
-        this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
-
-        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
-        total = parseFloat(prix) * val_quantite;
-        this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
-
-        id = this.parentNode.querySelector('#event_id').value;
-        index = panier_tab.findIndex(element => element.id == id);
-        panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + 1;
-        document.cookie = JSON.stringify(panier_tab);
-        document.cookie += ';path=/'
-        document.getElementById('liste').value = JSON.stringify(panier_tab);
-
-        totalgeneral += 1 * parseFloat(prix);
-        document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
+        document.getElementById('panier_zone').innerHTML += html;
+        totalgeneral += evenement.prix * evenement.quantite;
     })
-};
 
-document.querySelectorAll('.moins').forEach(clickmoins)
-function clickmoins(tag) {
-    tag.addEventListener('click', function () {
-        val_quantite = parseInt(this.parentNode.querySelector('#event_quantite').innerHTML);
-        val_quantite--;
-        panier_val--;
-        panier_display.innerText = panier_val;
-        this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
+    document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
 
-        prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
-        total = parseFloat(prix) * val_quantite;
-        this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
-        totalgeneral -= 1 * parseFloat(prix);
-        totalgeneral < 0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
-        document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
+    document.querySelectorAll('.plus').forEach(clickplus)
+    function clickplus(tag) {
+        tag.addEventListener('click', function () {
+            val_quantite = parseInt(this.parentNode.querySelector('#event_quantite').innerHTML);
+            val_quantite++;
+            panier_val++;
+            panier_display.innerText = panier_val;
+            this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-        id = this.parentNode.querySelector('#event_id').value;
-        if (val_quantite == 0) {
-            //console.log('debut suppr')
+            prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
+            total = parseFloat(prix) * val_quantite;
+            this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
+
+            id = this.parentNode.querySelector('#event_id').value;
             index = panier_tab.findIndex(element => element.id == id);
-            //console.log(index)
-            if(index > -1) {
-                //console.log("supression");
-                panier_tab.splice(index, 1);
-                document.cookie = JSON.stringify(panier_tab);
-                document.cookie += ';path=/'
-                document.getElementById('liste').value = JSON.stringify(panier_tab);
-
-
-                this.parentNode.parentNode.parentNode.parentNode.remove();
-
-                if (panier_val == 0) {
-                    loadPanierVide();
-                }
-            }
-        } else {
-            index = panier_tab.findIndex(element => element.id == id);
-            panier_tab[index].quantite = parseInt(panier_tab[index].quantite) - 1;
+            panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + 1;
             document.cookie = JSON.stringify(panier_tab);
             document.cookie += ';path=/'
             document.getElementById('liste').value = JSON.stringify(panier_tab);
-        }
-    })
-};
 
-function loadPanierVide() {
-    console.log('Panier vide !')
-    panier_vide = document.createElement('div');
-    panier_vide.classList.add('panier_vide');
-    panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
-    panier_vide.innerHTML += '<a class="panier_link" href="/sae301/evenements">Parcourir les évenements</a>';
-    document.getElementById('panier_zone').append(panier_vide);
-    document.getElementById('liste').value = null;
+            totalgeneral += 1 * parseFloat(prix);
+            document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
+        })
+    };
 
-    document.getElementById('log_btn').remove();
-}
+    document.querySelectorAll('.moins').forEach(clickmoins)
+    function clickmoins(tag) {
+        tag.addEventListener('click', function () {
+            val_quantite = parseInt(this.parentNode.querySelector('#event_quantite').innerHTML);
+            val_quantite--;
+            panier_val--;
+            panier_display.innerText = panier_val;
+            this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
+
+            prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
+            total = parseFloat(prix) * val_quantite;
+            this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
+
+            totalgeneral -= 1 * parseFloat(prix);
+            totalgeneral < 0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
+            document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
+
+            id = this.parentNode.querySelector('#event_id').value;
+            if (val_quantite == 0) {
+                //console.log('debut suppr')
+                index = panier_tab.findIndex(element => element.id == id);
+                //console.log(index)
+                if(index > -1) {
+                    //console.log("supression");
+                    panier_tab.splice(index, 1);
+                    document.cookie = JSON.stringify(panier_tab);
+                    document.cookie += ';path=/'
+                    document.getElementById('liste').value = JSON.stringify(panier_tab);
+
+
+                    this.parentNode.parentNode.parentNode.parentNode.remove();
+
+                    if (panier_val == 0) {
+                        loadPanierVide();
+                    }
+                }
+            } else {
+                index = panier_tab.findIndex(element => element.id == id);
+                panier_tab[index].quantite = parseInt(panier_tab[index].quantite) - 1;
+                document.cookie = JSON.stringify(panier_tab);
+                document.cookie += ';path=/'
+                document.getElementById('liste').value = JSON.stringify(panier_tab);
+            }
+        })
+    };
+
+    function loadPanierVide() {
+        console.log('Panier vide !')
+        panier_vide = document.createElement('div');
+        panier_vide.classList.add('panier_vide');
+        panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
+        panier_vide.innerHTML += '<a class="panier_link" href="/evenements">Parcourir les évenements</a>';
+        document.getElementById('panier_zone').append(panier_vide);
+        document.getElementById('liste').value = null;
+
+        document.getElementById('log_btn').remove();
+    }
+})
+

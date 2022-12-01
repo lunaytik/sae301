@@ -31,7 +31,7 @@
         <i class="fa-solid fa-arrow-left"></i>Retour
     </a>
 
-    {% if app.request.headers.get('referer') == 'http://localhost/sae301/panier' %}
+    {% if app.request.headers.get('referer') == 'https://mmi21h04.sae301dev.ovh/panier' %}
         {% include('panier/progressbar.html.twig') %}
         <script>
             active = 2;
@@ -61,7 +61,7 @@
                 <input id="log_btn" type="submit" value="S'identifier">
             </div>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            {% if app.request.headers.get('referer') == 'http://localhost/sae301/panier' %}
+            {% if app.request.headers.get('referer') == 'https://mmi21h04.sae301dev.ovh/panier' %}
                 <input type="hidden" name="origin" value="{{ app.request.headers.get('referer') }}">
             {% endif %}
         </form>
