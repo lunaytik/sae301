@@ -8,13 +8,14 @@
     <div id="commande_container">
         {% include('panier/progressbar.html.twig') %}
     <h1>Commande</h1>
+        <h2>Adresse de facturation</h2>
 
     {% if app.user.adresse %}
     DEJA ADRESSE
     {% else %}
-        <div id="info_form_container">
-            <form method="post" id="info_form">
-                <div id="info_form_content_left">
+        <div class="info_form_container">
+            <form method="post" class="info_form">
+                <div class="info_form_content_left">
                     <div class="info_item">
                         <label for="adresse">Adresse</label>
                         <input type="text" name="adresse" id="adresse" placeholder="9 Rue de Québec">
@@ -275,7 +276,7 @@
                         </select>
                     </div>
                 </div>
-                <div id="info_form_content_right">
+                <div class="info_form_content_right">
                     <div class="info_item_row">
                         <div class="info_item">
                             <label for="prenom">Prénom</label>
@@ -291,10 +292,84 @@
                         <input type="tel" name="ntel" id="ntel" placeholder="+33 6 00 00 00 00">
                     </div>
                 </div>
+                <small class="info">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Ces informations seront sauvegardé dans votre profil,
+                    vous pourrez les modifier à tout moment dans celui-ci.
+                </small>
             </form>
         </div>
     {% endif %}
 
+        <h2>Moyen de paiement</h2>
+        <div class="info_form_container">
+            <form method="post" class="info_form">
+                <div class="info_form_content_left">
+                    <div class="info_item_row">
+                        <div class="info_item">
+                            <label for="cb">Numero de la carte</label>
+                            <input id="cb" name="cb" type="tel" pattern="[0-9]{19}" maxlength="19" placeholder="0000 0000 0000 0000">
+                        </div>
+                        <div class="info_item">
+                            <label for="cvv">Code de sécurité</label>
+                            <input id="cvv" name="cvv" type="tel" pattern="[0-9]{3}" maxlength="3" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="info_item">
+                        <label for="nomentier">Nom complet sur la carte</label>
+                        <input id="nomentier" name="nomentier" type="text">
+                    </div>
+                    <div class="info_item_row info_row_date">
+                        <div class="info_item info_date">
+                            <label for="mois">Date</label>
+                            <select name="mois" id="mois">
+                                <option>Mois</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                        <div class="info_item info_date">
+                            <select id="annee" name="annee">
+                                <option>Année</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="info_form_content_right" id="carte_container">
+                    <div class="info_item" id="carte">
+                        <img src="{{ asset('images/carte_b.svg') }}" alt="Carte bancaire"/>
+                        <div id="carte_num">
+                            0000 0000 0000 0000
+                        </div>
+                        <div id="carte_nom">
+                            John Doe
+                        </div>
+                        <div id="carte_date">
+                            01/23
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <h2>Récapitulatif</h2>
