@@ -75,7 +75,9 @@
 </div>
 <div class="nav3_gradient"></div>
 <div class="nav3">
-    <a href="{{ path('app_accueil') }}" class="active"><i class="fa-solid fa-house fa-xl"></i>Accueil</a>
-    <a href="{{ path('app_profil') }}"><i class="fa-solid fa-user fa-xl"></i>Compte</a>
-    <a href="{{ path('app_panier') }}"><i class="fa-solid fa-cart-shopping fa-xl"></i>Panier</a>
+    <a href="{{ path('app_accueil') }}" class="nav3-select active"><i class="fa-solid fa-house fa-xl"></i>Accueil</a>
+    <a href="{{ path('app_profil') }}" class="nav3-select"><i class="fa-solid fa-user fa-xl"></i>Compte</a>
+    <a href="{{ path('app_panier') }}" class="nav3-select"><i class="fa-solid fa-cart-shopping fa-xl"></i>Panier<div class="bulle_panier_bis">
+            <p id="panier_nombre_bis">0</p>
+        </div></a>
 </div>
