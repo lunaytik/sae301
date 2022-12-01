@@ -91,7 +91,7 @@
         {% endfor %}
     </div>
 
-    <div class="popup">
+    <a href="{{ path('app_panier') }}" class="popup">
         <div class="popup_img">
             <img src="{{ asset("uploads/#{ evenement.affiche }") }}" alt="">
         </div>
@@ -104,7 +104,7 @@
         <div>
             <p id="popup_prix">56€</p>
         </div>
-    </div>
+    </a>
     <script defer src="{{ asset('scripts/popup.js') }}"></script>
     <script defer src="{{ asset('scripts/produits.js') }}"></script>
 {% endblock %}

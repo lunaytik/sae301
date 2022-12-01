@@ -30,3 +30,16 @@ panier_tab.forEach(element => {
     panier_val += parseInt(element.quantite);
     panier_display.innerText = panier_val;
 });
+
+// nav3 bulle compteur panier
+document.getElementById('panier_nombre_bis').innerHTML = panier_nombre.innerHTML
+
+// nav3 active
+var btnContainer = document.getElementsByClassName("nav3");
+var btns = document.getElementsByClassName("nav3-select");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+        (document.querySelector('.active')) ? document.querySelector('.active').classList.remove('active') : '';
+        this.classList.add('active');
+    });
+} 

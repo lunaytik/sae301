@@ -124,6 +124,7 @@ select {
     color: white;
     font-size: 0;
     position: relative;
+    flex-shrink: 0;
 }
 .chercher i{
     font-size: 1rem;
@@ -231,7 +232,24 @@ select {
     display: grid;
     place-content: center;
 }
+.bulle_panier_bis {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: var(--main-bg-color);
+    border-radius: 50%;
+    top: 3px;
+    right: 15px;
+    display: grid;
+    place-content: center;
+}
 #panier_nombre {
+    font-weight:600 ;
+    font-size: 1.2rem;
+    color: white;
+    transform: translateY(-1px);
+}
+#panier_nombre_bis {
     font-weight:600 ;
     font-size: 1.2rem;
     color: white;
@@ -1422,10 +1440,15 @@ input[type=number]::-webkit-outer-spin-button {
         gap: 20px;
         border-top:solid 3px var(--gris-clair-bg);
         color:  #444444;
+        position: relative;
     }
     .nav3 > a.active {
         color: #D7005D;
         border-top:solid 3px #D7005D;
+    }
+    .nav3 > a.active > div {
+        color: white;
+        background: #140c10;
     }
     .nav3_gradient {
         width: 100%;
@@ -1653,7 +1676,7 @@ ul{
 
 
 .carousel{
-    width: min(1000px , calc(100% - 2rem));
+    width: min(1000px , 100%);
     aspect-ratio: 21/9;
     margin-bottom: 40px;
     overflow-x: hidden;

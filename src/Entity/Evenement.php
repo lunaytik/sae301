@@ -47,6 +47,9 @@ class Evenement
     #[ORM\JoinColumn(nullable: true)]
     private ?Tag $Tag = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $etoile = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -168,6 +171,18 @@ class Evenement
     public function setTag(?Tag $Tag): self
     {
         $this->Tag = $Tag;
+
+        return $this;
+    }
+
+    public function getEtoile(): ?string
+    {
+        return $this->etoile;
+    }
+
+    public function setEtoile(?string $etoile): self
+    {
+        $this->etoile = $etoile;
 
         return $this;
     }
