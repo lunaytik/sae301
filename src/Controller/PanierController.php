@@ -26,7 +26,10 @@ class PanierController extends AbstractController
     public function commande(Request $request): Response
     {
 
-        $liste = $request->request->get('liste');
+       // $liste = $request->request->get('liste');
+
+        dump($request);
+        die();
 
         if(empty($liste) && isset($liste) || !isset($liste)) {
             return $this->redirectToRoute('app_panier', ['error' => '1']);

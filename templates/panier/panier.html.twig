@@ -24,19 +24,25 @@
                 </div>
                 <div class="panier_remboursement_right">
                     <p  class="panier_remboursement_enplus">+4€/place</p>
-                    <p  class="panier_remboursement_enplus_total">Total : 4€</p>
+                    <p  class="panier_remboursement_enplus_total">Total : 0€</p>
                 </div>
             </div>
         </div>
         <div class="panier_total">
         <div class="total">Total de <span id="total"></span>€</div>
-        <form class="panier_form" action="{{ path('app_commande') }}" method="post">
-            <input type="hidden" name="liste" id="liste">
-            <input id="log_btn" type="submit" value="Valider la commande">
-        </form>
+        {% if app.user %}
+            <form class="panier_form" action="{{ path('app_commande') }}" method="post">
+                <input type="hidden" name="liste" id="liste">
+                <input id="log_btn" type="submit" value="Valider la commande">
+            </form>
+        {% else %}
+            <form class="panier_form" action="{{ path('app_login') }}" method="post">
+                <input type="hidden" name="liste" id="liste">
+                <input id="log_btn" type="submit" value="Valider la commande">
+            </form>
+        {% endif %}
         </div>
     </div>
-
 
     <script defer src="{{ asset('scripts/panier.js') }}"></script>
     {% endblock %}
