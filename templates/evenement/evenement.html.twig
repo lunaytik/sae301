@@ -11,6 +11,9 @@
             background-position: center !important;
             background-size: 200% !important;
         }
+        .lieux_affichage_top h2 {
+            font-size: 1.8rem;
+        }
     </style>
     <div class="event_affichage_top">
         <div class="event_grid_1">
@@ -34,12 +37,22 @@
                 <h3>Casting</h3>
                 <p>{{ evenement.cast }}</p>
             {% endif %}
-            <h3>En savoir plus sur le lieu</h3>
-            <p>{{ evenement.lieu.nom }}</p>
-            <p>Adresse: {{ evenement.lieu.adresse }}</p>
-            <p>Capacité du lieu: {{ evenement.lieu.capacite }} places</p>
-            <iframe class="iframe_map" src="{{ evenement.lieu.iframe }}" title="Adresse de {{ evenement.lieu.nom }}"></iframe>
-
+            <div class="lieux_affichage">
+                <div class="lieux_affichage_top">
+                    <h2>{{ evenement.lieu.nom }}</h2>
+                    <h3>{{ evenement.lieu.capacite }} places</h3>
+                    <p>{{ evenement.description }}</p>
+                </div>
+                <div class="lieux_affichage_img">
+                    <img src="{{ asset("uploads/#{ evenement.lieu.image1 }") }}" alt="{{ evenement.lieu.nom }} image 1">
+                    <img src="{{ asset("uploads/#{ evenement.lieu.image2 }") }}" alt="{{ evenement.lieu.nom }} image 2">
+                    <img src="{{ asset("uploads/#{ evenement.lieu.image3 }") }}" alt="{{ evenement.lieu.nom }} image 3">
+                </div>
+                <div class="lieux_affichage_carte">
+                    <h4>Place de la Comédie, 69001 Lyon 1er </h4>
+                    <iframe frameBorder="0" src="{{ evenement.lieu.iframe }}"></iframe>
+                </div>
+            </div>
         </div>
         <div class="event_info_right">
             <div>
