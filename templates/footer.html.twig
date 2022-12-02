@@ -2,7 +2,7 @@
     <div class="footer_container">
         <div class="row">
             <div class="footer-col">
-                <h4>company</h4>
+                <h4>Nous connaître</h4>
                 <ul>
                     <li><a href="#">about us</a></li>
                     <li><a href="#">our services</a></li>
@@ -11,7 +11,7 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>get help</h4>
+                <h4>Besoin d'aide ?</h4>
                 <ul>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">shipping</a></li>
@@ -21,16 +21,18 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>online shop</h4>
+                <h4>Billeterie</h4>
                 <ul>
-                    <li><a href="#">watch</a></li>
-                    <li><a href="#">bag</a></li>
-                    <li><a href="#">shoes</a></li>
-                    <li><a href="#">dress</a></li>
+                    <li><a href="#">evenements</a></li>
+                    <li><a href="{{ path('app_evenement_genre', {'genre': 'film'}) }}">film</a></li>
+                    <li><a href="{{ path('app_evenement_genre', {'genre': 'theatre'}) }}">théâtre</a></li>
+                    <li><a href="{{ path('app_evenement_genre', {'genre': 'concert'}) }}">concert</a></li>
+                    <li><a href="{{ path('app_evenement_genre', {'genre': 'exposition'}) }}">exposition</a></li>
+                    <li><a href="{{ path('app_evenement_genre', {'genre': 'spectacle'}) }}">spectacle</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>follow us</h4>
+                <h4>Suivez nous !</h4>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>

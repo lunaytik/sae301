@@ -12,6 +12,7 @@
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -1328,6 +1329,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media screen and (max-width:375px) {
+    #carte_num {
+        font-size: 0.9rem;
+    }
+
     .info_form {
         width: 90vw;
         justify-content: flex-start;
@@ -1457,6 +1462,7 @@ input[type=number]::-webkit-outer-spin-button {
         z-index: 998;
         bottom: 70px;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+        filter: blur(75px);
     }
     .event_grid_1 {
         grid-template-columns: 1fr !important;

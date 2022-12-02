@@ -8,8 +8,17 @@
     <div id="commande_container">
         {% include('panier/progressbar.html.twig') %}
     <h1>Commande</h1>
-        <h2>Adresse de facturation</h2>
+        <h2>Récapitulatif</h2>
+        {% for event in liste %}
+            <div>
+            <p>{{ event.nom }} x{{ event.quantite }}</p>
+            {{ event.prix * event.quantite }}€
+            </div>
+        {% endfor %}
+        <hr>
 
+
+        <h2>Adresse de facturation</h2>
     {% if app.user.adresse %}
     DEJA ADRESSE
     {% else %}
@@ -295,7 +304,7 @@
                 <small class="info">
                     <i class="fa-solid fa-circle-info"></i>
                     Ces informations seront sauvegardé dans votre profil,
-                    vous pourrez les modifier à tout moment dans celui-ci.
+                    vous pourrez les modifier à tout moment dans ce dernier.
                 </small>
             </form>
         </div>
@@ -341,15 +350,21 @@
                         <div class="info_item info_date">
                             <select id="annee" name="annee">
                                 <option>Année</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                                <option value="2029">2029</option>
-                                <option value="2030">2030</option>
+                                <option value="22">2022</option>
+                                <option value="23">2023</option>
+                                <option value="24">2024</option>
+                                <option value="25">2025</option>
+                                <option value="26">2026</option>
+                                <option value="27">2027</option>
+                                <option value="28">2028</option>
+                                <option value="29">2029</option>
+                                <option value="30">2030</option>
+                                <option value="31">2031</option>
+                                <option value="32">2032</option>
+                                <option value="33">2033</option>
+                                <option value="34">2034</option>
+                                <option value="35">2035</option>
+                                <option value="36">2036</option>
                             </select>
                         </div>
                     </div>
@@ -364,20 +379,20 @@
                             John Doe
                         </div>
                         <div id="carte_date">
-                            01/23
+                            <span id="carte_mois">01</span>/<span id="carte_annee">23</span>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+        <form method="post" action="{{ path('app_validation') }}">
+            <input type="hidden" name="reservation" value="{{ panier }}">
+            <input id="log_btn" type="submit" value="Procéder au paiement">
+        </form>
     </div>
 
-    <h2>Récapitulatif</h2>
-    {% for event in liste %}
-        {{ event.nom }}
-        x{{ event.quantite }}
-        {{ event.prix * event.quantite }}€
-    {% endfor %}
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -385,4 +400,5 @@
             updateProgress();
         })
     </script>
+    <script src="{{ asset('scripts/cb.js') }}"></script>
 {% endblock %}

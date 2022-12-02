@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    {% include ('panier/progressbar.html.twig') %}
+
+    <h1>Transaction réussie !</h1>
+    <p>Félicitation pour votre commande</p>
+    <p>Commande n°X</p>
+    <p>Telecharger la facture</p>
+
+    <p>Retrouvez vos billets sur votre mail dans quelques instants !</p>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            active = 4;
+            updateProgress();
+        })
+
+        document.cookie = '[]; path=/';
+
+    </script>
+{% endblock %}

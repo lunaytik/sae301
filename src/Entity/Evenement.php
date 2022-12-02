@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -49,6 +51,14 @@ class Evenement
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $etoile = null;
+
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: LigneReservation::class)]
+    private Collection $ligneReservations;
+
+    public function __construct()
+    {
+        $this->ligneReservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -183,6 +193,36 @@ class Evenement
     public function setEtoile(?string $etoile): self
     {
         $this->etoile = $etoile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LigneReservation>
+     */
+    public function getLigneReservations(): Collection
+    {
+        return $this->ligneReservations;
+    }
+
+    public function addLigneReservation(LigneReservation $ligneReservation): self
+    {
+        if (!$this->ligneReservations->contains($ligneReservation)) {
+            $this->ligneReservations->add($ligneReservation);
+            $ligneReservation->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneReservation(LigneReservation $ligneReservation): self
+    {
+        if ($this->ligneReservations->removeElement($ligneReservation)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneReservation->getEvent() === $this) {
+                $ligneReservation->setEvent(null);
+            }
+        }
 
         return $this;
     }

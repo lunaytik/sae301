@@ -1,8 +1,12 @@
+    garantie = document.getElementById('garantie_total');
+
     if (panier_val == 0) {
         loadPanierVide();
     } else {
         document.getElementById('liste').value = JSON.stringify(panier_tab);
     }
+
+
 
     var totalgeneral = 0
     panier_tab.forEach(evenement => {
@@ -43,6 +47,9 @@
         totalgeneral += evenement.prix * evenement.quantite;
     })
 
+    garantie_val = panier_val * 4;
+    garantie.innerText = garantie_val;
+
     document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
 
 
@@ -54,6 +61,9 @@
             panier_val++;
             panier_display.innerText = panier_val;
             this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
+
+            garantie_val = panier_val * 4;
+            garantie.innerText = garantie_val;
 
             prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
             total = parseFloat(prix) * val_quantite;
@@ -67,6 +77,7 @@
             document.getElementById('liste').value = JSON.stringify(panier_tab);
 
             totalgeneral += 1 * parseFloat(prix);
+
             document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
         })
     };
@@ -80,11 +91,15 @@
             panier_display.innerText = panier_val;
             this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
+            garantie_val = panier_val * 4;
+            garantie.innerText = garantie_val;
+
             prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
             total = parseFloat(prix) * val_quantite;
             this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
 
             totalgeneral -= 1 * parseFloat(prix);
+
             totalgeneral < 0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
             document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
 
@@ -118,7 +133,7 @@
     };
 
     function loadPanierVide() {
-        console.log('Panier vide !')
+        //console.log('Panier vide !')
         panier_vide = document.createElement('div');
         panier_vide.classList.add('panier_vide');
         panier_vide.innerHTML = '<h2>Votre panier est vide !</h2>';
@@ -126,6 +141,20 @@
         document.getElementById('panier_zone').append(panier_vide);
         document.getElementById('liste').value = null;
 
+        garantie.innerText = 0.00;
+
         document.getElementById('log_btn').remove();
     }
+
+
+    garantie_check = document.getElementById('garantie_check')
+
+    garantie_check.addEventListener('change', () => {
+        console.log(garantie_check.checked);
+        if (garantie_check.checked) {
+            document.getElementById('total').innerHTML = totalgeneral + garantie_val;
+        } else {
+            document.getElementById('total').innerHTML = totalgeneral;
+        }
+    })
 
