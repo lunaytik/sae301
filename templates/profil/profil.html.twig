@@ -3,7 +3,13 @@
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
-    <h1>Profil</h1>
+    <div class="display_cat">
+        <div class="display_cat_g display_center">
+            <div class="barre"></div>
+            <p>Profil</p>
+            <div class="barre"></div>
+        </div>
+    </div>
     {% if app.user.adresse and app.request.query.get('edit') %}
         {% include('profil/_adresse.html.twig') %}
     {% elseif app.user.adresse %}
@@ -34,7 +40,8 @@
         </div>
 
         {% if app.request.query.get('success') %}
-            <div class="success_info">Changement avec succès !</div>
+            <div class="success_info" id="success_info">Changement avec succès !</div>
+            <script src="{{ asset('scripts/success.js') }}"></script>
         {% endif %}
     {% else %}
         {% include('profil/_adresse.html.twig') %}

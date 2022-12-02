@@ -42,4 +42,4 @@ for (var i = 0; i < btns.length; i++) {
         (document.querySelector('.active')) ? document.querySelector('.active').classList.remove('active') : '';
         this.classList.add('active');
     });
-} 
+}
