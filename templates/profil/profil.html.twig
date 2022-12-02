@@ -63,4 +63,50 @@
     {% endfor %}
 
 
+
+    <style>
+        .historique_container_img1 {
+            background: url("{{ asset('uploads/40x60-The-Black-Legends-V13_sanslogos-copie-scaled-1339307945.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+        .historique_container_img2 {
+            background: url("{{ asset('uploads/2643153_les-producteurs-theatre-de-paris-2.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+        .historique_container_img3 {
+            background: url("{{ asset('uploads/Affiche-RespireEncoretour-ClaraLuciani_f0ec7b94-b457-44af-90fe-157ee4861df2_900x.webp') }}");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+
+    <div class="historique_content">
+        {% for reservation in reservations %}
+        <div class="historique_container">
+            <div class="historique_container_img">
+                <div class="historique_container_img1"></div>
+                <div class="historique_container_img2"></div>
+                <div class="historique_container_img3"></div>
+            </div>
+            <div class="historique_container_bottom">
+                <p>Commande n°{{ reservation.id }}</p>
+                <h1>Le {{ reservation.date|format_datetime('full', 'short', locale='fr')}}</h1>
+                <h2>
+                    {% for detail in reservation.ligneReservations %}
+                        {{ detail.nbplace * detail.event.prix }}
+                        {% set foo =  0 %}
+                        {% set foo =  foo + 5 %}
+                        {{ foo }}
+                    {% endfor %}
+                </h2>
+                <a href="#">voir plus ›</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
 {% endblock %}

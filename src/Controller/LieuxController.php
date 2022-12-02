@@ -14,7 +14,7 @@ class LieuxController extends AbstractController
     {
         $lieux = $lieuRepository->findAll();
         return $this->render('lieux/lieux.html.twig', [
-            'controller_name' => 'LieuxController',
+            'controller_name' => 'Lyon\'Tour - lieux',
             'lieux' => $lieux
         ]);
     }

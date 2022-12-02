@@ -515,6 +515,11 @@ select {
     gap: 10px;
     font-weight: 700;
     color: var(--main-bg-color);
+    transition: 0.2s ease-in-out;
+}
+.display_cat_d:hover {
+    gap: 20px;
+    text-decoration: underline;
 }
 
 
@@ -524,8 +529,7 @@ select {
 
 
 
-
-/* panier */
+    /* panier */
 #panier_container {
     display: flex;
     flex-direction: column;
@@ -952,6 +956,18 @@ input[type=number]::-webkit-outer-spin-button {
 .event_title > h4 > i {
     color: var(--main-bg-color);
 }
+.event_tag {
+    position: absolute !important;
+    display: flex !important;
+    gap: 15px !important;
+    bottom: -110px;
+}
+.event_tag_tag {
+    background: #e90065;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 50px;
+}
 
 @media only screen and (max-width: 930px)
 {
@@ -1290,7 +1306,39 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1.5rem;
     font-weight: 700;
 }
+.scam_content {
+    width: min(1000px , calc(100% - 2rem));
+    margin: auto;
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+.scam_box {
+    width: max(150px, 20%);
+    height: 100px;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.08) 0px 7px 20px 0px;
+    flex-grow: 1;
+    color: var(--gris-bg);
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+    transition: 0.2s ease-in-out;
+}
+.scam_box > div {
+    text-align: center;
+}
+.scam_box p {
+}
+.scam_box:hover {
+    transform: translateY(-7px);
+    color: var(--main-bg-color);
+    border: 1px solid var(--main-bg-color);
 
+}
 .popup {
     width: 400px;
     height: 120px;
@@ -1549,10 +1597,12 @@ input[type=number]::-webkit-outer-spin-button {
     left: 27px;
     opacity: 0.8;
 }
+.historique_container_bottom > p {
+    margin-top: 15px;
+}
 .historique_container_bottom > h1 {
     font-size: 1rem;
     color: var(--gris-bg);
-    margin-top: 15px;
 }
 .historique_container_bottom > h2{
     font-size: 2.6rem;
@@ -1696,6 +1746,7 @@ input[type=number]::-webkit-outer-spin-button {
         z-index: 998;
         bottom: 70px;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0) 10%, #FFF 80%);
+        pointer-events: none;
     }
     .event_grid_1 {
         grid-template-columns: 1fr !important;
@@ -1782,6 +1833,7 @@ input[type=number]::-webkit-outer-spin-button {
         position: absolute;
         background: linear-gradient(90deg, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%);
     }
+
     .popup {
         bottom: 150px;
         width: 90%;
@@ -1791,7 +1843,6 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .panier_content {
         width: 100%;
-        gap: 40px;
     }
     .panier_gauche > img {
         width: 7rem;
@@ -1838,6 +1889,9 @@ input[type=number]::-webkit-outer-spin-button {
     .lieux_affichage_img > img {
         max-width: 100%;
         max-height: fit-content;
+    }
+    .event_tag {
+        bottom: -423px;
     }
 }
 

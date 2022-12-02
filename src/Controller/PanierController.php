@@ -40,7 +40,7 @@ class PanierController extends AbstractController
             $link = substr($link, 0, $options);
         }
 
-        if ($link != 'http://localhost/sae301/public/panier') {
+        if ($link != 'http://localhost:8088/sae301/index.php/panier') {
             return $this->redirectToRoute('app_panier', ['error' => '2']);
         } else {
             $liste = $request->request->get('liste');

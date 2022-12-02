@@ -72,15 +72,65 @@
                 </div>
             </a>
         {% endfor %}
-        <style>
-            .carousel-controls .prev{
-                background-image: url('{{ asset('uploads/prev.svg') }}');
-            }
-            .carousel-controls .next{
-                background-image: url('{{ asset('uploads/next.svg') }}');
-            }
-        </style>
     </div>
+    <div class="display_cat">
+        <div class="display_cat_g">
+            <p>tout les évenements</p></div>
+        <a class="display_cat_d" href="{{ path('app_evenements') }}"><p>voir la selection</p><i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="suite">
+        {% for evenement in tout %}
+            <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
+                <div class="event_card_image">
+                    <img class="test" loading="lazy" src="{{ asset("uploads/#{ evenement.affiche }")}}" alt="Image de {{ evenement.nom }}">
+                </div>
+                <div class="event_card_content">
+                    <div class="event_card_content_top">
+                        <h4>{{ evenement.nom }}</h4>
+                        <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
+                        {#                        <img src="etoile.png" alt="star">#}
+                    </div>
+                    <div class="event_card_content_bottom">
+                        <div>
+                            <img src="{{ asset('icon/location-dot-solid.svg') }}" alt="">
+                            <p>{{ evenement.lieu.nom }}</p>
+                        </div>
+                        <p class="event_card_content_prix">{{ evenement.prix }} €</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="display_cat">
+        <div class="display_cat_g">
+            <p>nous faire confience</p></div>
+    </div>
+    <div class="scam_content">
+        <div class="scam_box">
+            <div><i class="fa-solid fa-rotate-left fa-2xl"></i></div>
+            <p>Assurance annulation</p>
+        </div>
+        <div class="scam_box">
+            <div><i class="fa-solid fa-ticket  fa-2xl"></i></div>
+            <p>Ticket dématerialisé</p>
+        </div>
+        <div class="scam_box">
+            <div><i class="fa-solid fa-lock  fa-2xl"></i></div>
+            <p>Payment sécurisé</p>
+        </div>
+        <div class="scam_box">
+            <div><i class="fa-solid fa-tag  fa-2xl"></i></div>
+            <p>Petit prix</p>
+        </div>
+    </div>
+    <style>
+        .carousel-controls .prev{
+            background-image: url('{{ asset('uploads/prev.svg') }}');
+        }
+        .carousel-controls .next{
+            background-image: url('{{ asset('uploads/next.svg') }}');
+        }
+    </style>
     <script src="{{ asset('scripts/carousel.js') }}"></script>
 
 {% endblock %}
