@@ -548,6 +548,8 @@ select {
     width: min(700px, calc(100% - 2rem));
     gap: 2vw;
     margin: auto;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgb(213 213 213);
 }
 .panier_droite > h1 {
     font-size: 1.7rem;
@@ -1116,6 +1118,7 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: auto;
     appearance: auto;
     border-radius: .25rem;
+    background-color: #E6E6E6;
 }
 
 .info_row_date {
@@ -1156,16 +1159,25 @@ input[type=number]::-webkit-outer-spin-button {
     color: #676767;
 }
 
-#cp {
+#cp, #adresse_cp {
     width: 70px;
     min-width: 70px !important;
 }
-#ntel {
-    width: 154px;
+#adresse_telNum, #ntel {
+    width: 132px;
+}
+
+.btn_adresse {
+    margin: 2rem auto 0 auto;
+    width: 60%;
 }
 
 .info_form_container {
     padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
 }
 
 #commande_container {
@@ -1811,7 +1823,7 @@ input[type=number]::-webkit-outer-spin-button {
         width: 100%;
     }
     #log_btn {
-        width: 100%;
+        width: 90%;
         padding: 1rem 1.5rem;
     }
     #panier_container {
@@ -1830,6 +1842,75 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
+
+
+
+/* PROFIL */
+
+.success_info {
+    color: #fff;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: clamp(10vw, 500px, 100vw);
+    background-color: #53bd4a;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.f_a_p {
+    margin-left: 1rem !important;
+}
+
+.profil_title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+}
+
+.profil_container {
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1rem 3rem;
+    width: clamp(10vw, 600px, 100vw);
+    border-bottom: 1px solid #E90065 ;
+}
+
+.profil_item {
+    font-size: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.profil_item p:first-child {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.profil_link {
+    color: var(--main-bg-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+}
+
+@media screen and (max-width: 360px) {
+    .profil_item {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .profil_link {
+        bottom: 0;
+        padding: 1rem;
+    }
+}
 
 /*footer*/
 .footer_container{

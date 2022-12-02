@@ -150,7 +150,6 @@
     garantie_check = document.getElementById('garantie_check')
 
     garantie_check.addEventListener('change', () => {
-        console.log(garantie_check.checked);
         if (garantie_check.checked) {
             document.getElementById('total').innerHTML = totalgeneral + garantie_val;
         } else {
