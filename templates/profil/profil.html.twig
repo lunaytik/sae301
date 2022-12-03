@@ -10,9 +10,7 @@
             <div class="barre"></div>
         </div>
     </div>
-    {% if app.user.adresse and app.request.query.get('edit') %}
-        {% include('profil/_adresse.html.twig') %}
-    {% elseif app.user.adresse %}
+    {% if app.user.adresse %}
         <div class="profil_container">
             <h2 class="profil_title">Informations personnelles</h2>
             <div class="profil_item">
@@ -38,13 +36,32 @@
                 <p>Mot de passe</p><p>**************</p>
             </div>
         </div>
-
         {% if app.request.query.get('success') %}
             <div class="success_info" id="success_info">Changement avec succès !</div>
             <script src="{{ asset('scripts/success.js') }}"></script>
         {% endif %}
+    {% elseif app.user.adresse and app.request.query.get('edit') %}
+        {% include('profil/_adresse_profil.html.twig') %}
+        <div class="profil_container bt-r">
+            <h2 class="profil_title">Informations de connexion</h2>
+            <div class="profil_item">
+                <p>Email</p><p>{{ app.user.email }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Mot de passe</p><p>**************</p>
+            </div>
+        </div>
     {% else %}
-        {% include('profil/_adresse.html.twig') %}
+        {% include('profil/_adresse_profil.html.twig') %}
+        <div class="profil_container bt-r">
+            <h2 class="profil_title">Informations de connexion</h2>
+            <div class="profil_item">
+                <p>Email</p><p>{{ app.user.email }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Mot de passe</p><p>**************</p>
+            </div>
+        </div>
     {% endif %}
 
     <h2 id="commandes">Historique de commandes</h2>

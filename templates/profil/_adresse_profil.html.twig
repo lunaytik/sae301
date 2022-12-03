@@ -1,0 +1,84 @@
+{{ form_start(form, {'attr': {'class': 'info_form_container'}}) }}
+<h2 class="profil_title f_a_p">Informations personnelles</h2>
+<div class="info_form">
+    <div class="info_form_content_right">
+        <div class="info_item">
+            {{ form_label(form.adresse) }}
+            {{ form_widget(form.adresse) }}
+
+            <small>{{ form_help(form.adresse) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(form.adresse) }}
+            </div>
+        </div>
+        <div class="info_item_row">
+            <div class="info_item">
+                {{ form_label(form.cp) }}
+                {{ form_widget(form.cp) }}
+
+                <small>{{ form_help(form.cp) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.cp) }}
+                </div>
+            </div>
+            <div class="info_item">
+                {{ form_label(form.ville) }}
+                {{ form_widget(form.ville) }}
+
+                <small>{{ form_help(form.ville) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.ville) }}
+                </div>
+            </div>
+        </div>
+        <div class="info_item">
+            {{ form_label(form.pays) }}
+            {{ form_widget(form.pays) }}
+
+            <small>{{ form_help(form.pays) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(form.pays) }}
+            </div>
+        </div>
+    </div>
+    <div class="info_form_content_right">
+        <div class="info_item_row">
+            <div class="info_item">
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom) }}
+
+                <small>{{ form_help(form.prenom) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.prenom) }}
+                </div>
+            </div>
+            <div class="info_item">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom) }}
+
+                <small>{{ form_help(form.nom) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.nom) }}
+                </div>
+            </div>
+        </div>
+        <div class="info_item">
+            {{ form_label(form.telNum) }}
+            {{ form_widget(form.telNum) }}
+
+            <small>{{ form_help(form.telNum) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(form.telNum) }}
+            </div>
+        </div>
+    </div>
+</div>
+<button id="log_btn" class="btn_adresse">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

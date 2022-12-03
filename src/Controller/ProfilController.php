@@ -30,8 +30,6 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_profil', ['success' => '1'], Response::HTTP_SEE_OTHER);
         }
 
-
-
         return $this->renderForm('profil/profil.html.twig', [
             'controller_name' => 'Lyon\'Tour - Profil',
             'client' => $client,

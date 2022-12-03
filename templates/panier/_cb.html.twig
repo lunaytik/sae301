@@ -1,0 +1,80 @@
+{{ form_start(form, {'attr': {'class': 'info_form_container'}}) }}
+<h2 class="profil_title f_a_p">Informations personnelles</h2>
+
+<h2 class="profil_title f_a_p">Moyen de paiement</h2>
+
+<div class="info_form">
+    <div class="info_form_content_right">
+        <div class="info_item_row">
+            <div class="info_item">
+                {{ form_label(form.cardNum) }}
+                {{ form_widget(form.cardNum) }}
+
+                <small>{{ form_help(form.cardNum) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.cardNum) }}
+                </div>
+            </div>
+            <div class="info_item">
+                {{ form_label(form.cardSec) }}
+                {{ form_widget(form.cardSec) }}
+
+                <small>{{ form_help(form.cardSec) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.cardSec) }}
+                </div>
+            </div>
+        </div>
+        <div class="info_item">
+            {{ form_label(form.cardName) }}
+            {{ form_widget(form.cardName) }}
+
+            <small>{{ form_help(form.cardName) }}</small>
+
+            <div class="form-error">
+                {{ form_errors(form.cardName) }}
+            </div>
+        </div>
+        <div class="info_item_row info_row_date">
+            <div class="info_item info_date">
+                {{ form_label(form.cardMois) }}
+                {{ form_widget(form.cardMois) }}
+
+                <small>{{ form_help(form.cardMois) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.cardMois) }}
+                </div>
+            </div>
+            <div class="info_item info_date">
+                {{ form_label(form.cardAnnee) }}
+                {{ form_widget(form.cardAnnee) }}
+
+                <small>{{ form_help(form.cardAnnee) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.cardAnnee) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info_form_content_right" id="carte_container">
+        <div class="info_item" id="carte">
+            <img src="{{ asset('images/carte_b.svg') }}" alt="Carte bancaire"/>
+            <div id="carte_num">
+                0000 0000 0000 0000
+            </div>
+            <div id="carte_nom">
+                John Doe
+            </div>
+            <div id="carte_date">
+                <span id="carte_mois">01</span>/<span id="carte_annee">23</span>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" name="liste" value="{{ panier }}">
+<button id="log_btn" class="btn_adresse">{{ button_label|default('Commander') }}</button>
+{{ form_end(form) }}
