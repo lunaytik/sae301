@@ -99,7 +99,7 @@ class EvenementController extends AbstractController
                     $temp = array(
                         'nom' => $evenement->getNom(),
                         'prix' => $evenement->getPrix(),
-                        'lien' => '/sae301/public/evenements/'.$evenement->getGenre().'/'.$evenement->getId(),
+                        'lien' => '/evenements/'.$evenement->getGenre().'/'.$evenement->getId(),
                         'src' => $evenement->getAffiche()
                     );
                     $jsonData[$idx++] = $temp;
