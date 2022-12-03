@@ -1,6 +1,7 @@
 {{ form_start(form, {'attr': {'class': 'info_form_container'}}) }}
 <h2 class="profil_title f_a_p">Informations personnelles</h2>
-<div class="info_form">
+<div class="info_form info_form2_resp">
+    <div class="info_form_container_container">
     <div class="info_form_content_right">
     <div class="info_item">
         {{ form_label(form.adresse) }}
@@ -80,9 +81,26 @@
     </div>
 </div>
 </div>
+    <div class="event_info_right2">
+        <h2 class="p0">Récapitulatif</h2>
+        {% for event in liste %}
+            <div class="event_info_right_item">
+                <p class="event_info_right_item_nom">{{ event.nom }}</p>
+                <div class="event_info_right_nb_prix">
+                    <p>x{{ event.quantite }}</p>
+                    <p>{{ event.prix * event.quantite }}€</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="event_info_right_total">
+            <p>total:</p>
+            <p>0€</p>
+        </div>
+    </div>
+</div>
 <h2 class="profil_title f_a_p">Moyen de paiement</h2>
 
-<div class="info_form">
+<div class="info_form wi">
     <div class="info_form_content_right">
         <div class="info_item_row">
             <div class="info_item">

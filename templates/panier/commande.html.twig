@@ -8,20 +8,13 @@
     <div id="commande_container">
         {% include('panier/progressbar.html.twig') %}
         <h1>Commande</h1>
-        <h2>Récapitulatif</h2>
-        {% for event in liste %}
-            <div>
-                <p>{{ event.nom }} x{{ event.quantite }}</p>
-                {{ event.prix * event.quantite }}€
-            </div>
-        {% endfor %}
-        <hr>
-
-
         {% if app.user.adresse and app.request.query.get('edit') %}
             {% include('panier/_adresse_cb.html.twig') %}
             <script src="{{ asset('scripts/_cb.js') }}"></script>
         {% elseif app.user.adresse %}
+            <div class="info_form info_form2_resp">
+
+
             <div class="profil_container">
                 <h2 class="profil_title">Informations personnelles</h2>
                 <div class="profil_item">
@@ -45,6 +38,23 @@
                     <input type="hidden" name="liste" value="{{ panier }}">
                     <button type="submit" class="profil_link">MODIFIER</button>
                 </form>
+            </div>
+                <div class="event_info_right2">
+                    <h2 class="p0">Récapitulatif</h2>
+                    {% for event in liste %}
+                        <div class="event_info_right_item">
+                            <p class="event_info_right_item_nom">{{ event.nom }}</p>
+                            <div class="event_info_right_nb_prix">
+                                <p>x{{ event.quantite }}</p>
+                                <p>{{ event.prix * event.quantite }}€</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="event_info_right_total">
+                        <p>total:</p>
+                        <p>0€</p>
+                    </div>
+                </div>
             </div>
             {% include('panier/_cb.html.twig') %}
             <script src="{{ asset('scripts/cb.js') }}"></script>

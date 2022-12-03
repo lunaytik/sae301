@@ -70,6 +70,7 @@
         <ul>
         {% for detail in reservation.ligneReservations %}
             <li> - {{ detail.event.nom }} x{{ detail.nbplace }} | {{ detail.nbplace * detail.event.prix }}€</li>
+            <img src="{{ detail.event.affiche }}">
         {% endfor %}
         </ul>
 

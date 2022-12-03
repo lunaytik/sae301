@@ -530,11 +530,11 @@ select {
 
 
 #profileImage {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background: #3373AB;
-    font-size: 30px;
+    font-size: 24px;
     color: #fff;
     text-align: center;
     line-height: 150px;
@@ -1001,7 +1001,7 @@ input[type=number]::-webkit-outer-spin-button {
         height: 120px;
     }
     .container_navbar_right {
-        height: fit-content;
+        height: 53px;
         align-items: center;
     }
     .event_info {
@@ -1103,9 +1103,19 @@ input[type=number]::-webkit-outer-spin-button {
 .info_form {
     display: flex;
     margin: auto;
-    flex-wrap: wrap;
     gap: 2rem;
-    justify-content: center;
+    /*! flex-direction: column; */
+    width: 100%;
+}
+.info_form_container_container {
+    /*! display: flex; */
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.08) 0px 7px 20px 0px;
+    gap: 20px;
+    padding: 1rem 2rem;
+    /*! flex-wrap: wrap; */
+    width: 100%;
 }
 
 .info_form_content_left, .info_form_content_right {
@@ -1126,7 +1136,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .info_item_row input {
     width: calc(50% - 0.375rem);
-    min-width: 160px;
+    min-width: 180px;
 }
 
 .info_item_row label {
@@ -1214,11 +1224,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .info_form_container {
-    padding: 2rem 0;
     display: flex;
     flex-direction: column;
-    width: fit-content;
-    margin: auto;
+    /*! width: fit-content; */
+    /*! margin: auto; */
 }
 
 #commande_container {
@@ -1230,7 +1239,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #commande_container h2 {
-    padding: 2rem 0 0;
+    /*! padding: 2rem 0 0; */
 }
 
 #commande_container h1 {
@@ -1637,6 +1646,57 @@ input[type=number]::-webkit-outer-spin-button {
 
 }
 
+.event_info_right2
+{
+    width: 300px;
+    flex-shrink: 0;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    display: grid;
+    gap: 10px;
+    height: fit-content;
+    padding: 1rem 2rem;
+    box-shadow: rgba(100, 100, 111, 0.08) 0px 7px 20px 0px;
+    position: sticky;
+    right: 0;
+    top: 120px;
+}
+.event_info_right_item {
+    display: flex;
+    gap: 12px;
+    font-size: 1.2rem;
+    border-bottom: solid 1px gainsboro;
+    padding-bottom: 5px;
+    justify-content: space-between;
+}
+.event_info_right_item_nom {
+
+}
+.event_info_right_nb_prix {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-end;
+}
+.event_info_right_nb_prix p:nth-child(1) {
+
+}
+.event_info_right_nb_prix p:nth-child(2) {
+
+    font-weight: 600;
+}
+.event_info_right_total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    color: var(--main-bg-color);
+    font-weight: 700;
+}
+.p0 {
+    padding: 0 !important;
+}
 @media screen and (max-width:375px) {
     #carte_num {
         font-size: 0.9rem;
@@ -1657,12 +1717,6 @@ input[type=number]::-webkit-outer-spin-button {
 
     #card_container {
         display: none;
-    }
-}
-
-@media screen and (max-width: 810px) {
-    .info_form_content_left, .info_form_content_right {
-        width: 60vw;
     }
 }
 
@@ -1918,8 +1972,24 @@ input[type=number]::-webkit-outer-spin-button {
     .event_tag {
         bottom: -423px;
     }
+    .info_form_container_container {
+        border: initial;
+        padding: initial;
+        box-shadow: initial;
+    }
+    .wi {
+        border: initial !important;
+        padding: initial !important;
+        box-shadow: initial !important;
+    }
+    .profil_item {
+        justify-content: space-between;
+    }
+    .profil_item p:nth-child(2) {
+        text-align: end;
+    }
 }
-
+/*fin responsive 600px*/
 
 
 
@@ -1987,7 +2057,7 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: column;
     gap: 0.75rem;
     padding: 0 1rem 3rem;
-    width: clamp(10vw, 600px, 100vw);
+    width: clamp(330px, 70vw, 700px);
     border-bottom: 1px solid #E90065 ;
 }
 
@@ -2096,7 +2166,14 @@ ul{
     color: #24262b;
     background-color: #ffffff;
 }
-
+.wi {
+    width: initial;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.08) 0px 7px 20px 0px;
+    gap: 20px;
+    padding: 1rem 2rem;
+    border: 1px solid rgb(223, 223, 223);
+}
 /*responsive*/
 @media(max-width: 767px){
     .footer-col{
@@ -2105,6 +2182,9 @@ ul{
     }
     .footer {
         padding: 40px 0;
+    }
+    .info_form {
+        flex-direction: column;
     }
 }
 @media(max-width: 574px){
