@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Entity\Evenement;
 use App\Entity\LigneReservation;
 use App\Entity\Reservation;
@@ -44,20 +45,18 @@ class PanierController extends AbstractController
 
         $client = $this->getUser();
 
-        if($request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande') {
-            $type = AdresseCbType::class;
+        if($request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande' || ($client->getAdresse() == null)) {
+            $form = $this->createForm(AdresseCbType::class, $client);
         } else {
-            $type = CbType::class;
+            $form = $this->createForm(CbType::class, $client);
         }
 
-
-        $form = $this->createForm($type, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->save($client, true);
 
-            $commande = $request->request->get('reservation');
+            $commande = $request->request->get('liste');
             $commande_array = json_decode($commande);
 
             $user = $this->getUser();

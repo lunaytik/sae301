@@ -29,6 +29,7 @@ class AdresseCbType extends AbstractType
                 ]
             ])
             ->add('adresse', TextType::class, [
+                'label' => 'Adresse',
                 'attr' => [
                     'placeholder' => '9 rue de Québec'
                 ]

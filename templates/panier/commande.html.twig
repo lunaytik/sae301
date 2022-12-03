@@ -17,10 +17,11 @@
         {% endfor %}
         <hr>
 
+
         {% if app.user.adresse and app.request.query.get('edit') %}
             {% include('panier/_adresse_cb.html.twig') %}
             <script src="{{ asset('scripts/_cb.js') }}"></script>
-            {% elseif app.user.adresse %}
+        {% elseif app.user.adresse %}
             <div class="profil_container">
                 <h2 class="profil_title">Informations personnelles</h2>
                 <div class="profil_item">
@@ -42,13 +43,13 @@
                 </div>
                 <form action="{{ path('app_commande', {'edit': '1'}) }}" method="post">
                     <input type="hidden" name="liste" value="{{ panier }}">
-                    <button type="submit" class="profil_link" href="{{ path('app_profil', {'edit':'1'}) }}">MODIFIER
-                    </button>
+                    <button type="submit" class="profil_link">MODIFIER</button>
                 </form>
             </div>
             {% include('panier/_cb.html.twig') %}
             <script src="{{ asset('scripts/cb.js') }}"></script>
-        {% elseif app.user.adresse is null %}
+        {% else %}
+            {{ app.user.adresse }}
             {% include('panier/_adresse_cb.html.twig') %}
             <script src="{{ asset('scripts/_cb.js') }}"></script>
         {% endif %}

@@ -16,9 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-    public function index(Request $request, ClientRepository $clientRepository, ReservationRepository $reservationRepository, LigneReservationRepository $ligneReservationRepository): Response
+    public function index(Request $request, ClientRepository $clientRepository, ReservationRepository $reservationRepository): Response
     {
         $reservations = $reservationRepository->findBy(['client'=>$this->getUser()]);
+
+
         $client = $this->getUser();
 
         $form = $this->createForm(AdresseType::class, $client);
