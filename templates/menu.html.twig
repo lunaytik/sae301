@@ -30,14 +30,22 @@
             </div>
         </a>
         <div id="account_btn" class="container_navbar_right_a">
+            {% if app.user %}
+                <div id="profileImage">
+
+                </div>
+            {% endif %}
             <div class="container_compte">
                 {% if app.user %}
                 {% if app.user.email|length > 20 %}
                     <style>
+                        #account {
+                            color: #757575;
+                        }
                         #account::before {
                             content: "";
                             width: 40%;
-                            height: 0.9rem;
+                            height: 1.1rem;
                             background: linear-gradient(270deg, rgb(20, 12, 16) 15.84%, rgba(20, 12, 16, 0.001) 105.94%);
                             position: absolute;
                             right: 0;

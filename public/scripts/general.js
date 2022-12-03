@@ -44,14 +44,10 @@ for (var i = 0; i < btns.length; i++) {
     });
 }
 
-
-function isInViewport(el) {
-    const rect = document.getElementsByClassName('.footer').getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-
-    );
-}
+// mettre la lettre dans la photo de profil
+window.onload = function(){
+    var premierelettre = document.getElementById('account').innerHTML
+    let tkt = premierelettre.charAt(0);
+    console.log(tkt);
+    document.getElementById('profileImage').innerHTML = tkt
+};
