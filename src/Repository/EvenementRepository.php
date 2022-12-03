@@ -39,6 +39,17 @@ class EvenementRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByNom($nom)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.nom LIKE :name')
+            ->setParameter('name', '%'.$nom.'%')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Evenement[] Returns an array of Evenement objects
 //     */

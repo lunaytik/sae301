@@ -4,6 +4,7 @@
     </a>
     <div class="burger"><i class="fa-solid fa-bars"></i></div>
     <div class="container_searchbar">
+        <div id="recherche_container"></div>
         <form action="{{ path('app_evenements') }}">
             <select class="choix" name="genre" id="genre" aria-label="Selectionner la catégorie à chercher">
                 <option value="">Dans toutes nos catégories</option>
@@ -14,7 +15,7 @@
                 <option value="Exposition">Exposition</option>
 
             </select>
-            <input class="search_bar" type="text" placeholder="Tapez votre recherche" name="recherche" aria-label="Champ de recherche des évenements">
+            <input class="search_bar" id="recherche" type="text" placeholder="Tapez votre recherche" autocomplete="off" name="recherche" aria-label="Champ de recherche des évenements">
             <button class="chercher" type="submit">chercher<i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>

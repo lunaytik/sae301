@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\GenreRepository;
 use App\Repository\TagRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Evenement;
@@ -84,5 +85,32 @@ class EvenementController extends AbstractController
         ]);
     }
 
+    #[Route('/recherche', name: 'app_recherche')]
+    public function recherche(Request $request, EvenementRepository $evenementRepository) {
+        if ($request->isXmlHttpRequest()) {
 
+            $nom = $request->request->get('recherche');
+
+            if (!empty($nom)) {
+                $evenements = $evenementRepository->findByNom($nom);
+                $jsonData = array();
+                $idx = 0;
+                foreach($evenements as $evenement) {
+                    $temp = array(
+                        'nom' => $evenement->getNom(),
+                        'prix' => $evenement->getPrix(),
+                        'lien' => '/sae301/public/evenements/'.$evenement->getGenre().'/'.$evenement->getId(),
+                        'src' => $evenement->getAffiche()
+                    );
+                    $jsonData[$idx++] = $temp;
+                }
+                return new JsonResponse($jsonData);
+            }
+            else {
+                return new  JsonResponse(array());
+            }
+        } else {
+            return $this->redirectToRoute('app_accueil');
+        }
+    }
 }

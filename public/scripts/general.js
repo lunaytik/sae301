@@ -51,3 +51,49 @@ window.onload = function(){
     console.log(tkt);
     document.getElementById('profileImage').innerHTML = tkt
 };
+
+// Barre de recherche en AJAX
+$(document).ready(function () {
+    $("#recherche").on('keyup', function (event) {
+        let nom = $(this).val();
+        console.log(nom)
+        if (nom == null || nom.length === 0) {
+            $('#recherche_container').hide();
+        }
+        console.log(nom.length)
+        if (nom != null && nom.length != 0) {
+            $.ajax({
+                type: 'POST',
+                url: '/sae301/public/recherche',
+                data: {
+                    recherche: nom
+                },
+                async: true
+            })
+                .done(function (data, status) {
+                    console.log(data)
+                    $('#recherche_container').html('');
+                    $('#recherche_container').show();
+                    if (data.length == 0) {
+                        let e = $('<div>Aucun résultat lié à cette recherche !</div>');
+                        $('#recherche_container').append(e);
+                    }
+                    for (i = 0; i < data.length; i++) {
+                        evenement = data[i];
+                        let e = $('<a href=""><img id="recherche_img" src=""><div><h1 id="recherche_nom"></h1><h2 id="recherche_prix"></h2></div></a><hr>');
+                        e.attr('href', evenement['lien'])
+
+                        let lien = "/sae301/public/uploads/"+evenement['src'];
+
+                        $('#recherche_img', e).attr('src', lien)
+                        $('#recherche_nom', e).html(evenement['nom']);
+                        $('#recherche_prix', e).html(evenement['prix']);
+                        $('#recherche_container').append(e);
+                    }
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                    alert('Ajax request failed.');
+                })
+        }
+    });
+})
