@@ -1,7 +1,7 @@
-const cb = document.getElementById('cb');
-const nomentier = document.getElementById('nomentier');
-const mois = document.getElementById('mois');
-const annee = document.getElementById('annee');
+const cb = document.getElementById('cb_cardNum');
+const nomentier = document.getElementById('cb_cardName');
+const mois = document.getElementById('cb_cardMois');
+const annee = document.getElementById('cb_cardAnnee');
 
 const cb_display = document.getElementById('carte_num');
 const nom_display = document.getElementById('carte_nom');

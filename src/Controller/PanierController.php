@@ -5,7 +5,8 @@ namespace App\Controller;
 use App\Entity\Evenement;
 use App\Entity\LigneReservation;
 use App\Entity\Reservation;
-use App\Form\AdresseType;
+use App\Form\AdresseCbType;
+use App\Form\CbType;
 use App\Repository\ClientRepository;
 use App\Repository\EvenementRepository;
 use App\Repository\LigneReservationRepository;
@@ -37,9 +38,20 @@ class PanierController extends AbstractController
 
         $liste = $request->request->get('liste');
 
+        if (empty($liste) || !isset($liste)) {
+            return $this->redirectToRoute('app_panier', ['error' => '1']);
+        }
+
         $client = $this->getUser();
 
-        $form = $this->createForm(AdresseType::class, $client);
+        if($request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande') {
+            $type = AdresseCbType::class;
+        } else {
+            $type = CbType::class;
+        }
+
+
+        $form = $this->createForm($type, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,18 +87,13 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('app_facture');
         }
 
-
-
-        if (empty($liste) || !isset($liste)) {
-            return $this->redirectToRoute('app_panier', ['error' => '1']);
-        }
-
         $array = json_decode($liste);
         dump($array);
-        return $this->render('panier/commande.html.twig', [
+        return $this->renderForm('panier/commande.html.twig', [
             'controller_name' => 'Lyon\'Tour - Commande',
             'liste' => $array,
-            'panier' => $liste
+            'panier' => $liste,
+            'form' => $form
         ]);
     }
 
