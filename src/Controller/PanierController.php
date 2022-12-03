@@ -45,7 +45,9 @@ class PanierController extends AbstractController
 
         $client = $this->getUser();
 
-        if($request->headers->get('referer') == 'http://localhost:8088/sae301/index.php/panier/commande' || ($client->getAdresse() == null)) {
+
+        if($request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande' && $request->query->get('edit') || ($client->getAdresse() == null)
+        || $request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande?edit=1') {
             $form = $this->createForm(AdresseCbType::class, $client);
         } else {
             $form = $this->createForm(CbType::class, $client);

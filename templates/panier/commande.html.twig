@@ -10,11 +10,9 @@
         <h1>Commande</h1>
         {% if app.user.adresse and app.request.query.get('edit') %}
             {% include('panier/_adresse_cb.html.twig') %}
-            <script src="{{ asset('scripts/_cb.js') }}"></script>
+{#            <script src="{{ asset('scripts/_cb.js') }}"></script>#}
         {% elseif app.user.adresse %}
             <div class="info_form info_form2_resp">
-
-
             <div class="profil_container">
                 <h2 class="profil_title">Informations personnelles</h2>
                 <div class="profil_item">
@@ -57,20 +55,11 @@
                 </div>
             </div>
             {% include('panier/_cb.html.twig') %}
-            <script src="{{ asset('scripts/cb.js') }}"></script>
+{#            <script src="{{ asset('scripts/cb.js') }}"></script>#}
         {% else %}
-            {{ app.user.adresse }}
             {% include('panier/_adresse_cb.html.twig') %}
-            <script src="{{ asset('scripts/_cb.js') }}"></script>
+{#            <script src="{{ asset('scripts/_cb.js') }}"></script>#}
         {% endif %}
-
-
-
-
-        {#        <form method="post" action="{{ path('app_validation') }}"> #}
-        {#            <input type="hidden" name="reservation" value="{{ panier }}"> #}
-        {#            <input id="log_btn" type="submit" value="Procéder au paiement"> #}
-        {#        </form> #}
     </div>
 
 
