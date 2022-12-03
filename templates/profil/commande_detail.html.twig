@@ -4,6 +4,14 @@
 
 {% block body %}
     <h1>Commande n°{{ reservation.id }}</h1>
+    {% for ligne in reservation.ligneReservations %}
+        <img width="100px" src="{{ asset("uploads/#{ ligne.event.affiche }") }}" alt="">
+        {{ ligne.event.nom }}
+        x{{ ligne.nbPlace }}
+        Total: {{ ligne.event.prix * ligne.nbPlace }}€
+        Date de l'évenement : {{ ligne.event.date|format_datetime('full', 'short', locale='fr') }}
+
+    {% endfor %}
 
 
 {% endblock %}

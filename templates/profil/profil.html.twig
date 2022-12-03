@@ -65,20 +65,6 @@
     {% endif %}
 
     <h2 id="commandes">Historique de commandes</h2>
-    {% for reservation in reservations %}
-        <p>Commande n°{{ reservation.id }}</p>
-        <ul>
-        {% for detail in reservation.ligneReservations %}
-            <li> - {{ detail.event.nom }} x{{ detail.nbplace }} | {{ detail.nbplace * detail.event.prix }}€</li>
-        {% endfor %}
-        </ul>
-
-        <p>Du {{ reservation.date|format_datetime('full', 'short', locale='fr')}}</p>
-
-
-        <a href="{{ path('app_commande_detail', {'id': reservation.id}) }}">Voir plus</a>
-    {% endfor %}
-
 
     <div class="historique_content">
         {% for reservation in reservations %}
