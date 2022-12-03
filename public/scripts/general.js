@@ -64,7 +64,7 @@ $(document).ready(function () {
         if (nom != null && nom.length != 0) {
             $.ajax({
                 type: 'POST',
-                url: '/sae301/public/recherche',
+                url: '/recherche',
                 data: {
                     recherche: nom
                 },
@@ -83,7 +83,7 @@ $(document).ready(function () {
                         let e = $('<a href=""><img id="recherche_img" src=""><div><h1 id="recherche_nom"></h1><h2 id="recherche_prix"></h2></div></a><hr>');
                         e.attr('href', evenement['lien'])
 
-                        let lien = "/sae301/public/uploads/"+evenement['src'];
+                        let lien = "/uploads/"+evenement['src'];
 
                         $('#recherche_img', e).attr('src', lien)
                         $('#recherche_nom', e).html(evenement['nom']);
