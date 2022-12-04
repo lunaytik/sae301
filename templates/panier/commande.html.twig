@@ -10,7 +10,7 @@
         <h1>Commande</h1>
         {% if app.user.adresse and app.request.query.get('edit') %}
             {% include('panier/_adresse_cb.html.twig') %}
-{#            <script src="{{ asset('scripts/_cb.js') }}"></script>#}
+            <script src="{{ asset('scripts/_cb.js') }}"></script>
         {% elseif app.user.adresse %}
             <div class="info_form info_form2_resp">
             <div class="profil_container">
@@ -55,10 +55,10 @@
                 </div>
             </div>
             {% include('panier/_cb.html.twig') %}
-{#            <script src="{{ asset('scripts/cb.js') }}"></script>#}
+            <script src="{{ asset('scripts/cb.js') }}"></script>
         {% else %}
             {% include('panier/_adresse_cb.html.twig') %}
-{#            <script src="{{ asset('scripts/_cb.js') }}"></script>#}
+            <script src="{{ asset('scripts/_cb.js') }}"></script>
         {% endif %}
     </div>
 

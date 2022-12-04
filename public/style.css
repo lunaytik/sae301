@@ -711,8 +711,8 @@ select {
 .log_item>input {
     border: 1px solid #C8C8C8;
     border-radius: 0.25rem;
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
 }
 
 #eye {
@@ -749,7 +749,7 @@ select {
     font-weight: 500;
     cursor: pointer;
     transition: all .2s;
-
+    width: 200px;
 }
 
 #log_btn:hover {
@@ -1701,6 +1701,8 @@ input[type=number]::-webkit-outer-spin-button {
 .p0 {
     padding: 0 !important;
 }
+
+
 @media screen and (max-width:375px) {
     #carte_num {
         font-size: 0.9rem;
@@ -1957,8 +1959,10 @@ input[type=number]::-webkit-outer-spin-button {
         width: 100%;
     }
     #log_btn {
-        width: 90%;
         padding: 1rem 1.5rem;
+    }
+    .btn_info {
+        width: 90%;
     }
     #panier_container {
         padding: 60px 0 0 0;
@@ -2120,6 +2124,10 @@ input[type=number]::-webkit-outer-spin-button {
     .profil_link {
         bottom: 0;
         padding: 1rem;
+    }
+
+    .return_link {
+        top: 25%;
     }
 }
 
