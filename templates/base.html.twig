@@ -19,6 +19,9 @@
             <script async src="{{ asset('scripts/general.js') }}"></script>
             <script defer src="{{ asset('scripts/app.js') }}"></script>
             {{ encore_entry_script_tags('app') }}
+            {% if app.user %}
+            <script defer src="{{ asset('scripts/photo_profil.js') }}"></script>
+            {% endif %}
         {% endblock %}
     </head>
     <body>

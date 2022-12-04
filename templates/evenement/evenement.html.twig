@@ -16,6 +16,9 @@
         }
     </style>
     <div class="event_affichage_top">
+        <div class="event_affichage_top_retour">
+            <a href="{{ app.request.headers.get('referer') }}">‹ Retour</a>
+        </div>
         <div class="event_grid_1">
             <div class="event_affiche">
                 <img class="test" loading="lazy" id="event_img" src="{{ asset("uploads/#{ evenement.affiche }") }}"
