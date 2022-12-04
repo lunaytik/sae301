@@ -44,6 +44,14 @@ class ProfilController extends AbstractController
     #[Route('/profil/commande/{id}', name: 'app_commande_detail')]
     public function profil_cmd(Reservation $reservation): Response
     {
+        $client_connected_id = $this->getUser()->getId();
+
+        $client_id = $reservation->getClient()->getId();
+
+        if ($client_connected_id != $client_id) {
+            return $this->redirectToRoute('app_profil', ['commande_error'=>'1']);
+        }
+
         return $this->render('profil/commande_detail.html.twig', [
             'controller_name' => 'Lyon\'Tour - Profil',
             'reservation' => $reservation,

@@ -2083,6 +2083,24 @@ input[type=number]::-webkit-outer-spin-button {
     animation: apparition .8s forwards;
 }
 
+.error_info {
+    position: absolute;
+    top: 5%;
+    z-index: 10000;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: clamp(10vw, 300px, 90vw);
+    background-color: #b22727;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 8px;
+    animation: apparition .8s forwards;
+}
+
+
 .f_a_p {
     margin-left: 1rem !important;
 }
