@@ -31,8 +31,6 @@ panier_tab.forEach(element => {
     panier_display.innerText = panier_val;
 });
 
-// nav3 bulle compteur panier
-document.getElementById('panier_nombre_bis').innerHTML = panier_nombre.innerHTML
 
 // nav3 active
 var btnContainer = document.getElementsByClassName("nav3");
@@ -44,9 +42,10 @@ for (var i = 0; i < btns.length; i++) {
     });
 }
 
-
-// Barre de recherche en AJAX
 $(document).ready(function () {
+    // nav3 bulle compteur panier
+    document.getElementById('panier_nombre_bis').innerHTML = panier_nombre.innerHTML
+    // Barre de recherche en AJAX
     $("#recherche").on('keyup', function (event) {
         let nom = $(this).val();
         console.log(nom)
