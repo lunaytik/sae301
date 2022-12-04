@@ -67,6 +67,7 @@ class PanierController extends AbstractController
                 $evenement = $evenementRepository->find($event->id);
                 $res = $reservationRepository->find($res_id);
 
+
                 $ligne = new LigneReservation();
                 $ligne->setEvent($evenement);
                 $ligne->setNbPlace($event->quantite);
@@ -76,6 +77,7 @@ class PanierController extends AbstractController
             $request->request->remove('liste');
             return $this->redirectToRoute('app_facture', ['id'=>$res_id]);
         }
+
 
         $array = json_decode($liste);
         return $this->renderForm('panier/commande.html.twig', [

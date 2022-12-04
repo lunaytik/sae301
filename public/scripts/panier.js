@@ -52,7 +52,7 @@
 
     document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
     document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-    console.log(garantie.innerHTML)
+    //console.log(garantie.innerHTML)
     chaud()
 
     document.querySelectorAll('.plus').forEach(clickplus)
@@ -81,7 +81,7 @@
             totalgeneral += 1 * parseFloat(prix);
             document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
             document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-            console.log(garantie.innerHTML)
+            //console.log(garantie.innerHTML)
             chaud()
 
         })
@@ -111,7 +111,7 @@
 
             document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
             document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-            console.log(garantie.innerHTML)
+            //console.log(garantie.innerHTML)
             chaud()
             id = this.parentNode.querySelector('#event_id').value;
             if (val_quantite == 0) {
@@ -157,17 +157,17 @@
         document.getElementById('log_btn').remove();
     }
 
-    // document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-
     function chaud() {
         let stp = document.getElementById('garantie_total').innerHTML
         let stp2 = 1 * stp + totalgeneral;
         if (document.getElementById("garantie_check").checked){
             document.getElementById('total').innerHTML = stp2.toFixed(2);
-            console.log("prix avec garantie " + totalgeneral + " + " + stp + " = " + stp2)
+            document.getElementById('total_prix').value = stp2.toFixed(2);
+            //console.log("prix avec garantie " + totalgeneral + " + " + stp + " = " + stp2)
         } else {
             document.getElementById('total').innerHTML = totalgeneral.toFixed(2);
-            console.log("prix sans garantie")
+            document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
+            //console.log("prix sans garantie")
         }
     }
 

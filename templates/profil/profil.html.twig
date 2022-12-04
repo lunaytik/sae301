@@ -77,7 +77,6 @@
         <div class="historique_container">
             <p class="historique_n">Commande n°{{ reservation.id }}</p>
             <div class="historique_container_img">
-
                         {% for detail in reservation.ligneReservations %}
                             <div class="img_h_li" >
                                 <img class="img_h" src="{{ asset("uploads/#{ detail.event.affiche }") }}">
