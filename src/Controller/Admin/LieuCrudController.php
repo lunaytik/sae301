@@ -31,9 +31,9 @@ class LieuCrudController extends AbstractCrudController
             TextField::new('adresse'),
             TextField::new('iframe'),
             TextField::new('description'),
-            ImageField::new('image1')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
-            ImageField::new('image2')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
-            ImageField::new('image3')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
+            ImageField::new('image1', 'Image 1 du lieu')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
+            ImageField::new('image2', 'Image 2 du lieu')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
+            ImageField::new('image3', 'Image 3 du lieu')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
         ];
     }
 }
