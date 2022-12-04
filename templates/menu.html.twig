@@ -63,7 +63,7 @@
             <div id="dropdown">
                 {% if app.user %}
                     <a href="{{ path('app_profil') }}" class="dropdown_link"><i class="fa-solid fa-user userpicto"></i> Compte</a>
-                    <a href="{{ path('app_profil') }}" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commande</a>
+                    <a href="{{ path('app_profil') }}#commandes" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commandes</a>
                     <a href="{{ path('app_logout') }}" class="dropdown_link"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
                 {% else %}
                     <a href="{{ path('app_login') }}" class="dropdown_link"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a>

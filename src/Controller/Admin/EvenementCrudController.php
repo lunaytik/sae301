@@ -26,12 +26,12 @@ class EvenementCrudController extends AbstractCrudController
             TextField::new('realisateur'),
             TextField::new('cast'),
             TextField::new('description'),
-            NumberField::new('prix', 'Prix (€)')->setNumDecimals(2),
-            DateTimeField::new('date'),
-            ImageField::new('affiche')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
             AssociationField::new('lieu', 'Lieu'),
             AssociationField::new('Tag', 'Tag'),
-            AssociationField::new('genre', 'Genre')
+            AssociationField::new('genre', 'Genre'),
+            NumberField::new('prix', 'Prix (€)')->setNumDecimals(2),
+            DateTimeField::new('date'),
+            ImageField::new('affiche')->setBasePath('uploads/')->setUploadDir('public/uploads/')
         ];
     }
 }
