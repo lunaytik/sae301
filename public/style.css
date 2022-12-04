@@ -577,7 +577,7 @@ select {
 .panier_box {
     display: flex;
     width: min(700px, calc(100% - 2rem));
-    gap: 2vw;
+    gap: 3rem;
     margin: auto;
     padding: 2rem 0;
     border-bottom: 1px solid rgb(213 213 213);
@@ -599,7 +599,7 @@ select {
     align-items: center;
 }
 .panier_gauche >img {
-    width: 11rem;
+    width: 9rem;
     border-radius: 8px;
 }
 .panier_droite {
@@ -1229,7 +1229,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .btn_adresse {
     margin: 2rem auto 0 auto;
-    width: 60%;
+    width: 30%;
 }
 
 .info_form_container {
@@ -2052,6 +2052,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-transform: uppercase;
     font-weight: 600;
     margin: 2rem 0 1rem 0;
+    text-align: center;
 }
 
 .profil_container {
@@ -2136,7 +2137,7 @@ ul{
     list-style: none;
 }
 .footer{
-    background-color: #24262b;
+    background-color: #1b1b1c;
     padding: 70px 0;
     margin-top: 100px;
 }
@@ -2221,10 +2222,22 @@ ul{
         width: 100%;
     }
 }
-
-
 .bt-r {
     margin-top: 2rem;
     border-top: 1px solid #E90065 ;
 }
-
+.noborder {
+    border: initial;
+    font-size: 1.5rem;
+}
+.commande_titre {
+    text-align: center;
+    margin-top: 2rem;
+}
+.content_size {
+    width: min(1000px , calc(100% - 2rem));
+    margin: auto;
+}
+.justify_center {
+    justify-content: center;
+}
