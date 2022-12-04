@@ -22,6 +22,7 @@ class EvenementController extends AbstractController
         return $this->render('evenement/evenements.html.twig', [
             'controller_name' => 'Lyon\'Tour - Evenements',
             'evenements' => $evenementRepository->findAll(),
+            'meta_description' => 'Retrouvez ici, l\'ensemble des événements proposés dans l\'agglomération Lyonnaise !'
         ]);
     }
 
@@ -35,7 +36,8 @@ class EvenementController extends AbstractController
         return $this->render('evenement/evenements_genre.html.twig', [
             'controller_name' => "Lyon'Tour - $s",
             'evenements' => $evenementRepository->findBy(['genre' => $resultat]),
-            'genre' => $genre
+            'genre' => $genre,
+            'meta_description' => "Retrouvez ici tous les $genre !"
         ]);
     }
 
@@ -51,7 +53,8 @@ class EvenementController extends AbstractController
         return $this->render('evenement/evenements_tag.html.twig', [
             'controller_name' => "Lyon'Tour - $t",
             'evenements' => $evenementRepository->findBy(['Tag' => $result]),
-            'tag' => $tag
+            'tag' => $tag,
+            'meta_description' => "Retrouvez ici notre sélection de nos événements $tag !"
         ]);
     }
 

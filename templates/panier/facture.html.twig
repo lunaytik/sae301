@@ -4,16 +4,17 @@
 
 {% block body %}
     {% include ('panier/progressbar.html.twig') %}
-    <section class="">
-        <div class="">
-            <svg class="" viewBox="0 0 80 80" aria-hidden="true"><g><circle fill="#000" cx="40" cy="40" r="40"/><polyline points="21 41 33 53 59 27" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/></g></svg>
+    <section class="confirm_container">
+        <div class="confirm_content">
+            <svg class="check_icon" viewBox="0 0 80 80" aria-hidden="true"><g><circle class="circle_icon" fill="#000" cx="40" cy="40" r="40"/><polyline points="21 41 33 53 59 27" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/></g></svg>
             <div class="">
-                <h1 class="">Commande confirmée</h1>
-                <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aliquid qui et saepe omnis ipsum amet quasi accusamus.</p>
+                <h1 class="confirm_title">Commande confirmée</h1>
+                <p class="confirm_text">Commande n°{{ commande.id }} | Total de : {{ commande.total }}€</p>
+                <p class="confirm_text">Le {{ commande.date|format_datetime('full', 'short', locale='fr') }}</p>
 
-                <p class="">
+                <p class="confirm_btn_container">
                     <a class="" href="{{ path('app_accueil') }}">Retourner à l'accueil</a>
-                    <a class="" href="{{ path('app_profil') }}#commandes">Voir mon historique de commandes</a>
+                    <a class="" href="{{ path('app_commande_detail', {id: commande.id}) }}">Voir ma commande</a>
                 </p>
             </div>
         </div>

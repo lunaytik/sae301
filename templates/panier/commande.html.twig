@@ -33,6 +33,7 @@
                         , {{ app.user.pays|country_name('fr') }}</p>
                 </div>
                 <form action="{{ path('app_commande', {'edit': '1'}) }}" method="post">
+                    <input type="hidden" name="total_prix" value="{{ total_prix }}">
                     <input type="hidden" name="liste" value="{{ panier }}">
                     <button type="submit" class="profil_link">MODIFIER</button>
                 </form>
@@ -49,8 +50,8 @@
                         </div>
                     {% endfor %}
                     <div class="event_info_right_total">
-                        <p>total:</p>
-                        <p>0€</p>
+                        <p class="capitalize">Total:</p>
+                        <p>{{ total_prix }}€</p>
                     </div>
                 </div>
             </div>

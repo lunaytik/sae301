@@ -50,8 +50,8 @@
     garantie_val =  parseFloat(panier_val * 4).toFixed(2);
     garantie.innerText = garantie_val;
 
+    document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
     document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
-
 
     document.querySelectorAll('.plus').forEach(clickplus)
     function clickplus(tag) {
@@ -77,7 +77,7 @@
             document.getElementById('liste').value = JSON.stringify(panier_tab);
 
             totalgeneral += 1 * parseFloat(prix);
-
+            document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
             document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
         })
     };
@@ -103,6 +103,8 @@
             totalgeneral -= 1 * parseFloat(prix);
 
             totalgeneral < 0 ? totalgeneral = 0 : totalgeneral = totalgeneral;
+
+            document.getElementById('total_prix').value = parseFloat(totalgeneral).toFixed(2);
             document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
 
             id = this.parentNode.querySelector('#event_id').value;

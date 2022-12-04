@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block description %}{{ meta_description }}{% endblock %}
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
@@ -82,9 +83,7 @@
             <div class="historique_container_bottom">
                 <h1>Le {{ reservation.date|format_datetime('full', 'short', locale='fr')}}</h1>
                 <h2>
-                    {% for detail in reservation.ligneReservations %}
-                        {{ detail.nbplace * detail.event.prix }}€
-                    {% endfor %}
+                    {{ reservation.total }}€
                 </h2>
                 <a href="{{ path('app_commande_detail', {'id': reservation.id}) }}">voir plus ›</a>
             </div>
