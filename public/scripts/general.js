@@ -85,7 +85,7 @@ function nomSearch(nom) {
             }
             for (i = 0; i < data.length; i++) {
                 evenement = data[i];
-                let e = $('<a href=""><img id="recherche_img" alt="Image de l\'évenement" src=""><div><h1 style="font-size: 1.4rem !important;font-weight: 600;" id="recherche_nom"></h1><h2 id="recherche_prix" style="font-size: 1.2rem;font-weight: 400;color: #e90065;"></h2></div></a><hr style="margin: 0 1rem;color: #e2e2e2;">');
+                let e = $('<a href=""><img id="recherche_img" alt="Image de l\'évenement" src=""><div><h1 style="font-size: 1.4rem !important;font-weight: 600;" id="recherche_nom"></h1><h2 style="font-size: 1.2rem;font-weight: 400;color: #e90065;"><span id="recherche_prix"></span>€</h2></div></a><hr style="margin: 0 1rem;color: #e2e2e2;">');
                 e.attr('href', evenement['lien'])
 
                 let lien = "/uploads/"+evenement['src'];
@@ -122,7 +122,7 @@ function nomGenreSearch(nom, genre) {
         }
         for (i = 0; i < data.length; i++) {
             evenement = data[i];
-            let e = $('<a href=""><img id="recherche_img" alt="Image de l\'évenement" src=""><div><h1 style="font-size: 1.4rem !important;font-weight: 600;" id="recherche_nom"></h1><h2 id="recherche_prix" style="font-size: 1.2rem;font-weight: 400;color: #e90065;"></h2></div></a><hr style="margin: 0 1rem;color: #e2e2e2;">');
+            let e = $('<a href=""><img id="recherche_img" alt="Image de l\'évenement" src=""><div><h1 style="font-size: 1.4rem !important;font-weight: 600;" id="recherche_nom"></h1><h2 style="font-size: 1.2rem;font-weight: 400;color: #e90065;"><span id="recherche_prix"></span>€</h2></div></a><hr style="margin: 0 1rem;color: #e2e2e2;">');
             e.attr('href', evenement['lien'])
 
             let lien = "/uploads/"+evenement['src'];
