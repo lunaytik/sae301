@@ -16,7 +16,6 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
             <script async src="{{ asset('scripts/general.js') }}"></script>
             <script defer src="{{ asset('scripts/app.js') }}"></script>
             {{ encore_entry_script_tags('app') }}
@@ -28,5 +27,6 @@
             {% block body %}{% endblock %}
         </main>
         {% include('footer.html.twig') %}
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -15,7 +15,8 @@ class LieuxController extends AbstractController
         $lieux = $lieuRepository->findAll();
         return $this->render('lieux/lieux.html.twig', [
             'controller_name' => 'Lyon\'Tour - lieux',
-            'lieux' => $lieux
+            'lieux' => $lieux,
+            'meta_description' => 'Ici découvrez tous les lieux dans lesquels les événements prennent place !'
         ]);
     }
 }

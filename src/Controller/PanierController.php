@@ -22,10 +22,7 @@ class PanierController extends AbstractController
     #[Route('/panier', name: 'app_panier')]
     public function index(Request $request): Response
     {
-
         $request->query->get('error') ? $error = 'Panier vide ou erreur lors de la commande ! Veuillez réessayer !' : $error = null;
-
-
         return $this->render('panier/panier.html.twig', [
             'controller_name' => 'Lyon\'Tour - Panier',
             'error' => $error
@@ -36,28 +33,19 @@ class PanierController extends AbstractController
     public function commande(Request $request, LigneReservationRepository $ligneReservationRepository, ReservationRepository $reservationRepository,
                              EvenementRepository $evenementRepository, ClientRepository $clientRepository): Response
     {
-
         $liste = $request->request->get('liste');
-
         if (empty($liste) || !isset($liste)) {
             return $this->redirectToRoute('app_panier', ['error' => '1']);
         }
-
         $total_prix = $request->request->get('total_prix');
-
-
         $client = $this->getUser();
-
-
-        if($request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande' && $request->query->get('edit') || ($client->getAdresse() == null)
-        || $request->headers->get('referer') == 'http://localhost/sae301/public/panier/commande?edit=1') {
+        if($request->headers->get('referer') == 'https://mmi21h04.sae301dev.ovh/panier/commande' && $request->query->get('edit') || ($client->getAdresse() == null)
+        || $request->headers->get('referer') == 'https://mmi21h04.sae301dev.ovh/paniercommande?edit=1') {
             $form = $this->createForm(AdresseCbType::class, $client);
         } else {
             $form = $this->createForm(CbType::class, $client);
         }
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->save($client, true);
 
@@ -84,11 +72,8 @@ class PanierController extends AbstractController
                 $ligne->setNbPlace($event->quantite);
                 $ligne->setReservation($res);
                 $ligneReservationRepository->save($ligne, true);
-
             }
-
             $request->request->remove('liste');
-
             return $this->redirectToRoute('app_facture', ['id'=>$res_id]);
         }
 

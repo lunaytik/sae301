@@ -36,7 +36,8 @@ class ProfilController extends AbstractController
             'controller_name' => 'Lyon\'Tour - Profil',
             'client' => $client,
             'form' => $form,
-            'reservations' => $reservations
+            'reservations' => $reservations,
+            'meta_description' => 'Retrouvez ici, votre profil regroupant vos informations personnelles et votre historique de commandes'
         ]);
     }
 
