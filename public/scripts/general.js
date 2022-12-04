@@ -56,7 +56,7 @@ $(document).ready(function () {
         if (nom != null && nom.length != 0) {
             $.ajax({
                 type: 'POST',
-                url: '/sae301/index.php/recherche',
+                url: '/recherche',
                 data: {
                     recherche: nom
                 },
