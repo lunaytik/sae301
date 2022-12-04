@@ -26,7 +26,7 @@ class EvenementCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('realisateur'),
             TextField::new('cast'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             NumberField::new('prix', 'Prix (€)')->setNumDecimals(2),
             DateTimeField::new('date'),
             ImageField::new('affiche')->setBasePath('uploads/')->setUploadDir('public/uploads/'),

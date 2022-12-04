@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CountryField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -36,6 +37,7 @@ class ClientCrudController extends AbstractCrudController
                 ->renderExpanded(true),
             TextField::new('nom'),
             TextField::new('prenom'),
+            TelephoneField::new('tel_num'),
             CountryField::new('pays'),
             TextField::new('adresse'),
             TextField::new('cp'),
