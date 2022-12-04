@@ -32,11 +32,13 @@
             <div class="total">Total de <span id="total"></span>€</div>
             {% if app.user %}
                 <form class="panier_form" action="{{ path('app_commande') }}" method="post">
+                    <input type="hidden" name="total" id="total" value="">
                     <input type="hidden" name="liste" id="liste">
                     <input id="log_btn" type="submit" value="Valider la commande">
                 </form>
             {% else %}
                 <form class="panier_form" action="{{ path('app_login') }}" method="post">
+                    <input type="hidden" name="total" id="total" value="">
                     <input type="hidden" name="liste" id="liste">
                     <input id="log_btn" type="submit" value="Valider la commande">
                 </form>

@@ -4,6 +4,8 @@ btn_ajout.addEventListener('click', () => {
     const event_quantite = document.getElementById('event_quantite');
     const event_nom = document.getElementById('event_nom').innerText;
     const event_prix = document.getElementById('event_prix').innerText;
+    const event_lieu = document.getElementById('event_lieu').innerText;
+    const event_adresse = document.getElementById('event_adresse').innerText;
     const event_img = document.getElementById('event_img').src;
     const event_date = document.getElementById('event_date').innerText;
     const event_id = document.getElementById('event_id').value;
@@ -20,7 +22,7 @@ btn_ajout.addEventListener('click', () => {
         document.cookie = JSON.stringify(panier_tab);
         document.cookie += ';path=/'
     } else {
-        panier_tab.push({"id":event_id,"nom":event_nom,"img":event_img,"quantite":event_quantite.value,"prix":event_prix,"date":event_date});
+        panier_tab.push({"id":event_id,"nom":event_nom,"img":event_img,"quantite":event_quantite.value,"prix":event_prix,"date":event_date,"adresse":event_adresse,"lieu":event_lieu});
         panier_val += parseInt(event_quantite.value);
         panier_display.innerText = panier_val;
         document.cookie = JSON.stringify(panier_tab);
@@ -39,6 +41,8 @@ ajout.addEventListener('click', () => {
     const event_nom = document.getElementById('event_nom').innerText;
     const event_prix = document.getElementById('event_prix').innerText;
     const event_img = document.getElementById('event_img').src;
+    const event_lieu = document.getElementById('event_lieu').innerText;
+    const event_adresse = document.getElementById('event_adresse').innerText;
     const event_date = document.getElementById('event_date').innerText;
     const event_id = document.getElementById('event_id').value;
 
@@ -51,7 +55,7 @@ ajout.addEventListener('click', () => {
         document.cookie = JSON.stringify(panier_tab);
         document.cookie += ';path=/'
     } else {
-        panier_tab.push({"id":event_id,"nom":event_nom,"img":event_img,"quantite":event_quantite.value,"prix":event_prix,"date":event_date});
+        panier_tab.push({"id":event_id,"nom":event_nom,"img":event_img,"quantite":event_quantite.value,"prix":event_prix,"date":event_date,"adresse":event_adresse,"lieu":event_lieu});
         panier_val += parseInt(event_quantite.value);
         panier_display.innerText = panier_val;
         document.cookie = JSON.stringify(panier_tab);

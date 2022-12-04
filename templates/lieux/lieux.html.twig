@@ -24,7 +24,7 @@
                 <img src="{{ asset("uploads/#{ lieu.image3 }") }}" alt="{{ lieu.nom }} image 3">
             </div>
             <div class="lieux_affichage_carte">
-                <h4>Place de la Comédie, 69001 Lyon 1er </h4>
+                <h4> {{ lieu.adresse }} </h4>
                 <iframe frameBorder="0" src="{{ lieu.iframe }}"></iframe>
             </div>
         </div>

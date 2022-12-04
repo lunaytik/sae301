@@ -46,7 +46,7 @@
             {% endif %}
             <div class="lieux_affichage">
                 <div class="lieux_affichage_top">
-                    <h2>{{ evenement.lieu.nom }}</h2>
+                    <h2 id="event_lieu">{{ evenement.lieu.nom }}</h2>
                     <h3>{{ evenement.lieu.capacite }} places</h3>
                     <p>{{ evenement.description }}</p>
                 </div>
@@ -56,7 +56,7 @@
                     <img src="{{ asset("uploads/#{ evenement.lieu.image3 }") }}" alt="{{ evenement.lieu.nom }} image 3">
                 </div>
                 <div class="lieux_affichage_carte">
-                    <h4>Place de la Comédie, 69001 Lyon 1er </h4>
+                    <h4 id="event_adresse">{{ evenement.lieu.adresse }}</h4>
                     <iframe frameBorder="0" src="{{ evenement.lieu.iframe }}"></iframe>
                 </div>
             </div>

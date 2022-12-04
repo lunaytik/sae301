@@ -20,13 +20,13 @@
                     <p>${date[0]}</p>
                     <p>${date[1]}</p>
                 </div>
-<!--                <div class="panier_lieu">
+                <div class="panier_lieu">
                     <div>
                         <i class="fa-solid fa-location-dot"></i>
-                        <p>Centre des lumières</p>
+                        <p>${evenement.lieu}</p>
                     </div>
-                    <p>11 Rue Aimé Collomb, 69003 Lyon, France</p>
-                </div>-->
+                    <p>${evenement.adresse}</p>
+                </div>
                 <div class="panier_nb_prix">
                     <div class="selecteur_nb select_panier">
                         <button class="moins">-</button>
@@ -47,7 +47,7 @@
         totalgeneral += evenement.prix * evenement.quantite;
     })
 
-    garantie_val = panier_val * 4;
+    garantie_val =  parseFloat(panier_val * 4).toFixed(2);
     garantie.innerText = garantie_val;
 
     document.getElementById('total').innerHTML = parseFloat(totalgeneral).toFixed(2);
@@ -62,7 +62,7 @@
             panier_display.innerText = panier_val;
             this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-            garantie_val = panier_val * 4;
+            garantie_val = parseFloat(panier_val * 4).toFixed(2);
             garantie.innerText = garantie_val;
 
             prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
@@ -91,12 +91,14 @@
             panier_display.innerText = panier_val;
             this.parentNode.querySelector('#event_quantite').innerHTML = val_quantite;
 
-            garantie_val = panier_val * 4;
+            garantie_val = parseFloat(panier_val * 4).toFixed(2);
             garantie.innerText = garantie_val;
 
             prix = this.parentNode.parentNode.parentNode.querySelector('.event_prix span').innerHTML;
             total = parseFloat(prix) * val_quantite;
             this.parentNode.parentNode.parentNode.querySelector('.event_prix_total span').innerHTML = parseFloat(total).toFixed(2);
+
+
 
             totalgeneral -= 1 * parseFloat(prix);
 
@@ -141,7 +143,8 @@
         document.getElementById('panier_zone').append(panier_vide);
         document.getElementById('liste').value = null;
 
-        garantie.innerText = 0.00;
+        garantie_val = parseFloat(0).toFixed(2)
+        garantie.innerText = garantie_val;
 
         document.getElementById('log_btn').remove();
     }
@@ -151,9 +154,9 @@
 
     garantie_check.addEventListener('change', () => {
         if (garantie_check.checked) {
-            document.getElementById('total').innerHTML = totalgeneral + garantie_val;
+            document.getElementById('total').innerHTML = parseFloat(totalgeneral + garantie_val).toFixed(2);
         } else {
-            document.getElementById('total').innerHTML = totalgeneral;
+            document.getElementById('total').innerHTML =  parseFloat(totalgeneral).toFixed(2);
         }
     })
 
