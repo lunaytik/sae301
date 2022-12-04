@@ -151,14 +151,3 @@
         document.getElementById('log_btn').remove();
     }
 
-
-    garantie_check = document.getElementById('garantie_check')
-
-    garantie_check.addEventListener('change', () => {
-        if (garantie_check.checked) {
-            document.getElementById('total').innerHTML = parseFloat(totalgeneral + garantie_val).toFixed(2);
-        } else {
-            document.getElementById('total').innerHTML =  parseFloat(totalgeneral).toFixed(2);
-        }
-    })
-
