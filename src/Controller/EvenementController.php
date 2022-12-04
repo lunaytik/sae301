@@ -17,11 +17,22 @@ use Symfony\Component\HttpFoundation\Request;
 class EvenementController extends AbstractController
 {
     #[Route('/evenements', name: 'app_evenements')]
-    public function index(EvenementRepository $evenementRepository): Response
+    public function index(EvenementRepository $evenementRepository, Request $request): Response
     {
+        $genre = $request->query->get('genre');
+        $nom = $request->query->get('recherche');
+
+        if(!empty($nom) && !empty($genre)) {
+            $evenements = $evenementRepository->findByNomGenre($nom, $genre);
+        } elseif(!empty($nom)) {
+            $evenements = $evenementRepository->findByNom($nom);
+        } else {
+            $evenements = $evenementRepository->findAll();
+        }
+
         return $this->render('evenement/evenements.html.twig', [
             'controller_name' => 'Lyon\'Tour - Evenements',
-            'evenements' => $evenementRepository->findAll(),
+            'evenements' => $evenements,
             'meta_description' => 'Retrouvez ici, l\'ensemble des événements proposés dans l\'agglomération Lyonnaise !'
         ]);
     }
@@ -93,9 +104,25 @@ class EvenementController extends AbstractController
         if ($request->isXmlHttpRequest()) {
 
             $nom = $request->request->get('recherche');
+            $genre = $request->request->get('cat');
 
-            if (!empty($nom)) {
+            if (!empty($nom) && empty($genre)) {
                 $evenements = $evenementRepository->findByNom($nom);
+                $jsonData = array();
+                $idx = 0;
+                foreach($evenements as $evenement) {
+                    $temp = array(
+                        'nom' => $evenement->getNom(),
+                        'prix' => $evenement->getPrix(),
+                        'lien' => '/evenements/'.$evenement->getGenre().'/'.$evenement->getId(),
+                        'src' => $evenement->getAffiche()
+                    );
+                    $jsonData[$idx++] = $temp;
+                }
+                return new JsonResponse($jsonData);
+            }
+            if (!empty($nom) && !empty($genre)) {
+                $evenements = $evenementRepository->findByNomGenre($nom, $genre);
                 $jsonData = array();
                 $idx = 0;
                 foreach($evenements as $evenement) {

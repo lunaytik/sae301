@@ -50,6 +50,21 @@ class EvenementRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findByNomGenre($nom, $genre)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.nom LIKE :name')
+            ->andWhere('u.genre = :gen')
+            ->setParameters([
+                'name' => '%'.$nom.'%',
+                'gen' => $genre
+            ])
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Evenement[] Returns an array of Evenement objects
 //     */

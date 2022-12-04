@@ -2467,3 +2467,12 @@ ul{
     padding: 1rem;
     border-radius: .5rem;
 }
+
+#recherche_container #inline_link {
+    align-items:flex-start !important;
+    margin: 0 !important;
+}
+
+#genre {
+    background-color: #EEEEEE;
+}

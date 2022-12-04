@@ -8,12 +8,11 @@
         <form action="{{ path('app_evenements') }}">
             <select class="choix" name="genre" id="genre" aria-label="Selectionner la catégorie à chercher">
                 <option value="">Dans toutes nos catégories</option>
-                <option value="Film">Film</option>
-                <option value="Spectacle">Spectacle</option>
-                <option value="Concert">Concert</option>
-                <option value="Théâtre">Théâtre</option>
-                <option value="Exposition">Exposition</option>
-
+                <option value="5">Film</option>
+                <option value="1">Spectacle</option>
+                <option value="4">Concert</option>
+                <option value="2">Exposition</option>
+                <option value="3">Théâtre</option>
             </select>
             <input class="search_bar" id="recherche" type="text" placeholder="Tapez votre recherche" autocomplete="off" name="recherche" aria-label="Champ de recherche des évenements">
             <button class="chercher" type="submit">chercher<i class="fa-solid fa-magnifying-glass"></i></button>
