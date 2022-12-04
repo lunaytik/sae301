@@ -78,7 +78,6 @@ class PanierController extends AbstractController
         }
 
         $array = json_decode($liste);
-        dump($array);
         return $this->renderForm('panier/commande.html.twig', [
             'controller_name' => 'Lyon\'Tour - Commande',
             'liste' => $array,
