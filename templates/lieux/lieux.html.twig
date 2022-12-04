@@ -25,7 +25,7 @@
             </div>
             <div class="lieux_affichage_carte">
                 <h4> {{ lieu.adresse }} </h4>
-                <iframe frameBorder="0" src="{{ lieu.iframe }}"></iframe>
+                <iframe frameBorder="0" title="Localisation de {{ evenement.lieu.nom }}" src="{{ lieu.iframe }}"></iframe>
             </div>
         </div>
         {% endfor %}
