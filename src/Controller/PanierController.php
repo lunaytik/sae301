@@ -43,6 +43,9 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('app_panier', ['error' => '1']);
         }
 
+        $total_prix = $request->request->get('total_prix');
+
+
         $client = $this->getUser();
 
 
@@ -67,6 +70,7 @@ class PanierController extends AbstractController
             $reservation = new Reservation();
             $reservation->setClient($user);
             $reservation->setDate($now);
+            $reservation->setTotal($total_prix);
             $reservationRepository->save($reservation, true);
 
             $res_id = $reservation->getId();
@@ -85,7 +89,7 @@ class PanierController extends AbstractController
 
             $request->request->remove('liste');
 
-            return $this->redirectToRoute('app_facture');
+            return $this->redirectToRoute('app_facture', ['id'=>$res_id]);
         }
 
         $array = json_decode($liste);
@@ -94,15 +98,25 @@ class PanierController extends AbstractController
             'controller_name' => 'Lyon\'Tour - Commande',
             'liste' => $array,
             'panier' => $liste,
-            'form' => $form
+            'form' => $form,
+            'total_prix' => $total_prix
         ]);
     }
 
     #[Route('/panier/facture', name: 'app_facture')]
-    public function facture(Request $request): Response
+    public function facture(Request $request, ReservationRepository $reservationRepository): Response
 {
+    $res_id = $request->query->get('id');
+
+    if (!isset($res_id)) {
+        return $this->redirectToRoute('app_accueil');
+    }
+
+    $res = $reservationRepository->find($res_id);
+
     return $this->render('panier/facture.html.twig', [
         'controller_name' => 'Lyon\'Tour - Facture',
+        'commande' => $res
     ]);
 }
 }

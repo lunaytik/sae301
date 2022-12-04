@@ -310,6 +310,7 @@ select {
     padding-inline: 30px;
     display: grid;
     place-content: center;
+    overflow: hidden;
 }
 .nav2 > a:hover {
     background: #d7005d;
@@ -1646,8 +1647,16 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 2.6rem;
     color: var(--main-bg-color);
 }
+.historique_container a {
+    text-transform: uppercase;
+}
+
 .historique_container a:hover {
     color: var(--main-bg-color);
+}
+
+.capitalize {
+    text-transform: capitalize;
 }
 
 .event_info_right2
@@ -2086,7 +2095,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 500;
     font-size: 0.9rem;
     position: absolute;
-    bottom: 15%;
+    bottom: 5%;
     right: 5%;
 }
 
@@ -2130,6 +2139,78 @@ input[type=number]::-webkit-outer-spin-button {
     .return_link {
         top: 25%;
     }
+}
+
+.confirm_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm_title {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.check_icon {
+    padding: 5rem 0 1rem 0;
+    width: clamp(5vw, 100px, 80vw);
+}
+
+.confirm_text {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.circle_icon {
+    fill: #47a209;
+}
+
+.confirm_btn_container {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    text-align: center;
+    gap: 2rem;
+}
+
+.confirm_btn_container > a {
+    font-weight: 500;
+}
+
+.confirm_btn_container > a:nth-child(2) {
+    border: 1px solid #e90065;
+    color: #fff;
+    background-color: #E90065;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.confirm_btn_container > a:nth-child(2):hover {
+    border: 1px solid #e90065;
+    color: #e90065;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    transition: all .5s;
+}
+
+.confirm_btn_container > a:nth-child(1) {
+    border: 1px solid #e90065;
+    color: #e90065;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    transition: all .5s;
+}
+
+.confirm_btn_container > a:nth-child(1):hover {
+    border: 1px solid #d0005a;
+    color: #d0005a;
+    background-color: #ececec;
+    padding: 1rem;
+    border-radius: .5rem;
 }
 
 /*footer*/
@@ -2248,4 +2329,76 @@ ul{
 }
 .justify_center {
     justify-content: center;
+}
+
+.confirm_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm_title {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.check_icon {
+    padding: 5rem 0 1rem 0;
+    width: clamp(5vw, 100px, 80vw);
+}
+
+.confirm_text {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.circle_icon {
+    fill: #47a209;
+}
+
+.confirm_btn_container {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    text-align: center;
+    gap: 2rem;
+}
+
+.confirm_btn_container > a {
+    font-weight: 500;
+}
+
+.confirm_btn_container > a:nth-child(2) {
+    border: 1px solid #e90065;
+    color: #fff;
+    background-color: #E90065;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.confirm_btn_container > a:nth-child(2):hover {
+    border: 1px solid #e90065;
+    color: #e90065;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    transition: all .5s;
+}
+
+.confirm_btn_container > a:nth-child(1) {
+    border: 1px solid #e90065;
+    color: #e90065;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    transition: all .5s;
+}
+
+.confirm_btn_container > a:nth-child(1):hover {
+    border: 1px solid #d0005a;
+    color: #d0005a;
+    background-color: #ececec;
+    padding: 1rem;
+    border-radius: .5rem;
 }
