@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class AdresseCbType extends AbstractType
 {
@@ -38,12 +39,21 @@ class AdresseCbType extends AbstractType
                 "label" => "Code postal",
                 'attr' => [
                     'placeholder' => '10000'
-                ]
+                ],
+                new Length([
+                    'min' => 5,
+                    'minMessage' => 'Le code postal doit contenir {{ limit }} caractères',
+                    'max' => 5
+                ])
             ])
             ->add('ville', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Troyes'
-                ]
+                ],
+                new Length([
+                    'max' => 40,
+                    'maxMessage' => 'La ville doit contenir au maximum {{ limit }} caractères'
+                ])
             ])
             ->add('pays', CountryType::class, [
                 'data' => 'FR'
@@ -52,7 +62,12 @@ class AdresseCbType extends AbstractType
                 "label" => "Numéro de téléphone",
                 "attr" => [
                     "placeholder" => "06 10 50 00 00"
-                ]
+                ],
+                new Length([
+                    'min' => 10,
+                    'minMessage' => 'Le numéro de téléphone doit contenir {{ limit }} caractères',
+                    'max' => 14
+                ])
             ])
             ->add('cardNum', TelType::class, [
                 "label" => "Numéro de la carte",
