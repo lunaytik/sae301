@@ -262,7 +262,6 @@ select {
     font-weight:600 ;
     font-size: 1.2rem;
     color: white;
-    transform: translateY(-1px);
 }
 .choix {
     height: 45px;
@@ -411,6 +410,17 @@ select {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 30px;
+}
+.suite2 {
+    margin-top: 3rem;
+    width: min(1000px , calc(100% - 2rem));
+    margin-inline: auto;
+    text-align: justify;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.suite2 > p {
+    margin-top: 2rem;
 }
 .suite .event_card:last-child {
     justify-self: flex-start;
@@ -1909,13 +1919,14 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .event_card_image {
         display: flex;
-        justify-content: center;
+        /*! justify-content: center; */
         align-items: center;
+        min-width: 120px;
     }
     .event_card_image > img {
         width: 100%;
         height: auto;
-        max-width: 160px;
+        max-width: 122px;
     }
     .event_card_content_top h4 {
         font-size: clamp(1.2rem ,5vw, 1.5rem);
