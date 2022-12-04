@@ -1654,11 +1654,11 @@ input[type=number]::-webkit-outer-spin-button {
     left: 10px;
 }
 .historique_container_img > div:nth-child(3){
-    top: -28px;
+    top: -23px;
     z-index: 3;
-    width: 140px;
-    height: 140px;
-    left: 20px;
+    width: 133px;
+    height: 133px;
+    left: 25px;
 }
 .historique_container_img > div:nth-child(n+4) {
     display: none;
