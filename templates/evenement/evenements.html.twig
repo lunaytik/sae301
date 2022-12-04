@@ -12,6 +12,12 @@
         </div>
     </div>
     <div class="suite">
+        {% if evenements is empty %}
+                <div class="empty_evenements">
+                    <h2>Aucun résultat lié à cette recherche !</h2>
+                    <a href="{{ path('app_evenements') }}">Retourner aux évenements !</a>
+                </div>
+        {% endif %}
         {% for evenement in evenements %}
             <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
                 <div class="event_card_image">

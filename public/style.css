@@ -2476,3 +2476,31 @@ ul{
 #genre {
     background-color: #EEEEEE;
 }
+
+.empty_evenements {
+    width: 100%;
+    text-align: center;
+    grid-column: 1/-1;
+}
+
+.empty_evenements h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 6rem 0 1rem;;
+}
+
+.empty_evenements a {
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: #e90065;
+    margin: 2rem auto;
+    display: block;
+    width: fit-content;
+    transition: all .4s;
+}
+
+.empty_evenements a:hover {
+    color: #a61051;
+}
