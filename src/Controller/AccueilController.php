@@ -23,5 +23,22 @@ class AccueilController extends AbstractController
             'tout' => $result,
             'meta_description' => 'Billeterie en ligne de la ville de Lyon, regroupant les plus grands évenements à découvrir !'
         ]);
+
+    }
+    #[Route("/cgv", name:"app_cgv")]
+    public function cgv()
+    {
+         return $this->render('accueil/cgv.html.twig', [
+             'controller_name' => 'Lyon\'Tour - cgv',
+             'meta_description' => 'Billeterie en ligne de la ville de Lyon, regroupant les plus grands évenements à découvrir !'
+             ]  );
+    }
+    #[Route("/cgu", name:"app_cgu")]
+    public function cgu()
+    {
+        return $this->render('accueil/cgu.html.twig', [
+            'controller_name' => 'Lyon\'Tour - cgu',
+            'meta_description' => 'Billeterie en ligne de la ville de Lyon, regroupant les plus grands évenements à découvrir !'
+        ]  );
     }
 }
