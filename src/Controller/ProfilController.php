@@ -42,8 +42,15 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/profil/commande/{id}', name: 'app_commande_detail')]
-    public function profil_cmd(Reservation $reservation): Response
+    public function profil_cmd(ReservationRepository $reservationRepository, Request $request): Response
     {
+
+        $reservation = $reservationRepository->find($request->attributes->get('id'));
+
+        if($reservation == null) {
+            return $this->redirectToRoute('app_profil', ['commande_error'=>'1']);
+        }
+
         $client_connected_id = $this->getUser()->getId();
 
         $client_id = $reservation->getClient()->getId();

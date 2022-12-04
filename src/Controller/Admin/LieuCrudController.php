@@ -30,7 +30,7 @@ class LieuCrudController extends AbstractCrudController
             IntegerField::new('capacite'),
             TextField::new('adresse'),
             TextField::new('iframe'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             ImageField::new('image1')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
             ImageField::new('image2')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
             ImageField::new('image3')->setBasePath('uploads/')->setUploadDir('public/uploads/'),
