@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <h1 class="commande_titre">Commande n°{{ reservation.id }}</h1>
+    <div class="panier_content" id="panier_zone">
+    {% for ligne in reservation.ligneReservations %}
+
+        <div class="panier_box">
+            <div class="panier_gauche"><img class="test" src="{{ asset("uploads/#{ ligne.event.affiche }") }}" alt="Image de ${evenement.nom}"></div>
+            <div class="panier_droite">
+                <h1>{{ ligne.event.nom }}</h1>
+                <div class="panier_date">
+                    Date de l'évenement : {{ ligne.event.date|format_datetime('full', 'short', locale='fr') }}
+                </div>
+                <div class="panier_lieu">
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>{{ ligne.event.lieu }}</p>
+                    </div>
+                </div>
+                <div class="panier_nb_prix">
+                    <div class="selecteur_nb select_panier noborder">
+                        x{{ ligne.nbPlace }}
+                    </div>
+                    <div class="panier_prix">
+                        <p class="event_prix_total">Total: {{ ligne.event.prix * ligne.nbPlace }}€</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    {% include ('panier/progressbar.html.twig') %}
+    <div id="panier_container">
+        {% if error %}
+            <div class="display_error">{{ error }}</div>
+        {% endif %}
+
+        <h1>Panier</h1>
+        <div class="panier_content" id="panier_zone">
+        </div>
+        <div class="panier_remboursement_box">
+            <div>
+                <div class="panier_remboursement_box_box">
+                    <input type="checkbox" id="garantie_check">
+                    <div class="panier_remboursement_left">
+                        <h3>Garantie remboursement</h3>
+                        <p>Jusqu’à un remboursement de 100% si justifié, dans le cas contraire remboursement de 75%</p>
+                    </div>
+                </div>
+                <div class="panier_remboursement_right">
+                    <p  class="panier_remboursement_enplus">+4€/place</p>
+                    <p  class="panier_remboursement_enplus_total">Total : <span id="garantie_total"></span>€</p>
+                </div>
+            </div>
+        </div>
+        <div class="panier_total">
+            <div class="total">Total de <span id="total"></span>€</div>
+            {% if app.user %}
+                <form class="panier_form" action="{{ path('app_commande') }}" method="post">
+                    <input type="hidden" name="total_prix" id="total_prix" value="">
+                    <input type="hidden" name="liste" id="liste">
+                    <input id="log_btn" type="submit" value="Valider la commande">
+                </form>
+            {% else %}
+                <form class="panier_form" action="{{ path('app_login') }}" method="post">
+                    <input type="hidden" name="total_prix" id="total_prix" value="">
+                    <input type="hidden" name="liste" id="liste">
+                    <input id="log_btn" type="submit" value="Valider la commande">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <script defer src="{{ asset('scripts/panier.js') }}"></script>
+{% endblock %}

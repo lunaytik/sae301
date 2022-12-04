@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SITE - Register{% endblock %}
+
+{% block body %}
+
+    <a href="{{ app.request.headers.get('referer') }}" class="return_link">
+        <i class="fa-solid fa-arrow-left"></i>Retour
+    </a>
+    <div id="log_container">
+        <h1 class="log_title">S'inscrire</h1>
+        {{ form_start(registrationForm, {'attr': {'id': 'log_form'}}) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.agreeTerms, {
+            label: 'J\'acceptes les conditions d\'utilisation'
+        }) }}
+
+        <div class="log_btn_container">
+            <input id="log_btn" type="submit" value="S'inscrire">
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

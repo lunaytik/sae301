@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lyon'Tour - S'identifier{% endblock %}
+
+{% block body %}
+    <a href="{{ app.request.headers.get('referer') }}" class="return_link">
+        <i class="fa-solid fa-arrow-left"></i>Retour
+    </a>
+
+    {% if app.request.headers.get('referer') == 'https://mmi21h04.sae301dev.ovh/panier' %}
+        {% include('panier/progressbar.html.twig') %}
+        <script>
+            active = 2;
+            updateProgress();
+        </script>
+    {% endif %}
+
+    <div id="log_container">
+        <h1 class="log_title">S'identifier</h1>
+        <form method="post" id="log_form">
+            <div class="log_item">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="{{ last_username }}"
+                class="form-control" autocomplete="email" required autofocus placeholder="john.doe@domain.com">
+            </div>
+            <div class="log_item">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" class="form-control"
+                autocomplete="current-password" required>
+            </div>
+            <div class="log_item row_dir">
+                <input type="checkbox" name="_remember_me" id="_remember_me">
+                <label for="_remember_me">Se souvenir de moi</label>
+            </div>
+            <div class="log_btn_container">
+                <input id="log_btn" type="submit" value="S'identifier">
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            {% if app.request.headers.get('referer') == 'https://mmi21h04.sae301dev.ovh/panier' %}
+                <input type="hidden" name="origin" value="{{ app.request.headers.get('referer') }}">
+            {% endif %}
+
+        </form>
+        <a href="{{ path('app_register') }}" class="log_bot_link">Pas encore inscrit ?<span>S'inscrire</span></a>
+        <a href="#" class="log_bot_link">Mot de passe oublié ?</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+
+
+{% block body %}
+    <div id="commande_container">
+        {% include('panier/progressbar.html.twig') %}
+        <h1>Commande</h1>
+        {% if app.user.adresse and app.request.query.get('edit') %}
+            {% include('panier/_adresse_cb.html.twig') %}
+            <script src="{{ asset('scripts/_cb.js') }}"></script>
+        {% elseif app.user.adresse %}
+            <div class="info_form info_form2_resp">
+            <div class="profil_container">
+                <h2 class="profil_title">Informations personnelles</h2>
+                <div class="profil_item">
+                    <p>Prénom</p>
+                    <p>{{ app.user.prenom }}</p>
+                </div>
+                <div class="profil_item">
+                    <p>Nom</p>
+                    <p>{{ app.user.nom }}</p>
+                </div>
+                <div class="profil_item">
+                    <p>Numéro de téléphone</p>
+                    <p>{{ app.user.telNum }}</p>
+                </div>
+                <div class="profil_item">
+                    <p>Adresse</p>
+                    <p>{{ app.user.adresse }}, {{ app.user.ville }} {{ app.user.cp }}
+                        , {{ app.user.pays|country_name('fr') }}</p>
+                </div>
+                <form action="{{ path('app_commande', {'edit': '1'}) }}" method="post">
+                    <input type="hidden" name="total_prix" value="{{ total_prix }}">
+                    <input type="hidden" name="liste" value="{{ panier }}">
+                    <button type="submit" class="profil_link">MODIFIER</button>
+                </form>
+            </div>
+                <div class="event_info_right2">
+                    <h2 class="p0">Récapitulatif</h2>
+                    {% for event in liste %}
+                        <div class="event_info_right_item">
+                            <p class="event_info_right_item_nom">{{ event.nom }}</p>
+                            <div class="event_info_right_nb_prix">
+                                <p>x{{ event.quantite }}</p>
+                                <p>{{ event.prix * event.quantite }}€</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="event_info_right_total">
+                        <p class="capitalize">Total:</p>
+                        <p>{{ total_prix }}€</p>
+                    </div>
+                </div>
+            </div>
+            {% include('panier/_cb.html.twig') %}
+            <script src="{{ asset('scripts/cb.js') }}"></script>
+        {% else %}
+            {% include('panier/_adresse_cb.html.twig') %}
+            <script src="{{ asset('scripts/_cb.js') }}"></script>
+        {% endif %}
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            active = 3;
+            updateProgress();
+        })
+    </script>
+{% endblock %}

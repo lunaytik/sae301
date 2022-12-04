@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ meta_description }}{% endblock %}
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <style>
+        .event_affichage_top {
+            background: url( {{asset("uploads/#{ evenement.affiche }")}} ) !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: 200% !important;
+        }
+        .lieux_affichage_top h2 {
+            font-size: 1.8rem;
+        }
+    </style>
+    <div class="event_affichage_top">
+        <div class="event_affichage_top_retour">
+            <a href="{{ app.request.headers.get('referer') }}">‹ Retour</a>
+        </div>
+        <div class="event_grid_1">
+            <div class="event_affiche">
+                <img class="test" loading="lazy" id="event_img" src="{{ asset("uploads/#{ evenement.affiche }") }}"
+                     alt="Image de {{ evenement.nom }}">
+            </div>
+            <div class="event_title">
+                <h1 id="event_nom">{{ evenement.nom }}</h1>
+                <div>
+                    <h2>{{ evenement.realisateur }}</h2>
+                </div>
+                <div class="event_tag">
+                    <h3 class="event_tag_tag">#{{ evenement.genre }}</h3>
+                    {% if evenement.tag is not empty %}
+                        <h3 class="event_tag_tag">#{{ evenement.tag }}</h3>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="event_info">
+        <div class="event_info_left">
+            <h3>Présentation</h3>
+            <p>{{ evenement.description }}</p>
+            {% if evenement.cast %}
+                <h3>Casting</h3>
+                <p>{{ evenement.cast }}</p>
+            {% endif %}
+            <div class="lieux_affichage">
+                <div class="lieux_affichage_top">
+                    <h2 id="event_lieu">{{ evenement.lieu.nom }}</h2>
+                    <h3>{{ evenement.lieu.capacite }} places</h3>
+                    <p>{{ evenement.description }}</p>
+                </div>
+                <div class="lieux_affichage_img">
+                    <img src="{{ asset("uploads/#{ evenement.lieu.image1 }") }}" alt="{{ evenement.lieu.nom }} image 1">
+                    <img src="{{ asset("uploads/#{ evenement.lieu.image2 }") }}" alt="{{ evenement.lieu.nom }} image 2">
+                    <img src="{{ asset("uploads/#{ evenement.lieu.image3 }") }}" alt="{{ evenement.lieu.nom }} image 3">
+                </div>
+                <div class="lieux_affichage_carte">
+                    <h4 id="event_adresse">{{ evenement.lieu.adresse }}</h4>
+                    <iframe frameBorder="0" src="{{ evenement.lieu.iframe }}"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="event_info_right">
+            <div>
+                <h4 class="event_info_right_prix"><span id="event_prix">{{ evenement.prix }}</span>€</h4>
+                <p class="event_info_right_livraison">livraison instantanée par mail</p>
+            </div>
+            <div>
+                <p class="event_info_right_revertion">Réservation</p>
+                <p class="event_info_right_date">pour le <span id="event_date">{{ evenement.date|format_datetime('short', 'short', locale='fr') }}</span></p>
+            </div>
+            <div>
+                <div class="selecteur_nb">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="moins_panier" >-</button>
+                    <input type="number" value="1" min="1" max="99" id="event_quantite" aria-label="Nombre d'évenements sélectionnés">
+                    <input type="hidden" id="event_id" value="{{ evenement.id }}">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">+</button>
+                </div>
+                <a class="ajout_panier ajout_panier-reverse" id="ajout" href="{{ path('app_panier') }}">Acheter maintenant <i class="fa-solid fa-ticket"></i></a>
+                <button class="ajout_panier" id="btn_ajout">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+    </div>
+        <div class="display_cat">
+            <div class="display_cat_g">
+                <p>à découvrir dans ce lieu</p></div>
+        </div>
+    <div class="suite">
+
+        {% for evenement in suggestions %}
+            <a class="event_card" href="{{ path('app_evenement', { id:evenement.id, genre: evenement.genre.nom}) }}">
+                <div class="event_card_image">
+                    <img class="test" loading="lazy" src="{{ asset("uploads/#{ evenement.affiche }") }}"
+                         alt="Image de {{ evenement.nom }}">
+                </div>
+                <div class="event_card_content">
+                    <div class="event_card_content_top">
+                        <h4>{{ evenement.nom }}</h4>
+                        <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
+                    </div>
+                    <div class="event_card_content_bottom">
+                        <div>
+                            <img src="{{ asset('icon/location-dot-solid.svg') }}" alt="">
+                            <p>{{ evenement.lieu.nom }}</p>
+                        </div>
+                        <p class="event_card_content_prix">{{ evenement.prix }} €</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <a href="{{ path('app_panier') }}" class="popup">
+        <div class="popup_img">
+            <img src="{{ asset("uploads/#{ evenement.affiche }") }}" alt="">
+        </div>
+        <div>
+            <p>{{ evenement.nom }}</p>
+        </div>
+        <div>
+            <p id="popup_nb">x1</p>
+        </div>
+        <div>
+            <p id="popup_prix">56€</p>
+        </div>
+    </a>
+    <script defer src="{{ asset('scripts/popup.js') }}"></script>
+    <script defer src="{{ asset('scripts/produits.js') }}"></script>
+{% endblock %}
+

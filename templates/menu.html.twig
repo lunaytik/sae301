@@ -1,0 +1,93 @@
+<div class="nav1">
+    <a class="logo" href="{{ path('app_accueil') }}">
+            <img aria-label="Retour à l'accueil" src="{{ asset('images/logo_blanc_lyontour.png') }}" alt="logo Lyontour">
+    </a>
+    <div class="burger"><i class="fa-solid fa-bars"></i></div>
+    <div class="container_searchbar">
+        <div id="recherche_container"></div>
+        <form action="{{ path('app_evenements') }}">
+            <select class="choix" name="genre" id="genre" aria-label="Selectionner la catégorie à chercher">
+                <option value="">Dans toutes nos catégories</option>
+                <option value="Film">Film</option>
+                <option value="Spectacle">Spectacle</option>
+                <option value="Concert">Concert</option>
+                <option value="Théâtre">Théâtre</option>
+                <option value="Exposition">Exposition</option>
+
+            </select>
+            <input class="search_bar" id="recherche" type="text" placeholder="Tapez votre recherche" autocomplete="off" name="recherche" aria-label="Champ de recherche des évenements">
+            <button class="chercher" type="submit">chercher<i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    <div class="container_navbar_right">
+        <a class="container_navbar_right_a" href="{{ path('app_panier') }}">
+            <div class="panier">
+                <div class="conteur_cart"><i class="fa-solid fa-cart-shopping fa-xl"></i>
+                    <div class="bulle_panier">
+                        <p id="panier_nombre">0</p>
+                    </div>
+                </div>
+                <p>Panier</p>
+            </div>
+        </a>
+        <div id="account_btn" class="container_navbar_right_a">
+            {% if app.user %}
+                <div id="profileImage">
+
+                </div>
+            {% endif %}
+            <div class="container_compte">
+                {% if app.user %}
+                {% if app.user.email|length > 20 %}
+                    <style>
+                        #account {
+                            color: #757575;
+                        }
+                        #account::before {
+                            content: "";
+                            width: 40%;
+                            height: 1.1rem;
+                            background: linear-gradient(270deg, rgb(20, 12, 16) 15.84%, rgba(20, 12, 16, 0.001) 105.94%);
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    </style>
+                {% endif %}
+                    <p id="account" class="noselect">{{ app.user.email }}</p>
+                {% else %}
+                    <p class="noselect">Non connecté</p>
+                {% endif %}
+                <p class="noselect">Compte <i class="fa-solid fa-caret-down"></i></p>
+            </div>
+            <div id="dropdown">
+                {% if app.user %}
+                    <a href="{{ path('app_profil') }}" class="dropdown_link"><i class="fa-solid fa-user userpicto"></i> Compte</a>
+                    <a href="{{ path('app_profil') }}" class="dropdown_link"><i class="fa-solid fa-clock-rotate-left"></i> Commande</a>
+                    <a href="{{ path('app_logout') }}" class="dropdown_link"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="dropdown_link"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a>
+                    <a href="{{ path('app_register') }}" class="dropdown_link"><i class="fa-solid fa-pen-to-square"></i> Inscription</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nav2">
+    <a href="{{ path('app_evenements') }}">Evenements</a>
+    <a href="{{ path('app_lieux') }}">Lieux</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'film'}) }}">Film</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'theatre'}) }}">Théâtre</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'concert'}) }}">Concert</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'exposition'}) }}">Exposition</a>
+    <a href="{{ path('app_evenement_genre', {'genre': 'spectacle'}) }}">Spectacle</a>
+</div>
+<div class="nav3_gradient"></div>
+<div class="nav3">
+    <a href="{{ path('app_accueil') }}" class="nav3-select active"><i class="fa-solid fa-house fa-xl"></i>Accueil</a>
+    <a href="{{ path('app_profil') }}" class="nav3-select"><i class="fa-solid fa-user fa-xl"></i>Compte</a>
+    <a href="{{ path('app_panier') }}" class="nav3-select"><i class="fa-solid fa-cart-shopping fa-xl"></i>Panier<div class="bulle_panier_bis">
+            <p id="panier_nombre_bis">0</p>
+        </div></a>
+</div>

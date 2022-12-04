@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ meta_description }}{% endblock %}
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <div class="display_cat">
+        <div class="display_cat_g display_center">
+            <div class="barre"></div>
+            <p>Profil</p>
+            <div class="barre"></div>
+        </div>
+    </div>
+    {% if app.user.adresse and app.request.query.get('edit') %}
+    {% include('profil/_adresse_profil.html.twig') %}
+    <div class="profil_container bt-r">
+        <h2 class="profil_title">Informations de connexion</h2>
+        <div class="profil_item">
+            <p>Email</p><p>{{ app.user.email }}</p>
+        </div>
+        <div class="profil_item">
+            <p>Mot de passe</p><p>**************</p>
+        </div>
+    </div>
+    {% elseif app.user.adresse %}
+        <div class="profil_container">
+            <h2 class="profil_title">Informations personnelles</h2>
+            <div class="profil_item">
+                <p>Prénom</p><p>{{ app.user.prenom }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Nom</p><p>{{ app.user.nom }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Numéro de téléphone</p><p>{{ app.user.telNum }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Adresse</p><p>{{ app.user.adresse }}, {{ app.user.ville }} {{ app.user.cp }}, {{ app.user.pays|country_name('fr') }}</p>
+            </div>
+            <a class="profil_link" href="{{ path('app_profil', {'edit':'1'}) }}">MODIFIER</a>
+        </div>
+        <div class="profil_container">
+            <h2 class="profil_title">Informations de connexion</h2>
+            <div class="profil_item">
+                <p>Email</p><p>{{ app.user.email }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Mot de passe</p><p>**************</p>
+            </div>
+        </div>
+        {% if app.request.query.get('success') %}
+            <div class="success_info" id="success_info">Changement avec succès !</div>
+            <script src="{{ asset('scripts/success.js') }}"></script>
+        {% endif %}
+
+    {% else %}
+        {% include('profil/_adresse_profil.html.twig') %}
+        <div class="profil_container bt-r">
+            <h2 class="profil_title">Informations de connexion</h2>
+            <div class="profil_item">
+                <p>Email</p><p>{{ app.user.email }}</p>
+            </div>
+            <div class="profil_item">
+                <p>Mot de passe</p><p>**************</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <h2 class="profil_title" id="commandes">Historique de commandes</h2>
+
+    <div class="historique_content">
+        {% for reservation in reservations %}
+        <div class="historique_container">
+            <p class="historique_n">Commande n°{{ reservation.id }}</p>
+            <div class="historique_container_img">
+
+                        {% for detail in reservation.ligneReservations %}
+                            <div class="img_h_li" >
+                                <img class="img_h" src="{{ asset("uploads/#{ detail.event.affiche }") }}">
+                            </div>
+                        {% endfor %}
+            </div>
+            <div class="historique_container_bottom">
+                <h1>Le {{ reservation.date|format_datetime('full', 'short', locale='fr')}}</h1>
+                <h2>
+                    {{ reservation.total }}€
+                </h2>
+                <a href="{{ path('app_commande_detail', {'id': reservation.id}) }}">voir plus ›</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
