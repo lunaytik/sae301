@@ -6,10 +6,10 @@
 {% block body %}
     <div class="carousel">
         <div class="carousel-inner">
-            <a href="{{ path('app_evenement', {'genre': 'theatre', 'id': '60'}) }}" style="background: url({{ asset('uploads/carousel1.jpg') }});background-size: cover;background-repeat: no-repeat;"  class="carousel-item"></a>
-            <a href="{{ path('app_evenement', {'genre': 'film', 'id': '1'}) }}" style="background: url({{ asset('uploads/carousel2.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
-            <a href="{{ path('app_evenement', {'genre': 'concert', 'id': '30'}) }}" style="background: url({{ asset('uploads/carousel3.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
-            <a href="{{ path('app_evenements') }}" style="background: url({{ asset('uploads/carousel4.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
+            <a href="{{ path('app_evenement', {'genre': 'theatre', 'id': '60'}) }}" ria-label="Offre du carousel n°1" style="background: url({{ asset('uploads/carousel1.jpg') }});background-size: cover;background-repeat: no-repeat;"  class="carousel-item"></a>
+            <a href="{{ path('app_evenement', {'genre': 'film', 'id': '1'}) }}" ria-label="Offre du carousel n°2" style="background: url({{ asset('uploads/carousel2.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
+            <a href="{{ path('app_evenement', {'genre': 'concert', 'id': '30'}) }}" ria-label="Offre du carousel n°3" style="background: url({{ asset('uploads/carousel3.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
+            <a href="{{ path('app_evenements') }}" aria-label="Offre du carousel n°4" style="background: url({{ asset('uploads/carousel4.jpg') }});background-size: cover;background-repeat: no-repeat;" class="carousel-item"></a>
         </div>
         <div class="carousel-controls">
             <span class="prev"></span>
@@ -32,7 +32,6 @@
                     <div class="event_card_content_top">
                         <h4>{{ evenement.nom }}</h4>
                         <p>{{ evenement.date|format_datetime('full', 'short', locale='fr') }}</p>
-{#                        <img src="etoile.png" alt="">#}
                     </div>
                     <div class="event_card_content_bottom">
                         <div>
