@@ -15,7 +15,7 @@
         <div class="panier_box">
             <div class="panier_gauche"><img class="test" src="${evenement.img}" alt="Image de ${evenement.nom}"></div>
             <div class="panier_droite">
-                <h1>${evenement.nom}</h1>
+                <h2>${evenement.nom}</h2>
                 <div class="panier_date">
                     <p>${date[0]}</p>
                     <p>${date[1]}</p>

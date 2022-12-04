@@ -268,7 +268,7 @@ select {
     height: 45px;
 }
 .container_compte p:nth-child(1) {
-    color: #757575;
+    color: #7B7B7B;
     font-size: 0.9rem;
     height: 0.9rem;
     line-height: 0.9rem;
@@ -615,7 +615,7 @@ select {
 }
 .panier_lieu {
     font-size: 1.1rem;
-    color: #8F8F8F;
+    color: #767676;
 }
 .panier_lieu > div {
     display: flex;
