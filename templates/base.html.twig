@@ -16,7 +16,7 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script async src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+            <script defer src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
             <script defer src="{{ asset('scripts/general.js') }}"></script>
             <script defer src="{{ asset('scripts/app.js') }}"></script>
             {{ encore_entry_script_tags('app') }}
