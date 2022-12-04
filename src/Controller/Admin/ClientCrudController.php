@@ -33,7 +33,7 @@ class ClientCrudController extends AbstractCrudController
                 ->renderExpanded(true),
             TextField::new('nom'),
             TextField::new('prenom'),
-            TelephoneField::new('tel_num'),
+            TelephoneField::new('tel_num', 'Numéro de téléphone'),
             CountryField::new('pays'),
             TextField::new('adresse'),
             TextField::new('cp'),
