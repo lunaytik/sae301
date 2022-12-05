@@ -28,7 +28,7 @@ class CbType extends AbstractType
                 ],
                 "mapped" => false
             ])
-            ->add('cardName', TelType::class, [
+            ->add('cardName', TextType::class, [
                 "label" => "Nom sur la carte",
                 "attr" => [
                     "placeholder" => "John Doe"
