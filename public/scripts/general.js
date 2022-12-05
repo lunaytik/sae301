@@ -23,13 +23,14 @@ if (panier_liste.length!=0) {
 else { panier_tab = Array(); }
 
 const panier_display = document.getElementById('panier_nombre');
+const panier_display_mobile = document.getElementById('panier_nombre_bis')
 
 var panier_val = 0;
 panier_tab.forEach(element => {
     panier_val += parseInt(element.quantite);
     panier_display.innerText = panier_val;
+    panier_display_mobile.innerText = panier_val
 });
-
 
 // nav3 active
 var btnContainer = document.getElementsByClassName("nav3");
@@ -42,8 +43,6 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 $(document).ready(function () {
-    // nav3 bulle compteur panier
-    document.getElementById('panier_nombre_bis').innerHTML = panier_nombre.innerHTML
     // Barre de recherche en AJAX
     $("#genre").on('change', function (event) {
         let genre = $(this).find(":selected").val();
