@@ -19,12 +19,14 @@ btn_ajout.addEventListener('click', () => {
         panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + parseInt(event_quantite.value);
         panier_val += parseInt(event_quantite.value)
         panier_display.innerText = panier_val;
+        panier_display_mobile.innerText = panier_val;
         document.cookie = JSON.stringify(panier_tab);
         document.cookie += ';path=/'
     } else {
         panier_tab.push({"id":event_id,"nom":event_nom,"img":event_img,"quantite":event_quantite.value,"prix":event_prix,"date":event_date,"adresse":event_adresse,"lieu":event_lieu});
         panier_val += parseInt(event_quantite.value);
         panier_display.innerText = panier_val;
+        panier_display_mobile.innerText = panier_val;
         document.cookie = JSON.stringify(panier_tab);
         document.cookie += ';path=/'
     }
@@ -52,12 +54,14 @@ ajout.addEventListener('click', () => {
         panier_tab[index].quantite = parseInt(panier_tab[index].quantite) + parseInt(event_quantite.value);
         panier_val += parseInt(event_quantite.value)
         panier_display.innerText = panier_val;
+        panier_display_mobile.innerText = panier_val;
         document.cookie = JSON.stringify(panier_tab);
         document.cookie += ';path=/'
     } else {
         panier_tab.push({"id":event_id,"nom":event_nom,"img":event_img,"quantite":event_quantite.value,"prix":event_prix,"date":event_date,"adresse":event_adresse,"lieu":event_lieu});
         panier_val += parseInt(event_quantite.value);
         panier_display.innerText = panier_val;
+        panier_display_mobile.innerText = panier_val;
         document.cookie = JSON.stringify(panier_tab);
         document.cookie += ';path=/'
     }
