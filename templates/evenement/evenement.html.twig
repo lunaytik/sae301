@@ -70,6 +70,10 @@
                 <p class="event_info_right_livraison">livraison instantanée par mail</p>
             </div>
             <div>
+                <p class="event_info_right_place">Places restantes pour l'événement</p>
+                <p class="event_info_right_placeNum">{{ evenement.lieu.capacite - places }} / {{ evenement.lieu.capacite }}</p>
+            </div>
+            <div>
                 <p class="event_info_right_revertion">Réservation</p>
                 <p class="event_info_right_date">pour le <span id="event_date">{{ evenement.date|format_datetime('short', 'short', locale='fr') }}</span></p>
             </div>

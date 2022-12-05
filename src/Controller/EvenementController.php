@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\GenreRepository;
+use App\Repository\LigneReservationRepository;
 use App\Repository\TagRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -70,8 +71,17 @@ class EvenementController extends AbstractController
     }
 
     #[Route('/evenements/{genre}/{id}', name: 'app_evenement')]
-    public function show(Evenement $evenement, EvenementRepository $evenementRepository): Response
+    public function show(Evenement $evenement, EvenementRepository $evenementRepository, LigneReservationRepository $ligneReservationRepository): Response
     {
+
+
+        $lignes = $ligneReservationRepository->findBy(['event'=>$evenement]);
+
+        $places = 0;
+        foreach ($lignes as $ligne) {
+            $places += $ligne->getNbPlace();
+        }
+
         $lieu_id = $evenement->getLieu();
 
         $event_id = $evenement->getId();
@@ -95,7 +105,8 @@ class EvenementController extends AbstractController
             'controller_name' => "Lyon'Tour - $event_name",
             'evenement' => $evenement,
             'meta_description' => $evenement->getDescription(),
-            'suggestions' => $result
+            'suggestions' => $result,
+            'places' => $places
         ]);
     }
 

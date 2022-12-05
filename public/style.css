@@ -2504,3 +2504,12 @@ ul{
 .empty_evenements a:hover {
     color: #a61051;
 }
+
+.event_info_right_place {
+    font-weight: 500;
+}
+
+.event_info_right_placeNum {
+    color: #e90065;
+    font-weight: 500;
+}
