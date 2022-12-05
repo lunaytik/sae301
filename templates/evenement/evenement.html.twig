@@ -71,12 +71,17 @@
             </div>
             <div>
                 <p class="event_info_right_place">Places restantes pour l'événement</p>
-                <p class="event_info_right_placeNum">{{ evenement.lieu.capacite - places }} / {{ evenement.lieu.capacite }}</p>
+                {% if (evenement.lieu.capacite - places) != 0  %}
+                    <p class="event_info_right_placeNum">{{ evenement.lieu.capacite - places }} / {{ evenement.lieu.capacite }}</p>
+                {% else %}
+                    <p class="event_info_right_placeNum">Plus de places restantes !</p>
+                {% endif %}
             </div>
             <div>
                 <p class="event_info_right_revertion">Réservation</p>
                 <p class="event_info_right_date">pour le <span id="event_date">{{ evenement.date|format_datetime('short', 'short', locale='fr') }}</span></p>
             </div>
+            {% if (evenement.lieu.capacite - places) != 0 %}
             <div>
                 <div class="selecteur_nb">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="moins_panier" >-</button>
@@ -87,6 +92,7 @@
                 <a class="ajout_panier ajout_panier-reverse" id="ajout" href="{{ path('app_panier') }}">Acheter maintenant <i class="fa-solid fa-ticket"></i></a>
                 <button class="ajout_panier" id="btn_ajout">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
             </div>
+            {% endif %}
         </div>
     </div>
         <div class="display_cat">
